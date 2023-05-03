@@ -1,0 +1,95 @@
+#exclude general
+*.*
+
+#include general
+#dbx data
+#!*.dbf
+#!*.cdx
+#!*.fpt
+
+#!*.dbc
+#!*.dc[tx]
+
+#grafics
+!*.bmp
+!*.msk
+!*.ico
+!*.cdr
+!*.cur
+
+#programms
+!*.prg
+!*.fpw
+
+#header
+!*.h
+
+#libs (by FoxBin2prg)
+#!*.vc[xt]
+#!*.pj[xt]
+#!*.fr[xt]
+#!*.mn[xt]
+#!*.sc[xt]
+#!*.lb[xt]
+
+#FoxBin2prg
+!*.vc2
+!*.pj2
+!*.fr2
+!*.mn2
+!*.sc2
+!*.lb2
+!*.d[bc]2
+
+#include special
+#default git
+!*.gitignore
+!/desktop.ini
+!data/*.jpg
+!.github/
+
+#gitlab
+!*.md
+!/.gitlab/
+
+#diverse
+!*.reg
+!/FoxBin2prg.cfg
+!README.md
+!/Source/changelog_*.txt
+
+#exclude special
+foxuser_9.*
+_command.prg
+*ref.*
+debug*.*
+Sicherungskopie*.*
+include/projsub.h
+include/projekt_switch.h
+include/projekt_user.h
+Factory_Init.*
+/Source/tempview.*
+/Source/temptext.*
+/Screenshots/
+
+#nix von hier
+default/
+temp/
+tmp/
+
+bin2txt.*
+
+#Doku
+!/.github/
+!/docs/**/*.*
+!Doku/*.pdm*
+!Doku/Source/*.gif
+!Doku/Source/*.png
+!Doku/Source/*.htm
+!Doku/Source/*.html
+#/Doku/**/*.**.bak
+/docs/*.log
+
+#und wieder einschlieﬂen :(
+!debuglib.vc2
+!debuglib.*.vc2

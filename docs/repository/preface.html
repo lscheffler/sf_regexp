@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="deu">
+ <head>
+  <title>SF RegExp</title>
+<!--- CSS Defs
+&lt;style
+
+---->
+  <style type="text/css">
+   <!--
+   Span.Example
+   {
+    color: blue;
+    font-style: ialic;
+    FONT-SIZE: 10pt;
+    WIDTH: auto;
+    FONT-FAMILY: &quot;Monospace&quot;,&quot;Courier New&quot;;
+    BACKGROUND-COLOR: #eeeeee
+  }
+   -->
+  </style>
+</head>
+<body>
+ <h1>Bin 2 Text extension</h1>
+ <p>
+  This document describes the <a href="https://github.com/lscheffler/sf_regexp" target="_blank">SF RegExp</a> tool to access the DotNet RegExp class from VFP.
+ </p>
+ <p>
+  Documentation of the project is done with <a href="http://gorila.netlab.cz/pdm.html" target="_blank">Project Documenting Machine</a> by Martina Jindrová using the AB-plugins by myself.
+ </p>
+ <p>
+  Contents:
+ </p>
+ <ul>
+ 	<li><a href="#change">Change log</a></li>
+ 	<li><a href="#purpose">Purpose</a></li>
+ 	<li><a href="#usage">Usage</a></li>
+ </ul>
+ <hr /><h2><a name="change">Change log</a></h2>
+ <p>
+  See <a href="./Changes.html" title="Show change log">Change log</a>.
+ </p>
+ <hr /><h2><a name="purpose">Purpose</a></h2>
+ <p>
+  The goal of this tool is to access the 
+  <a href="https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions?view=net-7.0&viewFallbackFrom=net-3.8" target="_blank">DotNet RegExp Namespace</a>
+  with VFP.
+ </p>
+ <p>
+  The usual RegExp in VFP is that of VBasic. It's one of the most limited ways to use RegExp.
+  For <a href="https://github.com/VFPX/GoFish">GoFish</a> there was a need to do a more compley match then VBasic allowed, so here is the result.
+ </p>
+ <p>
+  The access runs through <a href="https://west-wind.com/wwdotnetbridge.aspx">wwDotNetBridge</a>.
+  To class is set up to hide to access. 
+ </p>
+ <p>
+  Since there was a problem to access the overloaded DotNet methods, an additional C# wrapper is used for access.
+ </p>
+ <p>
+  The return of the wwDotNetBridge calls are DotNet objects. This class allows to simply proceed with this objects and offers access methods to the serveral properties. Or the return is a structure made out of VFP objects. It's basically a matter of speed what to use, the full VFP version will expose mostly all properties what needs time to load, the other needs more code to get the property values in the code running, but could be limited to minimum.
+  See <a href="../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>.
+  See there for the options to get finer control over the return.
+ </p>
+ <hr /><h2><a name="usage">Usage</a></h2>
+ <p>
+  The document does not contain help how to use the
+  <a href="https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions?view=net-7.0&viewFallbackFrom=net-3.8" target="_blank">DotNet RegExp Namespace</a>, see there. As far as possible the methods and properites of RegExp, Matches Match Groups, Group, Captures and Capture are reflected in the class and the of methods. The Options property of the RegExp is split into several single booleans for better use with VFP.
+ </p>
+ <p>
+  The return value of the <a href="../code/sf_regexp.prg/Main_d.main%20program.htm" title="Skip to program SF_RegExp.prg">program</a> is a refernce to the class instatiated.
+ </p>
+ <p>
+  Skip to <a href="../code/sf_regexp.prg/cls.sf_regexp.htm#cls.SF_RegExp" title="Skip to class SF_RegExp">SF_RegExp class</a> to get more documentation.
+ </p>
+<hr /><i>&copy;2023 Lutz Scheffler Software Ingenieurbüro</i>
+</body></html>

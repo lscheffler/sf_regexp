@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Debug": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files (x86)\\VFPA\\VFPA.EXE",
+      "commandLineArgs": "-t -cE:\\SE\\Foxpro\\-foxpro-.fpw",
+      "workingDirectory": "E:\\SE\\Foxpro",
+      "environmentVariables": {
+        "VFPRun": "E:\\SE\\VFPX\\SF_RegExp\\SF_RegExp_Test.prg"
+      }
+    }
+  }
+}
