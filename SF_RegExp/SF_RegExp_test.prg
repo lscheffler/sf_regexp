@@ -109,14 +109,6 @@ ENDPROC &&Test_Split
 
 PROCEDURE Test_Unwind		&& Example to run Matches for a Pattern and show all data returned
  LOCAL;
-  lnCapture  AS NUMBER,;
-  lnGroup    AS NUMBER,;
-  lnMatch    AS NUMBER,;
-  loCapture  AS OBJECT,;
-  loCaptures AS OBJECT,;
-  loGroup    AS OBJECT,;
-  loGroups   AS OBJECT,;
-  loMatch    AS OBJECT,;
   loMatches  AS OBJECT,;
   loRegExp   AS OBJECT
 
@@ -127,41 +119,8 @@ PROCEDURE Test_Unwind		&& Example to run Matches for a Pattern and show all data
  loRegExp.AutoExpandGroup    = .F.
  loRegExp.AutoExpandCaptures = .F.
  loMatches                   = loRegExp.Matches("This is a sentence. This is another sentence. This is too.")
-
- ?"Matches: ", m.loMatches.COUNT
- FOR lnMatch = 0 TO m.loMatches.COUNT-1
-  loMatch = loMatches.ITEM(m.lnMatch)
-  ?" Match ", m.lnMatch, "Matched text: ", loRegExp.Get_Value(m.loMatch), loRegExp.Get_Index(m.loMatch), loRegExp.Get_Length(m.loMatch), loRegExp.Get_Name(m.loMatch)
-  ??", Success ",loRegExp.Get_Success(m.loMatch)
-
-  loCaptures = loRegExp.Get_Captures(m.loMatch)
-  ?"  MCaptures: ", m.loCaptures.COUNT
-  FOR lnCapture = 0 TO m.loCaptures.COUNT-1
-   loCapture = loCaptures.ITEM(m.lnCapture)
-   ?"   MCapture ", m.lnCapture, ":", loRegExp.Get_Value(m.loCapture), loRegExp.Get_Index(m.loCapture), loRegExp.Get_Length(m.loCapture)
-   ??", Success ",loRegExp.Get_Success(m.loCapture)
-   ??", Name ",loRegExp.Get_Name(m.loCapture)
-  ENDFOR &&lnCapture
-
-  loGroups = loRegExp.Get_Groups(m.loMatch)
-  ?"  Groups: ", m.loGroups.COUNT
-  FOR lnGroup = 0 TO m.loGroups.COUNT-1
-   loGroup = loGroups.ITEM(m.lnGroup)
-   ?"   Group ", m.lnGroup, ":", loRegExp.Get_Value(m.loGroup), loRegExp.Get_Index(m.loGroup), loRegExp.Get_Length(m.loGroup), loRegExp.Get_Success(m.loGroup), loRegExp.Get_Name(m.loGroup)
-   ??", Success ",loRegExp.Get_Success(m.loGroup)
-   ??", Name ",loRegExp.Get_Name(m.loGroup)
-   loCaptures = loRegExp.Get_Captures(m.loGroup)
-   ?"    Captures: ", m.loCaptures.COUNT
-   FOR lnCapture = 0 TO m.loCaptures.COUNT-1
-    loCapture = loCaptures.ITEM(m.lnCapture)
-    ?"     Capture ", m.lnCapture, ":", loRegExp.Get_Value(m.loCapture), loRegExp.Get_Index(m.loCapture), loRegExp.Get_Length(m.loCapture)
-    IF m.lnGroup =0 THEN
-     ??", Success ",loRegExp.Get_Success(m.loCapture)
-     ??", Name ",loRegExp.Get_Name(m.loCapture)
-    ENDIF &&m.lnGroup =0
-   ENDFOR &&lnCapture
-  ENDFOR &&lnGroup
- ENDFOR &&lnMatch
+ 
+ ?loRegExp.Show_Unwind(m.loMatches)
 ENDPROC &&Test_Unwind
 
 PROCEDURE Get_SF_RegExp	&& Example to instantiate the SF_RegExp class

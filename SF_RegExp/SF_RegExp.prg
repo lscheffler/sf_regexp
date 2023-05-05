@@ -1,9 +1,8 @@
-#DEFINE dcRegExpVerNo "1.0.0"
+#DEFINE dcRegExpVerNo "1.1.0"
 LPARAMETERS;
- tcPathTo_wwDotnetBridge,;
- tcPathTo_SF_RegExp
+ tcPathTo_wwDotnetBridge
 
-RETURN CREATEOBJECT("SF_RegExp",m.tcPathTo_wwDotnetBridge,m.tcPathTo_SF_RegExp)
+RETURN CREATEOBJECT("SF_RegExp",m.tcPathTo_wwDotnetBridge)
 
 DEFINE CLASS SF_RegExp AS SESSION
 *Internal object
@@ -36,32 +35,45 @@ DEFINE CLASS SF_RegExp AS SESSION
 
  PROCEDURE INIT
   LPARAMETERS;
-   tcPathTo_wwDotnetBridge,;
    tcPathTo_SF_RegExp
   LOCAL;
+   lcOldPath   AS STRING,;
    lcPath      AS STRING,;
    llError     AS BOOLEAN,;
-   loException AS EXCEPTION,;
-   loBridge    AS OBJECT
+   loBridge    AS OBJECT,;
+   loException AS EXCEPTION
+
+  lcOldPath = FULLPATH("","")
 
   lcPath = SYS(16)
   lcPath = RIGHT(m.lcPath,LEN(m.lcPath)-AT(" ",m.lcPath,2))
   lcPath = JUSTPATH(m.lcPath)
 
-  IF EMPTY(m.tcPathTo_wwDotnetBridge) THEN
-   tcPathTo_wwDotnetBridge = m.lcPath
-  ENDIF &&EMPTY(m.tcPathTo_wwDotnetBridge)
 
-  IF EMPTY(m.tcPathTo_SF_RegExp) THEN
-   tcPathTo_SF_RegExp = m.lcPath
-  ENDIF &&EMPTY(m.tcPathTo_SF_RegExp)
+  IF VARTYPE(m.__SF_REGEXPATH)="C" THEN
+   IF EMPTY(m.tcPathTo_SF_RegExp) THEN
+    tcPathTo_SF_RegExp = m.__SF_REGEXPATH
+   ELSE  &&Vartype(__SF_REGEXPATH)="C"
+    __SF_REGEXPATH = m.tcPathTo_SF_RegExp
+   ENDIF &&Vartype(__SF_REGEXPATH)="C"
+
+  ELSE  &&Vartype(__SF_REGEXPATH)="C"
+   IF EMPTY(m.tcPathTo_SF_RegExp) THEN
+    tcPathTo_SF_RegExp = m.lcPath
+   ENDIF &&EMPTY(m.tcPathTo_SF_RegExp)
+   PUBLIC __SF_REGEXPATH
+   __SF_REGEXPATH = m.tcPathTo_SF_RegExp
+
+  ENDIF &&Vartype(__SF_REGEXPATH)="C"
+
+  CD (m.tcPathTo_SF_RegExp)
 
   TRY
     DO wwDotnetBridge
 
    CATCH
     TRY
-      SET PATH TO ('"'+m.tcPathTo_wwDotnetBridge+'"') ADDITIVE
+      SET PATH TO ('"'+m.tcPathTo_SF_RegExp+'"') ADDITIVE
       DO wwDotnetBridge
 
      CATCH
@@ -70,7 +82,8 @@ DEFINE CLASS SF_RegExp AS SESSION
   ENDTRY
 
   IF m.llError THEN
-   RETURN .NULL.
+   CD (m.lcOldPath)
+   RETURN .F.
   ENDIF &&m.llError
 
   loBridge = GetwwDotnetBridge()
@@ -93,12 +106,16 @@ DEFINE CLASS SF_RegExp AS SESSION
   ENDTRY
 
   IF m.llError THEN
-   RETURN .NULL.
+   CD (m.lcOldPath)
+   RETURN .F.
   ENDIF &&m.llError
 
   IF ISNULL(THIS.goRegExp) THEN
-   RETURN .NULL.
+   CD (m.lcOldPath)
+   RETURN .F.
   ENDIF &&ISNULL(THIS.goRegExp)
+
+  CD (m.lcOldPath)
  ENDPROC &&Init
 
 * Assign Access
@@ -269,7 +286,7 @@ DEFINE CLASS SF_RegExp AS SESSION
    tlAutoExpandCaptures
 
   LOCAL;
-   lnMatch AS INTEGER,;
+   lnMatch   AS INTEGER,;
    loMatches AS COLLECTION
 
   loMatches = CREATEOBJECT("Collection")
@@ -319,7 +336,7 @@ DEFINE CLASS SF_RegExp AS SESSION
    tlAutoExpandCaptures
 
   LOCAL;
-   lnGroup AS INTEGER,;
+   lnGroup  AS INTEGER,;
    loGroups AS COLLECTION
 
   loGroups = CREATEOBJECT("Collection")
@@ -360,7 +377,7 @@ DEFINE CLASS SF_RegExp AS SESSION
    tlWithName
 
   LOCAL;
-   lnCapture AS INTEGER,;
+   lnCapture  AS INTEGER,;
    loCaptures AS COLLECTION
 
   loCaptures = CREATEOBJECT("Collection")
@@ -702,5 +719,73 @@ DEFINE CLASS SF_RegExp AS SESSION
 
 *or we need additional objects to wrap this
 */Wrapper, subobjects
+
+ PROCEDURE Show_Unwind		&& Example to run Matches for a Pattern and show all data returned
+  LPARAMETERS;
+   toMatches
+
+  LOCAL;
+   lcReturn   AS STRING,;
+   lnCapture  AS NUMBER,;
+   lnGroup    AS NUMBER,;
+   lnMatch    AS NUMBER,;
+   loCapture  AS OBJECT,;
+   loCaptures AS OBJECT,;
+   loGroup    AS OBJECT,;
+   loGroups   AS OBJECT,;
+   loMatch    AS OBJECT
+*  SET STEP ON
+  lcReturn = ''
+  SET TEXTMERGE ON NOSHOW
+  SET TEXTMERGE TO MEMVAR m.lcReturn
+  \Matches:  <<m.toMatches.COUNT>>
+  FOR lnMatch = 0 TO m.toMatches.COUNT-1
+   loMatch = toMatches.ITEM(m.lnMatch)
+   \ Match  <<m.lnMatch>>; value:  "<<THIS.Get_Value(m.loMatch)>>"
+   \\,at: <<THIS.Get_Index(m.loMatch)>>
+   \\,len: <<THIS.Get_Length(m.loMatch)>>
+   \\, success  <<THIS.Get_Success(m.loMatch)>>
+   \\, name: <<THIS.Get_Name(m.loMatch)>>
+
+   loCaptures = THIS.Get_Captures(m.loMatch)
+   \  MCaptures:  <<m.loCaptures.COUNT>>
+   FOR lnCapture = 0 TO m.loCaptures.COUNT-1
+    loCapture = loCaptures.ITEM(m.lnCapture)
+    \   MCapture  <<m.lnCapture>>; value: "<<THIS.Get_Value(m.loCapture)>>"
+    \\,at: <<THIS.Get_Index(m.loCapture)>>
+    \\,len: <<THIS.Get_Length(m.loCapture)>>
+    \\, success  <<THIS.Get_Success(m.loCapture)>>
+    \\, Name  <<THIS.Get_Name(m.loCapture)>>
+   ENDFOR &&lnCapture
+
+   loGroups = THIS.Get_Groups(m.loMatch)
+   \  Groups:  <<m.loGroups.COUNT>>
+   FOR lnGroup = 0 TO m.loGroups.COUNT-1
+    loGroup = loGroups.ITEM(m.lnGroup)
+    \   Group  <<m.lnGroup>>; value: "<<THIS.Get_Value(m.loGroup)>>"
+    \\,at: <<THIS.Get_Index(m.loGroup)>>
+    \\,len: <<THIS.Get_Length(m.loGroup)>>
+    \\, success  <<THIS.Get_Success(m.loGroup)>>
+    \\, name  <<THIS.Get_Name(m.loGroup)>>
+    loCaptures = THIS.Get_Captures(m.loGroup)
+    \    Captures:  <<m.loCaptures.COUNT>>
+    FOR lnCapture = 0 TO m.loCaptures.COUNT-1
+     loCapture = loCaptures.ITEM(m.lnCapture)
+     \     Capture  <<m.lnCapture>>; value: "<<THIS.Get_Value(m.loCapture)>>"
+     \\,at: <<THIS.Get_Index(m.loCapture)>>
+     \\,len: <<THIS.Get_Length(m.loCapture)>>
+     IF m.lnGroup =0 THEN
+      \\, success  <<THIS.Get_Success(m.loCapture)>>
+      \\, name  <<THIS.Get_Name(m.loCapture)>>
+     ENDIF &&m.lnGroup =0
+    ENDFOR &&lnCapture
+   ENDFOR &&lnGroup
+  ENDFOR &&lnMatch
+  SET TEXTMERGE TO
+  SET TEXTMERGE OFF
+
+  RETURN m.lcReturn
+
+ ENDPROC &&Show_Unwind
 
 ENDDEFINE &&SF_RegExp As Session
