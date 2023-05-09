@@ -24,20 +24,20 @@
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 Wrapper for the DotNet RegExp Match method, see there.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6M20MQQ43">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M21A8YR8">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.Match
    </div>
    <div class="Para">
-    (<a href="#_6M20MQQ44">tcInput</a>
-     <wbr />,<a href="#_6M20MQQ45">tvValue1</a>
-     <wbr />,<a href="#_6M20MQQ46">tvValue2</a>)
+    (<a href="#_6M21A8YR9">tcInput</a>
+     [<wbr />,<a href="#_6M21A8YRA">tvValue1</a>
+     [<wbr />,<a href="#_6M21A8YRB">tvValue2</a>]])
    </div>
    <div style="clear: both"></div>
   </div><!-- Colour End -->
@@ -49,7 +49,7 @@ Wrapper for the DotNet RegExp Match method, see there.
   </span>
   <dl class="DIAMP_PDM_AB_Params_List">
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ44" name="_6M20MQQ44">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M21A8YR9" name="_6M21A8YR9">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tcInput</span></span>
 
     </a>
@@ -76,7 +76,7 @@ Wrapper for the DotNet RegExp Match method, see there.
     </table>
    </dd>
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ45" name="_6M20MQQ45">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M21A8YRA" name="_6M21A8YRA">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tvValue1</span></span>
 
     </a>
@@ -99,11 +99,15 @@ Wrapper for the DotNet RegExp Match method, see there.
        <td class="CellValue">Direction</td>
        <td class="CellData">Input</td>
       </tr>
+      <tr>
+       <td class="CellValue">Optional</td>
+      <td class="CellData">&nbsp;</td>
+      </tr>
      </tbody>
     </table>
    </dd>
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ46" name="_6M20MQQ46">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M21A8YRB" name="_6M21A8YRB">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tvValue2</span></span>
 
     </a>
@@ -126,6 +130,10 @@ Wrapper for the DotNet RegExp Match method, see there.
        <td class="CellValue">Direction</td>
        <td class="CellData">Input</td>
       </tr>
+      <tr>
+       <td class="CellValue">Optional</td>
+      <td class="CellData">&nbsp;</td>
+      </tr>
      </tbody>
     </table>
    </dd>
@@ -135,7 +143,7 @@ Wrapper for the DotNet RegExp Match method, see there.
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6M20MQQ43" name="_6M20MQQ43">
+    <a id="_6M21A8YR8" name="_6M21A8YR8">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">Object</span>
@@ -200,7 +208,7 @@ Depending on <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.
  </div><!-- SeeAlso End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Match" id="IMG_SP_1" />
@@ -234,7 +242,7 @@ Depending on <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.
   <span class='PDMRes'>ENDCASE</span>
 
   <span class='PDMRes'>IF</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>ReturnFoxObjects</span> <span class='PDMRes'>THEN</span>
-   <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Fill_Match</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lvReturn</span><span class='PDMOper'>,</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandGroup</span><span class='PDMOper'>,</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandCaptures</span><span class='PDMOper'>,</span><span class='PDMLit'>.T.</span><span class='PDMOper'>)</span>
+   <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Fill_Match</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lvReturn</span><span class='PDMOper'>,</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandGroups</span><span class='PDMOper'>,</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandCaptures</span><span class='PDMOper'>,</span><span class='PDMLit'>.T.</span><span class='PDMOper'>)</span>
   <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;THIS.ReturnFoxObjects</span>
 
   <span class='PDMRes'>RETURN</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lvReturn</span></pre>
@@ -245,7 +253,7 @@ Depending on <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.
 <div class="diaxp_mfoot"> <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
   <hr />
   <div class="PDM_AB_Body">
-<i>&copy; 03.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+<i>&copy; 09.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
   </div><!-- Body End -->
  </div><!-- Footer End -->
 </div>

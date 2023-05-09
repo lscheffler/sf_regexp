@@ -1,4 +1,4 @@
-#DEFINE dcRegExpVerNo "1.2.0"
+#DEFINE dcRegExpVerNo "1.3.0"
 LPARAMETERS;
  tcPathTo_wwDotnetBridge
 
@@ -14,7 +14,7 @@ DEFINE CLASS SF_RegExp AS SESSION
 
 *Return FoxObjects instead of DotNet ones (slower)
  ReturnFoxObjects   = .F.		&& Controls type of objects returned
- AutoExpandGroup    = .F.		&& Controls type of objects returned
+ AutoExpandGroups   = .F.		&& Controls type of objects returned
  AutoExpandCaptures = .F.		&& Controls type of objects returned
  DotNetOffset       = .F.		&& Strings should start with 0 or 1
 
@@ -281,10 +281,38 @@ DEFINE CLASS SF_RegExp AS SESSION
   RETURN THIS.roRegExp.UnEscape(m.lvReturn)
  ENDPROC &&UnEscape_Like
 
+ PROCEDURE Execute		&& Wrapper for VBasic RegExp Execute method
+  LPARAMETERS;
+   tcString
+ 
+  LOCAL;
+   llAutoExpandCaptures AS BOOLEAN,;
+   llAutoExpandGroups   AS BOOLEAN,;
+   llReturnFoxObjects   AS BOOLEAN,;
+   loBridge             AS OBJECT,;
+   lvReturn             AS VARIANT
+ 
+  llReturnFoxObjects   = THIS.ReturnFoxObjects
+  llAutoExpandGroups   = THIS.AutoExpandGroups
+  llAutoExpandCaptures = THIS.AutoExpandCaptures
+ 
+  THIS.ReturnFoxObjects   = .T.
+  THIS.AutoExpandGroups   = .F.
+  THIS.AutoExpandCaptures = .F.
+ 
+  lvReturn = THIS.Matches(m.tcString)
+ 
+  THIS.ReturnFoxObjects   = m.llReturnFoxObjects
+  THIS.AutoExpandGroups   = m.llAutoExpandGroups
+  THIS.AutoExpandCaptures = m.llAutoExpandCaptures
+ 
+  RETURN m.lvReturn
+ ENDPROC &&UnEscape_Like
+ 
  PROCEDURE Fill_Matches		&& Rebuild the Matches object returned by DotNet to VFP Collections object
   LPARAMETERS;
    toMatches,;
-   tlAutoExpandGroup,;
+   tlAutoExpandGroups,;
    tlAutoExpandCaptures
 
   LOCAL;
@@ -293,8 +321,8 @@ DEFINE CLASS SF_RegExp AS SESSION
 
   loMatches = CREATEOBJECT("Collection")
   FOR lnMatch = 0 TO m.toMatches.COUNT-1
-*   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroup,m.tlAutoExpandCaptures,m.lnMatch=0))
-   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroup,m.tlAutoExpandCaptures,.t.))
+*   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroups,m.tlAutoExpandCaptures,m.lnMatch=0))
+   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroups,m.tlAutoExpandCaptures,.t.))
   ENDFOR &&lnMatch
 
   RETURN m.loMatches
@@ -303,7 +331,7 @@ DEFINE CLASS SF_RegExp AS SESSION
  PROCEDURE Fill_Match		&& Rebuild the Match object returned by DotNet to VFP Empty object
   LPARAMETERS;
    toMatch,;
-   tlAutoExpandGroup,;
+   tlAutoExpandGroups,;
    tlAutoExpandCaptures,;
    tlAddCaptures
 
@@ -324,11 +352,11 @@ DEFINE CLASS SF_RegExp AS SESSION
    ENDIF &&m.tlAutoExpandCaptures
   ENDIF &&m.tlAddCaptures
 
-  IF m.tlAutoExpandGroup THEN
+  IF m.tlAutoExpandGroups THEN
    ADDPROPERTY(m.loMatch,"Groups",THIS.Fill_Groups(THIS.Get_Groups(m.toMatch),m.tlAutoExpandCaptures))
-  ELSE  &&m.tlAutoExpandGroup
+  ELSE  &&m.tlAutoExpandGroups
    ADDPROPERTY(m.loMatch,"Groups",THIS.Get_Groups(m.toMatch))
-  ENDIF &&m.tlAutoExpandGroup
+  ENDIF &&m.tlAutoExpandGroups
 
   RETURN m.loMatch
  ENDPROC &&Fill_Matches
@@ -508,7 +536,7 @@ DEFINE CLASS SF_RegExp AS SESSION
   ENDCASE
 
   IF THIS.ReturnFoxObjects THEN
-   lvReturn = THIS.Fill_Match(m.lvReturn,THIS.AutoExpandGroup,THIS.AutoExpandCaptures,.T.)
+   lvReturn = THIS.Fill_Match(m.lvReturn,THIS.AutoExpandGroups,THIS.AutoExpandCaptures,.T.)
   ENDIF &&THIS.ReturnFoxObjects
 
   RETURN m.lvReturn
@@ -540,7 +568,7 @@ DEFINE CLASS SF_RegExp AS SESSION
 
 
   IF THIS.ReturnFoxObjects THEN
-   lvReturn = THIS.Fill_Matches(m.lvReturn,THIS.AutoExpandGroup,THIS.AutoExpandCaptures)
+   lvReturn = THIS.Fill_Matches(m.lvReturn,THIS.AutoExpandGroups,THIS.AutoExpandCaptures)
   ENDIF &&THIS.ReturnFoxObjects
 
   RETURN m.lvReturn

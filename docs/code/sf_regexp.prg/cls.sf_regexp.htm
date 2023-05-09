@@ -20,7 +20,7 @@
 </div>
 <div class="diaxp_mbody">
 
-<!-- Created with _diac_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
+<!-- Created with _diac_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 
 A class as interface to DotNet RegExp. 
@@ -55,10 +55,10 @@ A class as interface to DotNet RegExp.
 </ul>
 <p>
 The return of the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a> and <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.match.htm" title="Skip to method Match">Match</a> method may be a DotNet object or a VFP object, see <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>.
-The depth of the resolution is controled by the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroup.htm" title="Skip to property AutoExpandGroup">AutoExpandGroup</a> and  <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a> properties,
+The depth of the resolution is controled by the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a> and  <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a> properties,
 this allowing to only transform data as needed.
 <br />
-Note, this changes the way collections (Matches, Groups, Captures) are enumerated. DotNet start with 0, VFP with 1.
+Note, this changes the way collections (Matches, Groups, Captures) are enumerated. DotNet (and VBasic) start with 0, VFP with 1.
 </p>
 <p>
 Some example to use the class are available in the <a class="PDM_AB_See" href="../../code/sf_regexp_test.prg/main.htm" title="Skip to file example program">example program</a>.
@@ -67,12 +67,15 @@ Some example to use the class are available in the <a class="PDM_AB_See" href=".
 For the leisure of VFP programmers, strings start with 1 for this class in all methods and properties dealing with positions in strings.
 If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.dotnetoffset.htm" title="Skip to property DotNetOffset">DotNetOffset</a>.
 </p>
+<p>
+For easy reuse of VBasic Regexp, a <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.execute.htm" title="Skip to method Execute">Execute</a> method is provided. Note that the collections now starts with 1.
+</p>
 
   </div>
  </div><!-- Remarks End -->
 
 
-<!-- /Created with _diac_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
+<!-- /Created with _diac_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
 
 <table>
  <tbody>
@@ -104,10 +107,10 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
    <td>Controls type of objects returned</td>
   </tr>
   <tr>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroup is not array" /></td>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroup is not protected" /></td>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroup is not hidden" /></td>
-   <td><a href="cls.sf_regexp.autoexpandgroup.htm" title="Skip to property AutoExpandGroup">AutoExpandGroup</a></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroups is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroups is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroups is not hidden" /></td>
+   <td><a href="cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a></td>
    <td>.F.		</td>
    <td>Controls type of objects returned</td>
   </tr>
@@ -315,6 +318,12 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Escape_Like is not hidden" /></td>
    <td><a href="cls.sf_regexp.escape_like.htm" title="Skip to method Escape_Like">Escape_Like</a></td>
    <td>Interface to the DotNet Escape method, with special operation to keep LIKE function</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Execute is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Execute is not hidden" /></td>
+   <td><a href="cls.sf_regexp.execute.htm" title="Skip to method Execute">Execute</a></td>
+   <td>Wrapper for VBasic RegExp Execute method</td>
   </tr>
   <tr>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ExplicitCapture_Access is not protected" /></td>
@@ -609,7 +618,7 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
  <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
   <hr />
   <div class="PDM_AB_Body">
-<i>&copy; 03.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+<i>&copy; 09.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
   </div><!-- Body End -->
  </div><!-- Footer End -->
 

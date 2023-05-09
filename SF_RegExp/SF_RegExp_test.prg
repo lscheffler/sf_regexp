@@ -116,7 +116,7 @@ PROCEDURE Test_Unwind		&& Example to run Matches for a Pattern and show all data
 
  loRegExp.PATTERN            = "\b(\w+\s*)+\."
  loRegExp.ReturnFoxObjects   = .T.
- loRegExp.AutoExpandGroup    = .T.
+ loRegExp.AutoExpandGroups   = .T.
  loRegExp.AutoExpandCaptures = .T.
 
  CLEAR

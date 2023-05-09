@@ -6,6 +6,11 @@ This page gives a brief overview of changes to the [SF RegExp](https://github.co
 A complete list of changes is available on the offline documentation via **local folder** _docu/index.htm_.
 
 ---
+## Version 1.3.0 **2023/05/09**
+- New: Method Execute to wotk like VBasic. Note, Collection starts with 1.
+- Improved: Property AutoExpandGroup renamed to AutoExpandGroups for better self description.
+- Improved: Some flaws in the documentation.
+
 ## Version 1.2.0 **2023/05/09**
 - Imporved: Show_Unwind now deals VFP and DotNet; Match and Matches objects
 - Internal: Some properties and methods protected
