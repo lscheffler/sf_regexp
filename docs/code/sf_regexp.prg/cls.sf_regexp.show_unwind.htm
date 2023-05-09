@@ -19,19 +19,19 @@
 <table class="clear_table">
  <tbody>
   <tr><td>Class: </td><td><a href="cls.sf_regexp.htm" title="Skip to class sf_regexp">SF_RegExp</a></td></tr>
-  <tr><td>Description:</td><td>Example to run Matches for a Pattern and show all data returned</td></tr>
+  <tr><td>Description:</td><td>Expand to a Matches or Match object for to show all data in the object</td></tr>
  </tbody>
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
-Unwinds the whole Matches DotNet object return from <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method ReturnFoxObjects">ReturnFoxObjects</a>.
+Unwinds a whole Matches or Match DotNet or VFP object returned.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6LY0LLDNJ">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M20MQQ81">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.Show_Unwind
    </div>
    <div class="Para">
@@ -44,13 +44,13 @@ Unwinds the whole Matches DotNet object return from <a class="PDM_AB_See" href="
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6LY0LLDNJ" name="_6LY0LLDNJ">
+    <a id="_6M20MQQ81" name="_6M20MQQ81">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">String</span>
   </div>
   <div class="PDM_AB_Body">
-A text representation of a a Matches Object with all Groups and Captures.
+A text representation of a Matches / Match object.
   </div>
  </div><!-- Returns End -->
 
@@ -61,10 +61,10 @@ A text representation of a a Matches Object with all Groups and Captures.
   <div class="PDM_AB_Body">
 
 
-<p>This shows how to get all properties returned by the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a>.</p>
-<p>The method is to use to get all return of Matches in visual style for debuging.</p>
-<p>All objects are DotNet objects, <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a> is <span class="PDMEXPR PDMNor" ><span class='PDMLit'>.F.</span></span>
-.</p>
+<p>This shows how to get all properties returned by the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a> or <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Match">Match</a>.</p>
+<p>The idea is to get all return of Match / Matches in visual style for debuging.</p>
+<p>If a VFP object is used, see <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>, Groups and Captures will be visible in the output only
+ if they are included into the object if <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroup.htm" title="Skip to property AutoExpandGroup">AutoExpandGroup</a> and <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a> are set.</p>
 
   </div>
  </div><!-- Remarks End -->
@@ -74,7 +74,9 @@ A text representation of a a Matches Object with all Groups and Captures.
    See also
   </span>
   <div class="PDM_AB_Body">
-<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method ReturnFoxObjects">ReturnFoxObjects</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroup.htm" title="Skip to property AutoExpandGroup">AutoExpandGroup</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a>&nbsp;|
 <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>
   </div><!-- Body End -->
   <!--- "Applies to" need to be inserted here---->
@@ -83,7 +85,7 @@ A text representation of a a Matches Object with all Groups and Captures.
  </div><!-- SeeAlso End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Show_Unwind" id="IMG_SP_1" />
@@ -94,64 +96,40 @@ A text representation of a a Matches Object with all Groups and Captures.
    <span class='PDMVar'>toMatches</span>
 
   <span class='PDMRes'>LOCAL</span><span class='PDMOper'>;</span>
-<span class='PDMCom'>   lcReturn   AS STRING,;</span>
-   <span class='PDMVar'>lnCapture</span>  <span class='PDMRes'>AS</span> <span class='PDMRes'>NUMBER</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
-   <span class='PDMVar'>lnGroup</span>    <span class='PDMRes'>AS</span> <span class='PDMRes'>NUMBER</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
-<span class='PDMCom'>   lnMatch    AS NUMBER,;</span>
-<span class='PDMCom'>   loCapture  AS OBJECT,;</span>
-   <span class='PDMVar'>loCaptures</span> <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
-   <span class='PDMVar'>loGroup</span>    <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
-   <span class='PDMVar'>loGroups</span>   <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
-   <span class='PDMVar'>loMatch</span>    <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span>
-<span class='PDMCom'>*  SET STEP ON</span>
-  <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span> <span class='PDMStr'>''</span>
-  <span class='PDMRes'>SET</span> <span class='PDMRes'>TEXTMERGE</span> <span class='PDMRes'>ON</span> <span class='PDMRes'>NOSHOW</span>
-  <span class='PDMRes'>SET</span> <span class='PDMRes'>TEXTMERGE</span> <span class='PDMRes'>TO</span> <span class='PDMRes'>MEMVAR</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span>
-  <span class='PDMOper'>\</span><span class='PDMVar'>Matches</span>:  <span class='PDMOper'>&lt;&lt;</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>&gt;&gt;</span>
-  <span class='PDMRes'>FOR</span> <span class='PDMVar'>lnMatch</span> <span class='PDMOper'>=</span> <span class='PDMLit'>0</span> <span class='PDMRes'>TO</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>-</span><span class='PDMLit'>1</span>
-   <span class='PDMVar'>loMatch</span> <span class='PDMOper'>=</span> <span class='PDMVar'>toMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>ITEM</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnMatch</span><span class='PDMOper'>)</span>
-   <span class='PDMOper'>\</span> <span class='PDMVar'>Match</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnMatch</span><span class='PDMOper'>&gt;&gt;</span><span class='PDMOper'>;</span> <span class='PDMRes'>value</span>:  <span class='PDMStr'>"&lt;&lt;THIS.Get_Value(m.loMatch)&gt;&gt;"</span>
-   <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span><span class='PDMRes'>at</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Index</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-   <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span><span class='PDMRes'>len</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Length</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-   <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span> <span class='PDMVar'>success</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Success</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-   <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span> <span class='PDMRes'>name</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Name</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
+<span class='PDMCom'>   lcReturn  AS STRING,;</span>
+   <span class='PDMVar'>llMatches</span> <span class='PDMRes'>AS</span> <span class='PDMRes'>INTEGER</span>
 
-   <span class='PDMVar'>loCaptures</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Captures</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>)</span>
-   <span class='PDMOper'>\</span>  <span class='PDMVar'>MCaptures</span>:  <span class='PDMOper'>&lt;&lt;</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCaptures</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>&gt;&gt;</span>
-   <span class='PDMRes'>FOR</span> <span class='PDMVar'>lnCapture</span> <span class='PDMOper'>=</span> <span class='PDMLit'>0</span> <span class='PDMRes'>TO</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCaptures</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>-</span><span class='PDMLit'>1</span>
-    <span class='PDMVar'>loCapture</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loCaptures</span><span class='PDMOper'>.</span><span class='PDMRes'>ITEM</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnCapture</span><span class='PDMOper'>)</span>
-    <span class='PDMOper'>\</span>   <span class='PDMVar'>MCapture</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnCapture</span><span class='PDMOper'>&gt;&gt;</span><span class='PDMOper'>;</span> <span class='PDMRes'>value</span>: <span class='PDMStr'>"&lt;&lt;THIS.Get_Value(m.loCapture)&gt;&gt;"</span>
-    <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span><span class='PDMRes'>at</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Index</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCapture</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-    <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span><span class='PDMRes'>len</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Length</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCapture</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-    <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span> <span class='PDMVar'>success</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Success</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCapture</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-    <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span> <span class='PDMRes'>Name</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Name</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCapture</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-   <span class='PDMRes'>ENDFOR</span> <span class='PDMCom'>&amp;&amp;lnCapture</span>
+<span class='PDMCom'> *  SET STEP ON</span>
 
-   <span class='PDMVar'>loGroups</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Groups</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>)</span>
-   <span class='PDMOper'>\</span>  <span class='PDMVar'>Groups</span>:  <span class='PDMOper'>&lt;&lt;</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loGroups</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>&gt;&gt;</span>
-   <span class='PDMRes'>FOR</span> <span class='PDMVar'>lnGroup</span> <span class='PDMOper'>=</span> <span class='PDMLit'>0</span> <span class='PDMRes'>TO</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loGroups</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>-</span><span class='PDMLit'>1</span>
-    <span class='PDMVar'>loGroup</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loGroups</span><span class='PDMOper'>.</span><span class='PDMRes'>ITEM</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnGroup</span><span class='PDMOper'>)</span>
-    <span class='PDMOper'>\</span>   <span class='PDMRes'>Group</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnGroup</span><span class='PDMOper'>&gt;&gt;</span><span class='PDMOper'>;</span> <span class='PDMRes'>value</span>: <span class='PDMStr'>"&lt;&lt;THIS.Get_Value(m.loGroup)&gt;&gt;"</span>
-    <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span><span class='PDMRes'>at</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Index</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loGroup</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-    <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span><span class='PDMRes'>len</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Length</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loGroup</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-    <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span> <span class='PDMVar'>success</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Success</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loGroup</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-    <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span> <span class='PDMRes'>name</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Name</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loGroup</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-    <span class='PDMVar'>loCaptures</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Captures</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loGroup</span><span class='PDMOper'>)</span>
-    <span class='PDMOper'>\</span>    <span class='PDMVar'>Captures</span>:  <span class='PDMOper'>&lt;&lt;</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCaptures</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>&gt;&gt;</span>
-    <span class='PDMRes'>FOR</span> <span class='PDMVar'>lnCapture</span> <span class='PDMOper'>=</span> <span class='PDMLit'>0</span> <span class='PDMRes'>TO</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCaptures</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>-</span><span class='PDMLit'>1</span>
-     <span class='PDMVar'>loCapture</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loCaptures</span><span class='PDMOper'>.</span><span class='PDMRes'>ITEM</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnCapture</span><span class='PDMOper'>)</span>
-     <span class='PDMOper'>\</span>     <span class='PDMVar'>Capture</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnCapture</span><span class='PDMOper'>&gt;&gt;</span><span class='PDMOper'>;</span> <span class='PDMRes'>value</span>: <span class='PDMStr'>"&lt;&lt;THIS.Get_Value(m.loCapture)&gt;&gt;"</span>
-     <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span><span class='PDMRes'>at</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Index</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCapture</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-     <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span><span class='PDMRes'>len</span>: <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Length</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCapture</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-     <span class='PDMRes'>IF</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnGroup</span> <span class='PDMOper'>=</span><span class='PDMLit'>0</span> <span class='PDMRes'>THEN</span>
-      <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span> <span class='PDMVar'>success</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Success</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCapture</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-      <span class='PDMOper'>\</span><span class='PDMOper'>\</span><span class='PDMOper'>,</span> <span class='PDMRes'>name</span>  <span class='PDMOper'>&lt;&lt;</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Get_Name</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loCapture</span><span class='PDMOper'>)</span><span class='PDMOper'>&gt;&gt;</span>
-     <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;m.lnGroup =0</span>
-    <span class='PDMRes'>ENDFOR</span> <span class='PDMCom'>&amp;&amp;lnCapture</span>
-   <span class='PDMRes'>ENDFOR</span> <span class='PDMCom'>&amp;&amp;lnGroup</span>
-  <span class='PDMRes'>ENDFOR</span> <span class='PDMCom'>&amp;&amp;lnMatch</span>
-  <span class='PDMRes'>SET</span> <span class='PDMRes'>TEXTMERGE</span> <span class='PDMRes'>TO</span>
-  <span class='PDMRes'>SET</span> <span class='PDMRes'>TEXTMERGE</span> <span class='PDMRes'>OFF</span>
+<span class='PDMCom'>  llMatches = .T.</span>
+  <span class='PDMRes'>TRY</span>
+    <span class='PDMOper'>=</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span>
+   <span class='PDMRes'>CATCH</span>
+    <span class='PDMVar'>llMatches</span> <span class='PDMOper'>=</span> <span class='PDMLit'>.F.</span>
+  <span class='PDMRes'>ENDTRY</span>
+
+  <span class='PDMRes'>IF</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>llMatches</span> <span class='PDMRes'>THEN</span>
+<span class='PDMCom'> *Matches</span>
+   <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span> <span class='PDMStr'>"Matches "</span>
+   <span class='PDMRes'>IF</span> <span class='PDMRes'>PEMSTATUS</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>,</span><span class='PDMStr'>"tag"</span><span class='PDMOper'>,</span><span class='PDMLit'>5</span><span class='PDMOper'>)</span> <span class='PDMRes'>THEN</span>
+<span class='PDMCom'> *VFP object</span>
+    <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span>  <span class='PDMStr'>"Expanding VFP "</span> <span class='PDMOper'>+</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span> <span class='PDMOper'>+</span> <span class='PDMVar'>0h0D0A</span> <span class='PDMOper'>+</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Unwind_Matches_V</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>)</span>
+   <span class='PDMRes'>ELSE</span>  <span class='PDMCom'>&amp;&amp;PEMSTATUS(m.toMatches,"tag",5)</span>
+<span class='PDMCom'> *DotNet object</span>
+    <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span>  <span class='PDMStr'>"Expanding DotNet "</span> <span class='PDMOper'>+</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span> <span class='PDMOper'>+</span> <span class='PDMStr'>"Matches"</span> <span class='PDMOper'>+</span> <span class='PDMVar'>0h0D0A</span> <span class='PDMOper'>+</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Unwind_Matches</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>)</span>
+   <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;PEMSTATUS(m.toMatches,"tag",5)   ELSE  &amp;&amp;m.llMatches</span>
+
+  <span class='PDMRes'>ELSE</span>  <span class='PDMCom'>&amp;&amp;m.llMatches</span>
+<span class='PDMCom'> *Matches </span>
+   <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span> <span class='PDMStr'>"Match "</span>
+   <span class='PDMRes'>IF</span> <span class='PDMRes'>PEMSTATUS</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>,</span><span class='PDMStr'>"value"</span><span class='PDMOper'>,</span><span class='PDMLit'>5</span><span class='PDMOper'>)</span> <span class='PDMRes'>THEN</span>
+<span class='PDMCom'> *VFP object</span>
+    <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span>  <span class='PDMStr'>"Expanding VFP "</span> <span class='PDMOper'>+</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span> <span class='PDMOper'>+</span> <span class='PDMVar'>0h0D0A</span> <span class='PDMOper'>+</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Unwind_Match_V</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>)</span>
+   <span class='PDMRes'>ELSE</span>  <span class='PDMCom'>&amp;&amp;PEMSTATUS(m.toMatches,"value",5)</span>
+<span class='PDMCom'> *DotNet object</span>
+    <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span>  <span class='PDMStr'>"Expanding DotNet "</span> <span class='PDMOper'>+</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span> <span class='PDMOper'>+</span> <span class='PDMVar'>0h0D0A</span> <span class='PDMOper'>+</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Unwind_Match</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>)</span>
+   <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;PEMSTATUS(m.toMatches,"value",5)</span>
+  <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;m.llMatches</span>
 
   <span class='PDMRes'>RETURN</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span>
 </pre>
@@ -162,7 +140,7 @@ A text representation of a a Matches Object with all Groups and Captures.
 <div class="diaxp_mfoot"> <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
   <hr />
   <div class="PDM_AB_Body">
-<i>&copy; 05.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+<i>&copy; 09.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
   </div><!-- Body End -->
  </div><!-- Footer End -->
 </div>

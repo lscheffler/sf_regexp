@@ -24,20 +24,20 @@
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 Wrapper for the DotNet RegExp Split method, see there.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6LY0LLDL6">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M20MQQ5Q">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.SPLIT
    </div>
    <div class="Para">
-    (<a href="#_6LY0LLDL7">tcInput</a>
-     <wbr />,<a href="#_6LY0LLDL8">tvValue1</a>
-     <wbr />,<a href="#_6LY0LLDL9">tvValue2</a>)
+    (<a href="#_6M20MQQ5R">tcInput</a>
+     <wbr />,<a href="#_6M20MQQ5S">tvValue1</a>
+     <wbr />,<a href="#_6M20MQQ5T">tvValue2</a>)
    </div>
    <div style="clear: both"></div>
   </div><!-- Colour End -->
@@ -49,7 +49,7 @@ Wrapper for the DotNet RegExp Split method, see there.
   </span>
   <dl class="DIAMP_PDM_AB_Params_List">
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6LY0LLDL7" name="_6LY0LLDL7">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ5R" name="_6M20MQQ5R">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tcInput</span></span>
 
     </a>
@@ -76,7 +76,7 @@ Wrapper for the DotNet RegExp Split method, see there.
     </table>
    </dd>
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6LY0LLDL8" name="_6LY0LLDL8">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ5S" name="_6M20MQQ5S">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tvValue1</span></span>
 
     </a>
@@ -103,7 +103,7 @@ Wrapper for the DotNet RegExp Split method, see there.
     </table>
    </dd>
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6LY0LLDL9" name="_6LY0LLDL9">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ5T" name="_6M20MQQ5T">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tvValue2</span></span>
 
     </a>
@@ -135,7 +135,7 @@ Wrapper for the DotNet RegExp Split method, see there.
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6LY0LLDL6" name="_6LY0LLDL6">
+    <a id="_6M20MQQ5Q" name="_6M20MQQ5Q">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">Array</span>
@@ -195,7 +195,7 @@ Depending on <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.
  </div><!-- SeeAlso End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure SPLIT" id="IMG_SP_1" />
@@ -214,16 +214,16 @@ Depending on <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.
 
   <span class='PDMRes'>IF</span> <span class='PDMRes'>VARTYPE</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>)</span><span class='PDMOper'>=</span><span class='PDMStr'>'N'</span> <span class='PDMRes'>THEN</span>
 <span class='PDMCom'>*StartAt like VFP, starts with 1</span>
-   <span class='PDMVar'>tvValue1</span> <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>-</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>noffset</span>
+   <span class='PDMVar'>tvValue1</span> <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>-</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>rnOffset</span>
   <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;VARTYPE(m.tvValue1)='N'</span>
 
   <span class='PDMRes'>DO</span> <span class='PDMRes'>CASE</span>
    <span class='PDMRes'>CASE</span> <span class='PDMRes'>PCOUNT</span><span class='PDMOper'>(</span><span class='PDMOper'>)</span><span class='PDMOper'>=</span><span class='PDMLit'>1</span>
-    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Split"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>)</span>
+    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Split"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>CASE</span> <span class='PDMRes'>PCOUNT</span><span class='PDMOper'>(</span><span class='PDMOper'>)</span><span class='PDMOper'>=</span><span class='PDMLit'>2</span>
-    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Split"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>)</span>
+    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Split"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>CASE</span> <span class='PDMRes'>PCOUNT</span><span class='PDMOper'>(</span><span class='PDMOper'>)</span><span class='PDMOper'>=</span><span class='PDMLit'>3</span>
-    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Split"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue2</span><span class='PDMOper'>)</span>
+    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Split"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue2</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>OTHERWISE</span>
     <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMLit'>.NULL.</span>
   <span class='PDMRes'>ENDCASE</span>

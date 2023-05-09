@@ -115,12 +115,18 @@ PROCEDURE Test_Unwind		&& Example to run Matches for a Pattern and show all data
  loRegExp = Get_SF_RegExp()
 
  loRegExp.PATTERN            = "\b(\w+\s*)+\."
- loRegExp.ReturnFoxObjects   = .F.
- loRegExp.AutoExpandGroup    = .F.
- loRegExp.AutoExpandCaptures = .F.
- loMatches                   = loRegExp.Matches("This is a sentence. This is another sentence. This is too.")
- 
- ?loRegExp.Show_Unwind(m.loMatches)
+ loRegExp.ReturnFoxObjects   = .T.
+ loRegExp.AutoExpandGroup    = .T.
+ loRegExp.AutoExpandCaptures = .T.
+
+ CLEAR
+ IF .T. THEN
+  loMatches = loRegExp.Matches("This is a sentence. This is another sentence. This is too.")
+  ?loRegExp.Show_Unwind(m.loMatches)
+ ELSE  &&.T.
+  loMatches = loRegExp.Match("This is a sentence. This is another sentence. This is too.")
+  ?loRegExp.Show_Unwind(loMatches)
+ ENDIF &&.T.
 ENDPROC &&Test_Unwind
 
 PROCEDURE Get_SF_RegExp	&& Example to instantiate the SF_RegExp class

@@ -20,7 +20,7 @@
 </div>
 <div class="diaxp_mbody">
 
-<!-- Created with _diac_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- Created with _diac_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 
 A class as interface to DotNet RegExp. 
@@ -57,6 +57,8 @@ A class as interface to DotNet RegExp.
 The return of the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a> and <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.match.htm" title="Skip to method Match">Match</a> method may be a DotNet object or a VFP object, see <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>.
 The depth of the resolution is controled by the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroup.htm" title="Skip to property AutoExpandGroup">AutoExpandGroup</a> and  <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a> properties,
 this allowing to only transform data as needed.
+<br />
+Note, this changes the way collections (Matches, Groups, Captures) are enumerated. DotNet start with 0, VFP with 1.
 </p>
 <p>
 Some example to use the class are available in the <a class="PDM_AB_See" href="../../code/sf_regexp_test.prg/main.htm" title="Skip to file example program">example program</a>.
@@ -70,7 +72,7 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
  </div><!-- Remarks End -->
 
 
-<!-- /Created with _diac_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- /Created with _diac_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
 
 <table>
  <tbody>
@@ -158,14 +160,6 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
    <td>The ExplicitCapture part of the DotNet Options property   4</td>
   </tr>
   <tr>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property goRegExp is not array" /></td>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property goRegExp is not protected" /></td>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property goRegExp is not hidden" /></td>
-   <td><a href="cls.sf_regexp.goregexp.htm" title="Skip to property goRegExp">goRegExp</a></td>
-   <td>.NULL.				</td>
-   <td>Internal, reference to the C# DotNet wrapper.</td>
-  </tr>
-  <tr>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnoreCase is not array" /></td>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnoreCase is not protected" /></td>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnoreCase is not hidden" /></td>
@@ -198,14 +192,6 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
    <td>The MultiLine part of the DotNet Options property   2</td>
   </tr>
   <tr>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property noffset is not array" /></td>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property noffset is not protected" /></td>
-   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property noffset is not hidden" /></td>
-   <td>noffset</td>
-   <td>1					</td>
-   <td>Internal, string offset to a start string VFP like</td>
-  </tr>
-  <tr>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property PATTERN is not array" /></td>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property PATTERN is not protected" /></td>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property PATTERN is not hidden" /></td>
@@ -228,6 +214,22 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
    <td><a href="cls.sf_regexp.righttoleft.htm" title="Skip to property RightToLeft">RightToLeft</a></td>
    <td>.F.	</td>
    <td>Specifies the reading order of text in controls and the display of streaming output on forms. RightToLeft is disregarded unless you are running a Middle Eastern version of Microsoft Windows. Available at design time; read/write at run time.</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property rnOffset is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Property rnOffset is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property rnOffset is not hidden" /></td>
+   <td>rnOffset</td>
+   <td>1					</td>
+   <td>Internal, string offset to a start string VFP like</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property roRegExp is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Property roRegExp is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property roRegExp is not hidden" /></td>
+   <td><a href="cls.sf_regexp.roregexp.htm" title="Skip to property roRegExp">roRegExp</a></td>
+   <td>.NULL.</td>
+   <td>Internal, reference to the C# DotNet wrapper.</td>
   </tr>
   <tr>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property SingleLine is not array" /></td>
@@ -534,7 +536,7 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Show_Unwind is not protected" /></td>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Show_Unwind is not hidden" /></td>
    <td><a href="cls.sf_regexp.show_unwind.htm" title="Skip to method Show_Unwind">Show_Unwind</a></td>
-   <td>Example to run Matches for a Pattern and show all data returned</td>
+   <td>Expand to a Matches or Match object for to show all data in the object</td>
   </tr>
   <tr>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Singleline_Access is not protected" /></td>
@@ -565,6 +567,30 @@ If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method UnEscape_Like is not hidden" /></td>
    <td><a href="cls.sf_regexp.unescape_like.htm" title="Skip to method UnEscape_Like">UnEscape_Like</a></td>
    <td>Interface to the DotNet UnEscape method, with special operation to keep LIKE function</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Method Unwind_Match is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Unwind_Match is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unwind_match.htm" title="Skip to method Unwind_Match">Unwind_Match</a></td>
+   <td>Show all data for a match object, DotNet object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Method Unwind_Match_V is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Unwind_Match_V is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unwind_match_v.htm" title="Skip to method Unwind_Match_V">Unwind_Match_V</a></td>
+   <td>Show all data for a match object, VFP object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Method Unwind_Matches is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Unwind_Matches is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unwind_matches.htm" title="Skip to method Unwind_Matches">Unwind_Matches</a></td>
+   <td>Show all data for a matches object, DotNet object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Method Unwind_Matches_V is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Unwind_Matches_V is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unwind_matches_v.htm" title="Skip to method Unwind_Matches_V">Unwind_Matches_V</a></td>
+   <td>Show all data for a matches object, VFP object</td>
   </tr>
   <tr>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Version is not protected" /></td>

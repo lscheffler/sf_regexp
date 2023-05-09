@@ -28,16 +28,16 @@ Stuff is a bit scattered, so this is where to look up.
   - If allready forked, pull the recent state, or get most recent version otherwise.
 3. On top of *SF_RegExp.prg* there is a #DEFINE with version numbers, change according:   
 `#DEFINE dcRegExpVerNo "0.0.0"`
-4. Add a description of changes to *Doku/Source/Changes.html* (this is for PDM docu)
-5. For changed functionality, add descriptive text to *Doku/Source/Preface.html* file. (this is for PDM docu)
-6. Check of the git version mentioned in *Doku/Source/Preface.html* and *README.md* might be updated.
+4. Add a description of changes to *./Doku/Source/Changes.html* (this is for PDM docu)
+5. For changed functionality, add descriptive text to *./Doku/Source/Preface.html* file. (this is for PDM docu)
+6. Change version number on top of *./Doku/Source/Preface.html* file.
 7. Highlight the change on *README.md* in projects root
 8. Add a description of changes to *content/change_log.md* (this is for github docu)
 9. Change date in the footer of documentation files touched.
 10. If available run PDM <a href="http://gorila.netlab.cz/pdm.html" title="PDM"  target="_blank">Project Documenting Machine</a> by Martina Jindrová using the AB-plugins.
-  The pdm setting is stored in the *Doku/* folder.
+  The pdm setting is stored in the *./Doku* folder.
 
 Thanks
 
 ----
-Last changed: _2023/05/02_ ![Picture](../content/vfpxpoweredby_alternative.gif)
+Last changed: _2023/05/09_ ![Picture](../content/vfpxpoweredby_alternative.gif)

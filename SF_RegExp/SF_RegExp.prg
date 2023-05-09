@@ -1,4 +1,4 @@
-#DEFINE dcRegExpVerNo "1.1.0"
+#DEFINE dcRegExpVerNo "1.2.0"
 LPARAMETERS;
  tcPathTo_wwDotnetBridge
 
@@ -7,8 +7,10 @@ RETURN CREATEOBJECT("SF_RegExp",m.tcPathTo_wwDotnetBridge)
 DEFINE CLASS SF_RegExp AS SESSION
 *Internal object
 *PRIVATE
- noffset  = 1					&& Internal, string offset to a start string VFP like
- goRegExp = .NULL.				&& Internal, reference to the C# DotNet wrapper.
+ PROTECTED rnOffset  			&& Internal, string offset to a start string VFP like
+ PROTECTED roRegExp 			&& Internal, reference to the C# DotNet wrapper.
+ rnOffset = 1					
+ roRegExp = .NULL.
 
 *Return FoxObjects instead of DotNet ones (slower)
  ReturnFoxObjects   = .F.		&& Controls type of objects returned
@@ -92,13 +94,13 @@ DEFINE CLASS SF_RegExp AS SESSION
 *Was zu testen ist
     loBridge.LoadAssembly("SF_RegExp.dll")
 
-    THIS.goRegExp = loBridge.CreateInstance("SF_RegExp.SF_RegExp")
+    THIS.roRegExp = loBridge.CreateInstance("SF_RegExp.SF_RegExp")
 
    CATCH
     TRY
       loBridge.LoadAssembly(ADDBS(m.tcPathTo_SF_RegExp)+"SF_RegExp.dll")
 
-      THIS.goRegExp = loBridge.CreateInstance("SF_RegExp.SF_RegExp")
+      THIS.roRegExp = loBridge.CreateInstance("SF_RegExp.SF_RegExp")
 
      CATCH
       llError = .T.
@@ -110,10 +112,10 @@ DEFINE CLASS SF_RegExp AS SESSION
    RETURN .F.
   ENDIF &&m.llError
 
-  IF ISNULL(THIS.goRegExp) THEN
+  IF ISNULL(THIS.roRegExp) THEN
    CD (m.lcOldPath)
    RETURN .F.
-  ENDIF &&ISNULL(THIS.goRegExp)
+  ENDIF &&ISNULL(THIS.roRegExp)
 
   CD (m.lcOldPath)
  ENDPROC &&Init
@@ -123,8 +125,8 @@ DEFINE CLASS SF_RegExp AS SESSION
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.DotNetOffset = m.tvValue
-  THIS.noffset               = IIF(m.tvValue,0,1)
+  THIS.roRegExp.DotNetOffset = m.tvValue
+  THIS.rnOffset              = IIF(m.tvValue,0,1)
  ENDPROC &&DotNetOffset_Assign
 
  PROCEDURE VERSION &&Return version
@@ -132,124 +134,124 @@ DEFINE CLASS SF_RegExp AS SESSION
  ENDPROC &&Version
 
  PROCEDURE Pattern_Access		&& Access the DotNet Pattern property
-  RETURN THIS.goRegExp.PATTERN
+  RETURN THIS.roRegExp.PATTERN
  ENDPROC &&Pattern_Access
  PROCEDURE Pattern_Assign		&& Assign the DotNet Pattern property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.PATTERN = m.tvValue
+  THIS.roRegExp.PATTERN = m.tvValue
  ENDPROC &&Pattern_Assign
 
  PROCEDURE CacheSize_Access		&& Access the CacheSize part of the DotNet Options property
-  RETURN THIS.goRegExp.CacheSize
+  RETURN THIS.roRegExp.CacheSize
  ENDPROC &&CacheSize_Access
  PROCEDURE CacheSize_Assign		&& Assign the CacheSize part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.CacheSize = m.tvValue
+  THIS.roRegExp.CacheSize = m.tvValue
  ENDPROC &&CacheSize_Assign
 
  PROCEDURE MatchTimeout_Access		&& Access the MatchTimeout part of the DotNet Options property
-  RETURN THIS.goRegExp.MatchTimeout
+  RETURN THIS.roRegExp.MatchTimeout
  ENDPROC &&MatchTimeout_Access
  PROCEDURE MatchTimeout_Assign		&& Assign the MatchTimeout part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.MatchTimeout = m.tvValue
+  THIS.roRegExp.MatchTimeout = m.tvValue
  ENDPROC &&MatchTimeout_Assign
 
 *RegExp Options
  PROCEDURE Compiled_Access		&& Access the Compiled part of the DotNet Options property
-  RETURN THIS.goRegExp.Compiled
+  RETURN THIS.roRegExp.Compiled
  ENDPROC &&Compiled_Access
  PROCEDURE Compiled_Assign		&& Assign the Compiled part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.Compiled = m.tvValue
+  THIS.roRegExp.Compiled = m.tvValue
  ENDPROC &&Compiled_Assign
 
  PROCEDURE CultureInvariant_Access		&& Access the CultureInvariant part of the DotNet Options property
-  RETURN THIS.goRegExp.CultureInvariant
+  RETURN THIS.roRegExp.CultureInvariant
  ENDPROC &&CultureInvariant_Access
  PROCEDURE CultureInvariant_Assign		&& Assign the CultureInvariant part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.CultureInvariant = m.tvValue
+  THIS.roRegExp.CultureInvariant = m.tvValue
  ENDPROC &&CultureInvariant_Assign
 
  PROCEDURE ECMAScript_Access		&& Access the ECMAScript part of the DotNet Options property
-  RETURN THIS.goRegExp.ECMAScript
+  RETURN THIS.roRegExp.ECMAScript
  ENDPROC &&ECMAScript_Access
  PROCEDURE ECMAScript_Assign		&& Assign the ECMAScript part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.ECMAScript = m.tvValue
+  THIS.roRegExp.ECMAScript = m.tvValue
  ENDPROC &&ECMAScript_Assign
 
  PROCEDURE ExplicitCapture_Access		&& Access the ExplicitCapture part of the DotNet Options property
-  RETURN THIS.goRegExp.ExplicitCapture
+  RETURN THIS.roRegExp.ExplicitCapture
  ENDPROC &&ExplicitCapture_Access
  PROCEDURE ExplicitCapture_Assign		&& Assign the ExplicitCapture part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.ExplicitCapture = m.tvValue
+  THIS.roRegExp.ExplicitCapture = m.tvValue
  ENDPROC &&ExplicitCapture_Assign
 
  PROCEDURE IgnoreCase_Access		&& Access the IgnoreCase part of the DotNet Options property
-  RETURN THIS.goRegExp.IgnoreCase
+  RETURN THIS.roRegExp.IgnoreCase
  ENDPROC &&IgnoreCase_Access
  PROCEDURE IgnoreCase_Assign		&& Assign the IgnoreCase part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.IgnoreCase = m.tvValue
+  THIS.roRegExp.IgnoreCase = m.tvValue
  ENDPROC &&IgnoreCase_Assign
 
  PROCEDURE IgnorePatternWhitespace_Access		&& Access the IgnorePatternWhitespace part of the DotNet Options property
-  RETURN THIS.goRegExp.IgnorePatternWhitespace
+  RETURN THIS.roRegExp.IgnorePatternWhitespace
  ENDPROC &&IgnorePatternWhitespace_Access
  PROCEDURE IgnorePatternWhitespace_Assign		&& Assign the IgnorePatternWhitespace part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.IgnorePatternWhitespace = m.tvValue
+  THIS.roRegExp.IgnorePatternWhitespace = m.tvValue
  ENDPROC &&IgnorePatternWhitespace_Assign
 
  PROCEDURE MultiLine_Access		&& Access the MultiLine part of the DotNet Options property
-  RETURN THIS.goRegExp.MultiLine
+  RETURN THIS.roRegExp.MultiLine
  ENDPROC &&Multiline_Access
  PROCEDURE MultiLine_Assign		&& Assign the MultiLine part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.MultiLine = m.tvValue
+  THIS.roRegExp.MultiLine = m.tvValue
  ENDPROC &&Multiline_Assign
 
  PROCEDURE RightToLeft_Access		&& Access the RightToLeft part of the DotNet Options property
-  RETURN THIS.goRegExp.RIGHTTOLEFT
+  RETURN THIS.roRegExp.RIGHTTOLEFT
  ENDPROC &&RightToLeft_Access
  PROCEDURE RightToLeft_Assign		&& Assign the RightToLeft part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.RIGHTTOLEFT = m.tvValue
+  THIS.roRegExp.RIGHTTOLEFT = m.tvValue
  ENDPROC &&RightToLeft_Assign
 
  PROCEDURE Singleline_Access		&& Access the Singleline part of the DotNet Options property
-  RETURN THIS.goRegExp.SingleLine
+  RETURN THIS.roRegExp.SingleLine
  ENDPROC &&Singleline_Access
  PROCEDURE Singleline_Assign		&& Assign the Singleline part of the DotNet Options property
   LPARAMETERS;
    tvValue
 
-  THIS.goRegExp.SingleLine = m.tvValue
+  THIS.roRegExp.SingleLine = m.tvValue
  ENDPROC &&Singleline_Assign
 */ RegExp Options
 */ Assign Access
@@ -262,7 +264,7 @@ DEFINE CLASS SF_RegExp AS SESSION
   LOCAL;
    lvReturn AS STRING
 
-  lvReturn = THIS.goRegExp.ESCAPE(m.tvValue)
+  lvReturn = THIS.roRegExp.ESCAPE(m.tvValue)
   lvReturn = STRTRAN(STRTRAN(m.lvReturn,"\*",".*"),"\?",".")
 
   RETURN m.lvReturn
@@ -276,7 +278,7 @@ DEFINE CLASS SF_RegExp AS SESSION
    lvReturn AS STRING
 
   lvReturn = ""+STRTRAN(STRTRAN(STRTRAN(STRTRAN(m.tvValue,".*","\*"),"\.",0h00),".","\?"),0h00,"\.")
-  RETURN THIS.goRegExp.UnEscape(m.lvReturn)
+  RETURN THIS.roRegExp.UnEscape(m.lvReturn)
  ENDPROC &&UnEscape_Like
 
  PROCEDURE Fill_Matches		&& Rebuild the Matches object returned by DotNet to VFP Collections object
@@ -291,7 +293,8 @@ DEFINE CLASS SF_RegExp AS SESSION
 
   loMatches = CREATEOBJECT("Collection")
   FOR lnMatch = 0 TO m.toMatches.COUNT-1
-   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroup,m.tlAutoExpandCaptures,m.lnMatch=0))
+*   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroup,m.tlAutoExpandCaptures,m.lnMatch=0))
+   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroup,m.tlAutoExpandCaptures,.t.))
   ENDFOR &&lnMatch
 
   RETURN m.loMatches
@@ -315,7 +318,7 @@ DEFINE CLASS SF_RegExp AS SESSION
   ADDPROPERTY(m.loMatch,"Name",   THIS.Get_Name   (m.toMatch))
   IF m.tlAddCaptures THEN
    IF m.tlAutoExpandCaptures THEN
-    ADDPROPERTY(m.loMatch,"Captures",THIS.Fill_Captures(THIS.Get_Captures(m.toMatch)))
+    ADDPROPERTY(m.loMatch,"Captures",THIS.Fill_Captures(THIS.Get_Captures(m.toMatch),.T.))
    ELSE  &&m.tlAutoExpandCaptures
     ADDPROPERTY(m.loMatch,"Captures",THIS.Get_Captures(m.toMatch))
    ENDIF &&m.tlAutoExpandCaptures
@@ -415,29 +418,29 @@ DEFINE CLASS SF_RegExp AS SESSION
   LPARAMETERS;
    tvValue
 
-  RETURN THIS.goRegExp.ESCAPE(m.tvValue)
+  RETURN THIS.roRegExp.ESCAPE(m.tvValue)
  ENDPROC &&Escape
 
  PROCEDURE UnEscape		&& Interface to the DotNet UnEscape method
   LPARAMETERS;
    tvValue
 
-  RETURN THIS.goRegExp.UnEscape(m.tvValue)
+  RETURN THIS.roRegExp.UnEscape(m.tvValue)
  ENDPROC &&UnEscape
 
  PROCEDURE GetGroupNames		&& Interface to the DotNet GetGroupNames method
-  RETURN THIS.goRegExp.GetGroupNames()
+  RETURN THIS.roRegExp.GetGroupNames()
  ENDPROC &&m.tvValue
 
  PROCEDURE GetGroupNumbers		&& Interface to the DotNet GetGroupNumbers method
-  RETURN THIS.goRegExp.GetGroupNumbers()
+  RETURN THIS.roRegExp.GetGroupNumbers()
  ENDPROC &&m.tvValue
 
  PROCEDURE GroupNameFromNumber		&& Interface to the DotNet GroupNameFromNumber method
   LPARAMETERS;
    tvValue
 
-  RETURN THIS.goRegExp.GroupNameFromNumber(m.tvValue)
+  RETURN THIS.roRegExp.GroupNameFromNumber(m.tvValue)
  ENDPROC &&GroupNameFromNumber
 
 
@@ -445,7 +448,7 @@ DEFINE CLASS SF_RegExp AS SESSION
   LPARAMETERS;
    tvValue
 
-  RETURN THIS.goRegExp.GroupNumberFromName(m.tvValue)
+  RETURN THIS.roRegExp.GroupNumberFromName(m.tvValue)
  ENDPROC &&GroupNumberFromName
 */Wrapper,simple calls
 
@@ -462,14 +465,14 @@ DEFINE CLASS SF_RegExp AS SESSION
 
   IF VARTYPE(m.tvValue1)='N' THEN
 *StartAt like VFP,starts with 1
-   tvValue1 = m.tvValue1-THIS.noffset
+   tvValue1 = m.tvValue1-THIS.rnOffset
   ENDIF &&VARTYPE(m.tvValue1)='N'
 
   DO CASE
    CASE PCOUNT()=1
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"IsMatch",m.tcInput)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"IsMatch",m.tcInput)
    CASE PCOUNT()=2
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"IsMatch",m.tcInput,m.tvValue1)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"IsMatch",m.tcInput,m.tvValue1)
    OTHERWISE
     lvReturn = .NULL.
   ENDCASE
@@ -490,16 +493,16 @@ DEFINE CLASS SF_RegExp AS SESSION
 
   IF VARTYPE(m.tvValue1)='N' THEN
 *StartAt like VFP,starts with 1
-   tvValue1 = m.tvValue1-THIS.noffset
+   tvValue1 = m.tvValue1-THIS.rnOffset
   ENDIF &&VARTYPE(m.tvValue1)='N'
 
   DO CASE
    CASE PCOUNT()=1
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Match",m.tcInput)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Match",m.tcInput)
    CASE PCOUNT()=2
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Match",m.tcInput,m.tvValue1)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Match",m.tcInput,m.tvValue1)
    CASE PCOUNT()=3
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Match",m.tcInput,m.tvValue1,m.tvValue2)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Match",m.tcInput,m.tvValue1,m.tvValue2)
    OTHERWISE
     lvReturn = .NULL.
   ENDCASE
@@ -523,14 +526,14 @@ DEFINE CLASS SF_RegExp AS SESSION
 
   IF VARTYPE(m.tvValue1)='N' THEN
 *StartAt like VFP,starts with 1
-   tvValue1 = m.tvValue1-THIS.noffset
+   tvValue1 = m.tvValue1-THIS.rnOffset
   ENDIF &&VARTYPE(m.tvValue1)='N'
 
   DO CASE
    CASE PCOUNT()=1
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Matches",m.tcInput)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Matches",m.tcInput)
    CASE PCOUNT()=2
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Matches",m.tcInput,m.tvValue1)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Matches",m.tcInput,m.tvValue1)
    OTHERWISE
     lvReturn = .NULL.
   ENDCASE
@@ -557,18 +560,18 @@ DEFINE CLASS SF_RegExp AS SESSION
 
   IF VARTYPE(m.tvValue3)='N' THEN
 *StartAt like VFP, starts with 1
-   tvValue3 = m.tvValue3-THIS.noffset
+   tvValue3 = m.tvValue3-THIS.rnOffset
   ENDIF &&VARTYPE(m.tvValue3)='N'
 
   DO CASE
    CASE PCOUNT()=1
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Replace",m.tcInput)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Replace",m.tcInput)
    CASE PCOUNT()=2
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Replace",m.tcInput,m.tvValue1)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Replace",m.tcInput,m.tvValue1)
    CASE PCOUNT()=3
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Replace",m.tcInput,m.tvValue1,m.tvValue2)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Replace",m.tcInput,m.tvValue1,m.tvValue2)
    CASE PCOUNT()=4
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Replace",m.tcInput,m.tvValue1,m.tvValue2,m.tvValue3)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Replace",m.tcInput,m.tvValue1,m.tvValue2,m.tvValue3)
    OTHERWISE
     lvReturn = .NULL.
   ENDCASE
@@ -589,16 +592,16 @@ DEFINE CLASS SF_RegExp AS SESSION
 
   IF VARTYPE(m.tvValue1)='N' THEN
 *StartAt like VFP, starts with 1
-   tvValue1 = m.tvValue1-THIS.noffset
+   tvValue1 = m.tvValue1-THIS.rnOffset
   ENDIF &&VARTYPE(m.tvValue1)='N'
 
   DO CASE
    CASE PCOUNT()=1
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Split",m.tcInput)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Split",m.tcInput)
    CASE PCOUNT()=2
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Split",m.tcInput,m.tvValue1)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Split",m.tcInput,m.tvValue1)
    CASE PCOUNT()=3
-    lvReturn = loBridge.InvokeMethod(THIS.goRegExp,"Split",m.tcInput,m.tvValue1,m.tvValue2)
+    lvReturn = loBridge.InvokeMethod(THIS.roRegExp,"Split",m.tcInput,m.tvValue1,m.tvValue2)
    OTHERWISE
     lvReturn = .NULL.
   ENDCASE
@@ -634,7 +637,7 @@ DEFINE CLASS SF_RegExp AS SESSION
   loBridge = GetwwDotnetBridge()
   lvReturn = loBridge.GetProperty(m.loMatch,"Index")
 
-  RETURN m.lvReturn+THIS.noffset
+  RETURN m.lvReturn+THIS.rnOffset
  ENDPROC &&Get_Index
 
  PROCEDURE Get_Length		&& Get the Length property from DotNet Match, Group, Capture objects
@@ -720,72 +723,258 @@ DEFINE CLASS SF_RegExp AS SESSION
 *or we need additional objects to wrap this
 */Wrapper, subobjects
 
- PROCEDURE Show_Unwind		&& Example to run Matches for a Pattern and show all data returned
+*Helpers to show the contents of a Match or Matches
+ PROCEDURE Show_Unwind		&& Expand to a Matches or Match object for to show all data in the object
+  LPARAMETERS;
+   toMatches
+ 
+  LOCAL;
+   lcReturn  AS STRING,;
+   llMatches AS INTEGER
+ 
+ *  SET STEP ON
+ 
+  llMatches = .T.
+  TRY
+    =m.toMatches.COUNT
+   CATCH
+    llMatches = .F.
+  ENDTRY
+ 
+  IF m.llMatches THEN
+ *Matches
+   lcReturn = "Matches "
+   IF PEMSTATUS(m.toMatches,"tag",5) THEN
+ *VFP object
+    lcReturn =  "Expanding VFP " + m.lcReturn + 0h0D0A + THIS.Unwind_Matches_V(m.toMatches)
+   ELSE  &&PEMSTATUS(m.toMatches,"tag",5)
+ *DotNet object
+    lcReturn =  "Expanding DotNet " + m.lcReturn + "Matches" + 0h0D0A + THIS.Unwind_Matches(m.toMatches)
+   ENDIF &&PEMSTATUS(m.toMatches,"tag",5)   ELSE  &&m.llMatches
+ 
+  ELSE  &&m.llMatches
+ *Matches 
+   lcReturn = "Match "
+   IF PEMSTATUS(m.toMatches,"value",5) THEN
+ *VFP object
+    lcReturn =  "Expanding VFP " + m.lcReturn + 0h0D0A + THIS.Unwind_Match_V(m.toMatches)
+   ELSE  &&PEMSTATUS(m.toMatches,"value",5)
+ *DotNet object
+    lcReturn =  "Expanding DotNet " + m.lcReturn + 0h0D0A + THIS.Unwind_Match(m.toMatches)
+   ENDIF &&PEMSTATUS(m.toMatches,"value",5)
+  ENDIF &&m.llMatches
+ 
+  RETURN m.lcReturn
+ 
+ ENDPROC &&Show_Unwind
+   
+ PROTECTED PROCEDURE Unwind_Matches   && Show all data for a matches object, DotNet object
   LPARAMETERS;
    toMatches
 
   LOCAL;
    lcReturn   AS STRING,;
+   lnMatch    AS NUMBER,;
+   loMatch    AS OBJECT
+
+  lcReturn = "Matches:  " + TRIM(PADR(m.toMatches.COUNT,11)) + 0h0D0A
+  FOR lnMatch = 0 TO m.toMatches.COUNT-1
+   loMatch = toMatches.ITEM(m.lnMatch)
+
+   lcReturn = m.lcReturn + " Match  " + TRIM(PADR(m.lnMatch,11)) + ";"
+   lcReturn = m.lcReturn + THIS.Unwind_Match(m.loMatch) + 0h0D0A
+  ENDFOR &&lnMatch
+
+  RETURN m.lcReturn
+ ENDPROC &&Unwind_Matches
+
+ PROTECTED PROCEDURE Unwind_Matches_V   && Show all data for a matches object, VFP object
+  LPARAMETERS;
+   toMatches
+
+  LOCAL;
+   lcReturn   AS STRING,;
+   lnMatch    AS NUMBER,;
+   loMatch    AS OBJECT
+
+   lcReturn = "Matches:  " + TRIM(PADR(m.toMatches.COUNT,11)) + 0h0D0A
+  FOR lnMatch = 1 TO m.toMatches.COUNT
+   loMatch = toMatches.ITEM(m.lnMatch)
+
+   lcReturn = m.lcReturn + " Match  " + TRIM(PADR(m.lnMatch,11)) + ";"
+   lcReturn = m.lcReturn + THIS.Unwind_Match_V(m.loMatch) + 0h0D0A
+  ENDFOR &&lnMatch
+
+  RETURN m.lcReturn
+ ENDPROC &&Unwind_Matches_V
+
+ PROTECTED PROCEDURE Unwind_Match   && Show all data for a match object, DotNet object
+  LPARAMETERS;
+   toMatch
+
+  LOCAL;
+   lcReturn   AS STRING,;
    lnCapture  AS NUMBER,;
    lnGroup    AS NUMBER,;
-   lnMatch    AS NUMBER,;
    loCapture  AS OBJECT,;
    loCaptures AS OBJECT,;
    loGroup    AS OBJECT,;
-   loGroups   AS OBJECT,;
-   loMatch    AS OBJECT
-*  SET STEP ON
-  lcReturn = ''
+   loGroups   AS OBJECT
+
+  lcReturn = ""
   SET TEXTMERGE ON NOSHOW
   SET TEXTMERGE TO MEMVAR m.lcReturn
-  \Matches:  <<m.toMatches.COUNT>>
-  FOR lnMatch = 0 TO m.toMatches.COUNT-1
-   loMatch = toMatches.ITEM(m.lnMatch)
-   \ Match  <<m.lnMatch>>; value:  "<<THIS.Get_Value(m.loMatch)>>"
-   \\,at: <<THIS.Get_Index(m.loMatch)>>
-   \\,len: <<THIS.Get_Length(m.loMatch)>>
-   \\, success  <<THIS.Get_Success(m.loMatch)>>
-   \\, name: <<THIS.Get_Name(m.loMatch)>>
+   \\ value:  "<<THIS.Get_Value(m.toMatch)>>"
+   \\,at: <<THIS.Get_Index(m.toMatch)>>
+   \\,len: <<THIS.Get_Length(m.toMatch)>>
+   \\, success  <<THIS.Get_Success(m.toMatch)>>
+   \\, name: <<THIS.Get_Name(m.toMatch)>>
 
-   loCaptures = THIS.Get_Captures(m.loMatch)
+  loCaptures = THIS.Get_Captures(m.toMatch)
    \  MCaptures:  <<m.loCaptures.COUNT>>
-   FOR lnCapture = 0 TO m.loCaptures.COUNT-1
-    loCapture = loCaptures.ITEM(m.lnCapture)
+  FOR lnCapture = 0 TO m.loCaptures.COUNT-1
+   loCapture = loCaptures.ITEM(m.lnCapture)
     \   MCapture  <<m.lnCapture>>; value: "<<THIS.Get_Value(m.loCapture)>>"
     \\,at: <<THIS.Get_Index(m.loCapture)>>
     \\,len: <<THIS.Get_Length(m.loCapture)>>
     \\, success  <<THIS.Get_Success(m.loCapture)>>
     \\, Name  <<THIS.Get_Name(m.loCapture)>>
-   ENDFOR &&lnCapture
+  ENDFOR &&lnCapture
 
-   loGroups = THIS.Get_Groups(m.loMatch)
+  loGroups = THIS.Get_Groups(m.toMatch)
    \  Groups:  <<m.loGroups.COUNT>>
-   FOR lnGroup = 0 TO m.loGroups.COUNT-1
-    loGroup = loGroups.ITEM(m.lnGroup)
+  FOR lnGroup = 0 TO m.loGroups.COUNT-1
+   loGroup = loGroups.ITEM(m.lnGroup)
     \   Group  <<m.lnGroup>>; value: "<<THIS.Get_Value(m.loGroup)>>"
     \\,at: <<THIS.Get_Index(m.loGroup)>>
     \\,len: <<THIS.Get_Length(m.loGroup)>>
     \\, success  <<THIS.Get_Success(m.loGroup)>>
     \\, name  <<THIS.Get_Name(m.loGroup)>>
-    loCaptures = THIS.Get_Captures(m.loGroup)
+   loCaptures = THIS.Get_Captures(m.loGroup)
     \    Captures:  <<m.loCaptures.COUNT>>
-    FOR lnCapture = 0 TO m.loCaptures.COUNT-1
-     loCapture = loCaptures.ITEM(m.lnCapture)
+   FOR lnCapture = 0 TO m.loCaptures.COUNT-1
+    loCapture = loCaptures.ITEM(m.lnCapture)
      \     Capture  <<m.lnCapture>>; value: "<<THIS.Get_Value(m.loCapture)>>"
      \\,at: <<THIS.Get_Index(m.loCapture)>>
      \\,len: <<THIS.Get_Length(m.loCapture)>>
-     IF m.lnGroup =0 THEN
+    IF m.lnGroup =0 THEN
       \\, success  <<THIS.Get_Success(m.loCapture)>>
       \\, name  <<THIS.Get_Name(m.loCapture)>>
-     ENDIF &&m.lnGroup =0
-    ENDFOR &&lnCapture
-   ENDFOR &&lnGroup
-  ENDFOR &&lnMatch
+    ENDIF &&m.lnGroup =0
+   ENDFOR &&lnCapture
+  ENDFOR &&lnGroup
   SET TEXTMERGE TO
   SET TEXTMERGE OFF
 
   RETURN m.lcReturn
 
- ENDPROC &&Show_Unwind
+ ENDPROC &&Unwind_Match
 
+ PROTECTED PROCEDURE Unwind_Match_V   && Show all data for a match object, VFP object
+  LPARAMETERS;
+   toMatch
+ 
+  LOCAL;
+   lcReturn   AS STRING,;
+   lnCapture  AS NUMBER,;
+   lnGroup    AS NUMBER,;
+   loCapture  AS OBJECT,;
+   loCaptures AS OBJECT,;
+   loGroup    AS OBJECT,;
+   loGroups   AS OBJECT
+  LOCAL llWitchCaptures,llWitchGroups,llWitchMatchCaptures
+ 
+ 
+ *SET STEP ON 
+  llWitchGroups        = .T.
+  llWitchCaptures      = .T.
+  llWitchMatchCaptures = .T.
+  TRY
+    = m.toMatch.Groups.TAG
+   CATCH
+    llWitchGroups = .F.
+  ENDTRY
+ 
+  TRY
+    = m.toMatch.Captures.TAG
+   CATCH
+    llWitchMatchCaptures = .F.
+    IF m.llWitchGroups THEN
+     TRY
+       = toMatch.Groups.ITEM(1).Captures.TAG
+      CATCH
+       llWitchCaptures = .F.
+     ENDTRY
+    ELSE  &&m.llWitchGroups
+     llWitchCaptures = .F.
+    ENDIF &&m.llWitchGroups
+  ENDTRY
+ 
+  lcReturn = ""
+  SET TEXTMERGE ON NOSHOW
+  SET TEXTMERGE TO MEMVAR m.lcReturn
+     \\ value:  "<<m.toMatch.Value>>"
+     \\,at: <<m.toMatch.Index>>
+     \\,len: <<m.toMatch.Length>>
+     \\, success  <<m.toMatch.Success>>
+     \\, name: <<m.toMatch.Name>>
+ 
+  IF m.llWitchMatchCaptures THEN
+   loCaptures = m.toMatch.Captures
+     \  MCaptures:  <<m.loCaptures.COUNT>>
+   FOR lnCapture = 1TO m.loCaptures.COUNT
+    loCapture = loCaptures.ITEM(m.lnCapture)
+      \   MCapture  <<m.lnCapture>>; value: "<<m.loCapture.Value>>"
+      \\,at: <<m.loCapture.Index>>
+      \\,len: <<m.loCapture.Length>>
+      \\, success  <<m.loCapture.Success>>
+      \\, Name  <<m.loCapture.Name>>
+   ENDFOR &&lnCapture
+ 
+  ELSE  &&m.llWitchMatchCaptures
+     \  MCaptures:  not expanded
+  ENDIF &&m.llWitchMatchCaptures
+ 
+  IF m.llWitchGroups THEN
+   loGroups = m.toMatch.Groups
+     \  Groups:  <<m.loGroups.COUNT>>
+   FOR lnGroup = 1TO m.loGroups.COUNT
+    loGroup = loGroups.ITEM(m.lnGroup)
+      \   Group  <<m.lnGroup>>; value: "<<m.loGroup.Value>>"
+      \\,at: <<m.loGroup.Index>>
+      \\,len: <<m.loGroup.Length>>
+      \\, success  <<m.loGroup.Success>>
+      \\, name  <<m.loGroup.Name>>
+ 
+    IF m.llWitchCaptures THEN
+     loCaptures = m.loGroup.Captures
+      \    Captures:  <<m.loCaptures.COUNT>>
+     FOR lnCapture = 1 TO m.loCaptures.COUNT
+      loCapture = loCaptures.ITEM(m.lnCapture)
+       \     Capture  <<m.lnCapture>>; value: "<<m.loCapture.Value>>"
+       \\,at: <<m.loCapture.Index>>
+       \\,len: <<m.loCapture.Length>>
+      IF m.lnGroup =0 THEN
+        \\, success  <<.loCapture.Success>>
+        \\, name  <<m.loCapture.Name>>
+      ENDIF &&m.lnGroup =0
+     ENDFOR &&lnCapture
+ 
+    ELSE  &&m.llWitchCaptures
+      \    Captures:  not expanded
+    ENDIF &&m.llWitchCaptures
+   ENDFOR &&lnGroup
+ 
+  ELSE  &&m.llWitchGroups
+    \  Groups:  not expanded
+  ENDIF &&m.llWitchGroups
+ 
+  SET TEXTMERGE TO
+  SET TEXTMERGE OFF
+ 
+  RETURN m.lcReturn
+ 
+ ENDPROC &&Unwind_Match_V
+*/Helpers to show the contents of a Match or Matches
+ 
 ENDDEFINE &&SF_RegExp As Session

@@ -1,6 +1,6 @@
 # ![](content/home.png "Home") SF RegExp
 Wrapper for DotNet Regexp   
-**Version 1.1.000, 2023-05-05**   
+**Version 1.2.000, 2023-05-09**   
 A simple class to allow easy access to the DotNet RegExp class.
 
 ---
@@ -54,4 +54,4 @@ See [changes](https://github.com/lscheffler/sf_regexp/blob/master/content/change
 See [How to contribute to SF RegExp](https://github.com/lscheffler/sf_regexp/blob/master/.github/CONTRIBUTING.md) for details on how to help with this project.
 
 ----
-Last changed: _2023/05/05_ ![Powered by VFPX](https://github.com/lscheffler/sf_regexp/blob/master/content/vfpxpoweredby_alternative.gif)
+Last changed: _2023/05/09_ ![Powered by VFPX](https://github.com/lscheffler/sf_regexp/blob/master/content/vfpxpoweredby_alternative.gif)

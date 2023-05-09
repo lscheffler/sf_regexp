@@ -24,7 +24,7 @@
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 Escape RegExp specific chars, but keep the wildcard funtion of <span class="PDMEXPR PDMNor" ><span class='PDMRes'>Like</span></span>
 .
@@ -32,11 +32,11 @@ Escape RegExp specific chars, but keep the wildcard funtion of <span class="PDME
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6LY0LLDEY">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M20MQPZF">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.Escape_Like
    </div>
    <div class="Para">
-    (<a href="#_6LY0LLDEZ">tvValue</a>)
+    (<a href="#_6M20MQPZG">tvValue</a>)
    </div>
    <div style="clear: both"></div>
   </div><!-- Colour End -->
@@ -48,7 +48,7 @@ Escape RegExp specific chars, but keep the wildcard funtion of <span class="PDME
   </span>
   <dl class="DIAMP_PDM_AB_Params_List">
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6LY0LLDEZ" name="_6LY0LLDEZ">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQPZG" name="_6M20MQPZG">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tvValue</span></span>
 
     </a>
@@ -80,7 +80,7 @@ Escape RegExp specific chars, but keep the wildcard funtion of <span class="PDME
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6LY0LLDEY" name="_6LY0LLDEY">
+    <a id="_6M20MQPZF" name="_6M20MQPZF">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">String</span>
@@ -109,7 +109,7 @@ The string escaped.
  </div><!-- Remarks End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Escape_Like" id="IMG_SP_1" />
@@ -122,7 +122,7 @@ The string escaped.
   <span class='PDMRes'>LOCAL</span><span class='PDMOper'>;</span>
    <span class='PDMVar'>lvReturn</span> <span class='PDMRes'>AS</span> <span class='PDMRes'>STRING</span>
 
-  <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span><span class='PDMOper'>.</span><span class='PDMRes'>ESCAPE</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue</span><span class='PDMOper'>)</span>
+  <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>.</span><span class='PDMRes'>ESCAPE</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue</span><span class='PDMOper'>)</span>
   <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMRes'>STRTRAN</span><span class='PDMOper'>(</span><span class='PDMRes'>STRTRAN</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lvReturn</span><span class='PDMOper'>,</span><span class='PDMStr'>"\*"</span><span class='PDMOper'>,</span><span class='PDMStr'>".*"</span><span class='PDMOper'>)</span><span class='PDMOper'>,</span><span class='PDMStr'>"\?"</span><span class='PDMOper'>,</span><span class='PDMStr'>"."</span><span class='PDMOper'>)</span>
 
   <span class='PDMRes'>RETURN</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lvReturn</span></pre>

@@ -24,18 +24,18 @@
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 Init the DotNet library.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6LY0LLDAF">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M20MQPUV">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.INIT
    </div>
    <div class="Para">
-    ([<a href="#_6LY0LLDAG">tcPathTo_SF_RegExp</a>])
+    ([<a href="#_6M20MQPUW">tcPathTo_SF_RegExp</a>])
    </div>
    <div style="clear: both"></div>
   </div><!-- Colour End -->
@@ -47,7 +47,7 @@ Init the DotNet library.
   </span>
   <dl class="DIAMP_PDM_AB_Params_List">
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6LY0LLDAG" name="_6LY0LLDAG">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQPUW" name="_6M20MQPUW">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tcPathTo_SF_RegExp</span></span>
 
     </a>
@@ -83,7 +83,7 @@ Init the DotNet library.
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6LY0LLDAF" name="_6LY0LLDAF">
+    <a id="_6M20MQPUV" name="_6M20MQPUV">
      Return value
     </a>
    </span>
@@ -95,7 +95,7 @@ If the method fails to start wwDotnetBridge or to load the Assembly, it will ret
  </div><!-- Returns End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure INIT" id="IMG_SP_1" />
@@ -160,13 +160,13 @@ If the method fails to start wwDotnetBridge or to load the Assembly, it will ret
 <span class='PDMCom'>*Was zu testen ist</span>
     <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>LoadAssembly</span><span class='PDMOper'>(</span><span class='PDMStr'>"SF_RegExp.dll"</span><span class='PDMOper'>)</span>
 
-    <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>CreateInstance</span><span class='PDMOper'>(</span><span class='PDMStr'>"SF_RegExp.SF_RegExp"</span><span class='PDMOper'>)</span>
+    <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>CreateInstance</span><span class='PDMOper'>(</span><span class='PDMStr'>"SF_RegExp.SF_RegExp"</span><span class='PDMOper'>)</span>
 
    <span class='PDMRes'>CATCH</span>
     <span class='PDMRes'>TRY</span>
       <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>LoadAssembly</span><span class='PDMOper'>(</span><span class='PDMRes'>ADDBS</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcPathTo_SF_RegExp</span><span class='PDMOper'>)</span><span class='PDMOper'>+</span><span class='PDMStr'>"SF_RegExp.dll"</span><span class='PDMOper'>)</span>
 
-      <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>CreateInstance</span><span class='PDMOper'>(</span><span class='PDMStr'>"SF_RegExp.SF_RegExp"</span><span class='PDMOper'>)</span>
+      <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>CreateInstance</span><span class='PDMOper'>(</span><span class='PDMStr'>"SF_RegExp.SF_RegExp"</span><span class='PDMOper'>)</span>
 
      <span class='PDMRes'>CATCH</span>
       <span class='PDMVar'>llError</span> <span class='PDMOper'>=</span> <span class='PDMLit'>.T.</span>
@@ -178,10 +178,10 @@ If the method fails to start wwDotnetBridge or to load the Assembly, it will ret
    <span class='PDMRes'>RETURN</span> <span class='PDMLit'>.F.</span>
   <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;m.llError</span>
 
-  <span class='PDMRes'>IF</span> <span class='PDMRes'>ISNULL</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span><span class='PDMOper'>)</span> <span class='PDMRes'>THEN</span>
+  <span class='PDMRes'>IF</span> <span class='PDMRes'>ISNULL</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>)</span> <span class='PDMRes'>THEN</span>
    <span class='PDMRes'>CD</span> <span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcOldPath</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>RETURN</span> <span class='PDMLit'>.F.</span>
-  <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;ISNULL(THIS.goRegExp)</span>
+  <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;ISNULL(THIS.roRegExp)</span>
 
   <span class='PDMRes'>CD</span> <span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcOldPath</span><span class='PDMOper'>)</span></pre>
  <!-- Code End -->

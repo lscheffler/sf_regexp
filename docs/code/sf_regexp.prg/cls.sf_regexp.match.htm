@@ -24,20 +24,20 @@
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 Wrapper for the DotNet RegExp Match method, see there.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6LY0LLDJK">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M20MQQ43">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.Match
    </div>
    <div class="Para">
-    (<a href="#_6LY0LLDJL">tcInput</a>
-     <wbr />,<a href="#_6LY0LLDJM">tvValue1</a>
-     <wbr />,<a href="#_6LY0LLDJN">tvValue2</a>)
+    (<a href="#_6M20MQQ44">tcInput</a>
+     <wbr />,<a href="#_6M20MQQ45">tvValue1</a>
+     <wbr />,<a href="#_6M20MQQ46">tvValue2</a>)
    </div>
    <div style="clear: both"></div>
   </div><!-- Colour End -->
@@ -49,7 +49,7 @@ Wrapper for the DotNet RegExp Match method, see there.
   </span>
   <dl class="DIAMP_PDM_AB_Params_List">
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6LY0LLDJL" name="_6LY0LLDJL">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ44" name="_6M20MQQ44">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tcInput</span></span>
 
     </a>
@@ -76,7 +76,7 @@ Wrapper for the DotNet RegExp Match method, see there.
     </table>
    </dd>
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6LY0LLDJM" name="_6LY0LLDJM">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ45" name="_6M20MQQ45">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tvValue1</span></span>
 
     </a>
@@ -103,7 +103,7 @@ Wrapper for the DotNet RegExp Match method, see there.
     </table>
    </dd>
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6LY0LLDJN" name="_6LY0LLDJN">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M20MQQ46" name="_6M20MQQ46">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tvValue2</span></span>
 
     </a>
@@ -135,7 +135,7 @@ Wrapper for the DotNet RegExp Match method, see there.
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6LY0LLDJK" name="_6LY0LLDJK">
+    <a id="_6M20MQQ43" name="_6M20MQQ43">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">Object</span>
@@ -200,7 +200,7 @@ Depending on <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.
  </div><!-- SeeAlso End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    05.05.2023 10:04 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 10:36 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Match" id="IMG_SP_1" />
@@ -219,16 +219,16 @@ Depending on <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.
 
   <span class='PDMRes'>IF</span> <span class='PDMRes'>VARTYPE</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>)</span><span class='PDMOper'>=</span><span class='PDMStr'>'N'</span> <span class='PDMRes'>THEN</span>
 <span class='PDMCom'>*StartAt like VFP,starts with 1</span>
-   <span class='PDMVar'>tvValue1</span> <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>-</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>noffset</span>
+   <span class='PDMVar'>tvValue1</span> <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>-</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>rnOffset</span>
   <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;VARTYPE(m.tvValue1)='N'</span>
 
   <span class='PDMRes'>DO</span> <span class='PDMRes'>CASE</span>
    <span class='PDMRes'>CASE</span> <span class='PDMRes'>PCOUNT</span><span class='PDMOper'>(</span><span class='PDMOper'>)</span><span class='PDMOper'>=</span><span class='PDMLit'>1</span>
-    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Match"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>)</span>
+    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Match"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>CASE</span> <span class='PDMRes'>PCOUNT</span><span class='PDMOper'>(</span><span class='PDMOper'>)</span><span class='PDMOper'>=</span><span class='PDMLit'>2</span>
-    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Match"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>)</span>
+    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Match"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>CASE</span> <span class='PDMRes'>PCOUNT</span><span class='PDMOper'>(</span><span class='PDMOper'>)</span><span class='PDMOper'>=</span><span class='PDMLit'>3</span>
-    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>goRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Match"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue2</span><span class='PDMOper'>)</span>
+    <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loBridge</span><span class='PDMOper'>.</span><span class='PDMVar'>InvokeMethod</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>,</span><span class='PDMStr'>"Match"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcInput</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue1</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue2</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>OTHERWISE</span>
     <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMLit'>.NULL.</span>
   <span class='PDMRes'>ENDCASE</span>
