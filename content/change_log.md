@@ -6,6 +6,9 @@ This page gives a brief overview of changes to the [SF RegExp](https://github.co
 A complete list of changes is available on the offline documentation via **local folder** _docu/index.htm_.
 
 ---
+## Version 1.3.2 **2023/05/10**
+- New: Added Global property for use in Execute method
+
 ## Version 1.3.1 **2023/05/10**
 - New: Match objects returned by Execute method now own a FirstIndex property that works like VBasic.
 - Improved: The Test prg now owns a Test_Execute procedure.

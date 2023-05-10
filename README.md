@@ -1,6 +1,6 @@
 # ![](content/home.png "Home") SF RegExp
 Wrapper for DotNet Regexp   
-**Version 1.3.001, 2023-05-10**   
+**Version 1.3.002, 2023-05-10**   
 A simple class to allow easy access to the DotNet RegExp class.
 
 ---

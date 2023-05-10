@@ -1,4 +1,4 @@
-#DEFINE dcRegExpVerNo "1.3.1"
+#DEFINE dcRegExpVerNo "1.3.2"
 LPARAMETERS;
  tcPathTo_wwDotnetBridge
 
@@ -34,6 +34,9 @@ DEFINE CLASS SF_RegExp AS SESSION
 *Others
  CacheSize    = 0
  MatchTimeout = 0
+
+*Execute specific
+ GLOBAL = .T.	&& Like the Global of VBasic, only used for Execute
 
  PROCEDURE INIT
   LPARAMETERS;
@@ -268,23 +271,21 @@ DEFINE CLASS SF_RegExp AS SESSION
   lvReturn = STRTRAN(STRTRAN(m.lvReturn,"\*",".*"),"\?",".")
 
   RETURN m.lvReturn
- ENDPROC &&Escape_Like
-
  PROCEDURE UnEscape_Like		&& Interface to the DotNet UnEscape method, with special operation to keep LIKE function
   LPARAMETERS;
    tvValue
-
+ 
   LOCAL;
    lvReturn AS STRING
-
+ 
   lvReturn = ""+STRTRAN(STRTRAN(STRTRAN(STRTRAN(m.tvValue,".*","\*"),"\.",0h00),".","\?"),0h00,"\.")
   RETURN THIS.roRegExp.UnEscape(m.lvReturn)
  ENDPROC &&UnEscape_Like
-
+ 
  PROCEDURE Execute		&& Wrapper for VBasic RegExp Execute method
   LPARAMETERS;
    tcString
-
+ 
   LOCAL;
    llAutoExpandCaptures AS BOOLEAN,;
    llAutoExpandGroups   AS BOOLEAN,;
@@ -293,30 +294,39 @@ DEFINE CLASS SF_RegExp AS SESSION
    loBridge             AS OBJECT,;
    loMatch              AS OBJECT,;
    loMatches            AS OBJECT
-
+ 
   llReturnFoxObjects   = THIS.ReturnFoxObjects
   llAutoExpandGroups   = THIS.AutoExpandGroups
   llAutoExpandCaptures = THIS.AutoExpandCaptures
-
+ 
   THIS.ReturnFoxObjects   = .T.
   THIS.AutoExpandGroups   = .F.
   THIS.AutoExpandCaptures = .F.
+ 
+  IF THIS.GLOBAL THEN
+   loMatches = THIS.Matches(m.tcString)
+   FOR lnMatch = 1 TO m.loMatches.COUNT
+    loMatch = loMatches.ITEM(m.lnMatch)
+    ADDPROPERTY(m.loMatch,"FirstIndex", m.loMatch.INDEX - 1)
+   ENDFOR &&lnMatch
+ 
+  ELSE  &&THIS.Global
+   loMatch = THIS.Match(m.tcString)
+   ADDPROPERTY(m.loMatch,"FirstIndex", m.loMatches.INDEX - 1)
+   loMatches = CREATEOBJECT("Collection")
+   loMatches.ADD(m.loMatch)
 
-  loMatches = THIS.Matches(m.tcString)
-
+  ENDIF &&THIS.Global
+ 
   THIS.ReturnFoxObjects   = m.llReturnFoxObjects
   THIS.AutoExpandGroups   = m.llAutoExpandGroups
   THIS.AutoExpandCaptures = m.llAutoExpandCaptures
-
-  FOR lnMatch = 1 TO m.loMatches.COUNT
-   loMatch = loMatches.ITEM(m.lnMatch)
-   ADDPROPERTY(m.loMatch,"FirstIndex",  m.loMatch.INDEX - 1)
-  ENDFOR &&lnMatch
-
+ 
+ 
   RETURN m.loMatches
  ENDPROC &&UnEscape_Like
-
- PROCEDURE Fill_Matches		&& Rebuild the Matches object returned by DotNet to VFP Collections object
+ 
+  PROCEDURE Fill_Matches		&& Rebuild the Matches object returned by DotNet to VFP Collections object
   LPARAMETERS;
    toMatches,;
    tlAutoExpandGroups,;
@@ -788,7 +798,7 @@ DEFINE CLASS SF_RegExp AS SESSION
    ENDIF &&PEMSTATUS(m.toMatches,"tag",5)   ELSE  &&m.llMatches
 
   ELSE  &&m.llMatches
-*Matches 
+*Matches
    lcReturn = "Match "
    IF PEMSTATUS(m.toMatches,"value",5) THEN
 *VFP object
@@ -921,7 +931,7 @@ DEFINE CLASS SF_RegExp AS SESSION
    loGroup              AS OBJECT,;
    loGroups             AS OBJECT
 
-*SET STEP ON 
+*SET STEP ON
   llWitchGroups        = .T.
   llWitchCaptures      = .T.
   llWitchMatchCaptures = .T.

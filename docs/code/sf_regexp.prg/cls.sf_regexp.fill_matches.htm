@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
 <link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
 <script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
-<script src="../../repository/pdm_ab.js" language="JavaScript" type="text/javascript"></script>
 </head>
 <body>
 <div class="diaxp_mhead">Fill_Matches Method</div>
@@ -25,20 +24,20 @@
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 16:14 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 Converts a DotNet Matches object into a VFP Collection.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6M30QJOXW">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M30YST7Q">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.Fill_Matches
    </div>
    <div class="Para">
-    (<a href="#_6M30QJOXX">toMatches</a>
-     [<wbr />,<a href="#_6M30QJOXY">tlAutoExpandGroups</a>
-     [<wbr />,<a href="#_6M30QJOXZ">tlAutoExpandCaptures</a>]])
+    (<a href="#_6M30YST7R">toMatches</a>
+     [<wbr />,<a href="#_6M30YST7S">tlAutoExpandGroups</a>
+     [<wbr />,<a href="#_6M30YST7T">tlAutoExpandCaptures</a>]])
    </div>
    <div style="clear: both"></div>
   </div><!-- Colour End -->
@@ -50,7 +49,7 @@ Converts a DotNet Matches object into a VFP Collection.
   </span>
   <dl class="DIAMP_PDM_AB_Params_List">
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30QJOXX" name="_6M30QJOXX">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30YST7R" name="_6M30YST7R">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>toMatches</span></span>
 
     </a>
@@ -77,7 +76,7 @@ Converts a DotNet Matches object into a VFP Collection.
     </table>
    </dd>
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30QJOXY" name="_6M30QJOXY">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30YST7S" name="_6M30YST7S">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tlAutoExpandGroups</span></span>
 
     </a>
@@ -109,7 +108,7 @@ Converts a DotNet Matches object into a VFP Collection.
     <span class="Params_Detail">
 
  <p>
-  While expanding a Match object of <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30QJOXX">toMatches</a>, expand the Groups into a VFP Collection.
+  While expanding a Match object of <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30YST7R">toMatches</a>, expand the Groups into a VFP Collection.
  </p>
  <p>
   If the parameter is false, the DotNet object will be included.
@@ -118,7 +117,7 @@ Converts a DotNet Matches object into a VFP Collection.
     </span>
    </dd>
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30QJOXZ" name="_6M30QJOXZ">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30YST7T" name="_6M30YST7T">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tlAutoExpandCaptures</span></span>
 
     </a>
@@ -150,10 +149,10 @@ Converts a DotNet Matches object into a VFP Collection.
     <span class="Params_Detail">
 
  <p>
-  While expanding the first Match object of <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30QJOXX">toMatches</a>, expand the Groups object into a VFP Collection.
+  While expanding the first Match object of <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30YST7R">toMatches</a>, expand the Groups object into a VFP Collection.
  </p>
  <p>
-  If <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30QJOXY">tlAutoExpandGroups</a> is true, the expanded Groups will hold expanded Groups object as a VFP Collection.
+  If <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30YST7S">tlAutoExpandGroups</a> is true, the expanded Groups will hold expanded Groups object as a VFP Collection.
  </p>
  <p>
   If the parameter is false, the DotNet object will be included.
@@ -167,7 +166,7 @@ Converts a DotNet Matches object into a VFP Collection.
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6M30QJOXW" name="_6M30QJOXW">
+    <a id="_6M30YST7Q" name="_6M30YST7Q">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">Object</span>
@@ -186,8 +185,8 @@ The VFP collection.
 
   This method is called by the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a> method,
   if <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a> is set.
-  <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30QJOXY">tlAutoExpandGroups</a> will follow <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a>,
-  <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30QJOXZ">tlAutoExpandCaptures</a> will follow <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a>.
+  <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30YST7S">tlAutoExpandGroups</a> will follow <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a>,
+  <a class="DIAMP_PDM_AB_Para_Link" href="#_6M30YST7T">tlAutoExpandCaptures</a> will follow <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a>.
 
   </div>
  </div><!-- Remarks End -->
@@ -208,7 +207,7 @@ The VFP collection.
  </div><!-- SeeAlso End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 16:14 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Fill_Matches" id="IMG_SP_1" />
