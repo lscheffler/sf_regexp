@@ -10,17 +10,19 @@
 <link rel="stylesheet" href="../../repository/diamp_pdm_ab.css" type="text/css" />
 <link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
 <link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
-<link rel="stylesheet" href="../../repository/diamp_pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/diac_pdm_ab.css" type="text/css" />
 <link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
 <link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
 <script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+<script src="../../repository/pdm_ab.js" language="JavaScript" type="text/javascript"></script>
+<script src="../../repository/pdm_ab.js" language="JavaScript" type="text/javascript"></script>
 </head>
 <body class="pbb_auto">
 <div class="diaxp_mhead_class"><h4 style=""><a name="cls.sf_regexp">Class: SF_RegExp</a></h4>
 </div>
 <div class="diaxp_mbody">
 
-<!-- Created with _diac_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
+<!-- Created with _diac_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 
 A class as interface to DotNet RegExp. 
@@ -68,14 +70,16 @@ For the leisure of VFP programmers, strings start with 1 for this class in all m
 If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.dotnetoffset.htm" title="Skip to property DotNetOffset">DotNetOffset</a>.
 </p>
 <p>
-For easy reuse of VBasic Regexp, a <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.execute.htm" title="Skip to method Execute">Execute</a> method is provided. Note that the collections now starts with 1.
+For easy reuse of VBasic Regexp, a <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.execute.htm" title="Skip to method Execute">Execute</a> method is provided.
+The Match objects own a <em>FirstIndex</em> property that works like VBasic.
+Note that the Matches collection returned now starts with 1.
 </p>
 
   </div>
  </div><!-- Remarks End -->
 
 
-<!-- /Created with _diac_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
+<!-- /Created with _diac_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
 
 <table>
  <tbody>
@@ -223,7 +227,7 @@ For easy reuse of VBasic Regexp, a <a class="PDM_AB_See" href="../../code/sf_reg
    <td><img class="imgYN" src="../../imgs/fy.gif" alt="Property rnOffset is protected" /></td>
    <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property rnOffset is not hidden" /></td>
    <td>rnOffset</td>
-   <td>1					</td>
+   <td>1</td>
    <td>Internal, string offset to a start string VFP like</td>
   </tr>
   <tr>
@@ -618,7 +622,7 @@ For easy reuse of VBasic Regexp, a <a class="PDM_AB_See" href="../../code/sf_reg
  <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
   <hr />
   <div class="PDM_AB_Body">
-<i>&copy; 09.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+<i>&copy; 10.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
   </div><!-- Body End -->
  </div><!-- Footer End -->
 

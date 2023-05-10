@@ -6,8 +6,12 @@ This page gives a brief overview of changes to the [SF RegExp](https://github.co
 A complete list of changes is available on the offline documentation via **local folder** _docu/index.htm_.
 
 ---
+## Version 1.3.1 **2023/05/10**
+- New: Match objects returned by Execute method now own a FirstIndex property that works like VBasic.
+- Improved: The Test prg now owns a Test_Execute procedure.
+
 ## Version 1.3.0 **2023/05/09**
-- New: Method Execute to wotk like VBasic. Note, Collection starts with 1.
+- New: Method Execute to work like VBasic. Note, Collection starts with 1.
 - Improved: Property AutoExpandGroup renamed to AutoExpandGroups for better self description.
 - Improved: Some flaws in the documentation.
 
@@ -22,4 +26,4 @@ A complete list of changes is available on the offline documentation via **local
 ## Version 1.0.0
 
 ----
-Last changed: _2023/05/09_ ![Picture](./vfpxpoweredby_alternative.gif)
+Last changed: _2023/05/10_ ![Picture](./vfpxpoweredby_alternative.gif)

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
 <link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
 <script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+<script src="../../repository/pdm_ab.js" language="JavaScript" type="text/javascript"></script>
 </head>
 <body>
 <div class="diaxp_mhead">Show_Unwind Method</div>
@@ -24,14 +25,14 @@
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 Unwinds a whole Matches or Match DotNet or VFP object returned.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6M21A8YV0">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M30QJP5K">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.Show_Unwind
    </div>
    <div class="Para">
@@ -44,7 +45,7 @@ Unwinds a whole Matches or Match DotNet or VFP object returned.
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6M21A8YV0" name="_6M21A8YV0">
+    <a id="_6M30QJP5K" name="_6M30QJP5K">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">String</span>
@@ -85,7 +86,7 @@ A text representation of a Matches / Match object.
  </div><!-- SeeAlso End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Show_Unwind" id="IMG_SP_1" />
@@ -99,7 +100,7 @@ A text representation of a Matches / Match object.
 <span class='PDMCom'>   lcReturn  AS STRING,;</span>
    <span class='PDMVar'>llMatches</span> <span class='PDMRes'>AS</span> <span class='PDMRes'>INTEGER</span>
 
-<span class='PDMCom'> *  SET STEP ON</span>
+<span class='PDMCom'>*  SET STEP ON</span>
 
 <span class='PDMCom'>  llMatches = .T.</span>
   <span class='PDMRes'>TRY</span>
@@ -109,24 +110,24 @@ A text representation of a Matches / Match object.
   <span class='PDMRes'>ENDTRY</span>
 
   <span class='PDMRes'>IF</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>llMatches</span> <span class='PDMRes'>THEN</span>
-<span class='PDMCom'> *Matches</span>
+<span class='PDMCom'>*Matches</span>
    <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span> <span class='PDMStr'>"Matches "</span>
    <span class='PDMRes'>IF</span> <span class='PDMRes'>PEMSTATUS</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>,</span><span class='PDMStr'>"tag"</span><span class='PDMOper'>,</span><span class='PDMLit'>5</span><span class='PDMOper'>)</span> <span class='PDMRes'>THEN</span>
-<span class='PDMCom'> *VFP object</span>
+<span class='PDMCom'>*VFP object</span>
     <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span>  <span class='PDMStr'>"Expanding VFP "</span> <span class='PDMOper'>+</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span> <span class='PDMOper'>+</span> <span class='PDMVar'>0h0D0A</span> <span class='PDMOper'>+</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Unwind_Matches_V</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>ELSE</span>  <span class='PDMCom'>&amp;&amp;PEMSTATUS(m.toMatches,"tag",5)</span>
-<span class='PDMCom'> *DotNet object</span>
+<span class='PDMCom'>*DotNet object</span>
     <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span>  <span class='PDMStr'>"Expanding DotNet "</span> <span class='PDMOper'>+</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span> <span class='PDMOper'>+</span> <span class='PDMStr'>"Matches"</span> <span class='PDMOper'>+</span> <span class='PDMVar'>0h0D0A</span> <span class='PDMOper'>+</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Unwind_Matches</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;PEMSTATUS(m.toMatches,"tag",5)   ELSE  &amp;&amp;m.llMatches</span>
 
   <span class='PDMRes'>ELSE</span>  <span class='PDMCom'>&amp;&amp;m.llMatches</span>
-<span class='PDMCom'> *Matches </span>
+<span class='PDMCom'>*Matches </span>
    <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span> <span class='PDMStr'>"Match "</span>
    <span class='PDMRes'>IF</span> <span class='PDMRes'>PEMSTATUS</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>,</span><span class='PDMStr'>"value"</span><span class='PDMOper'>,</span><span class='PDMLit'>5</span><span class='PDMOper'>)</span> <span class='PDMRes'>THEN</span>
-<span class='PDMCom'> *VFP object</span>
+<span class='PDMCom'>*VFP object</span>
     <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span>  <span class='PDMStr'>"Expanding VFP "</span> <span class='PDMOper'>+</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span> <span class='PDMOper'>+</span> <span class='PDMVar'>0h0D0A</span> <span class='PDMOper'>+</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Unwind_Match_V</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>ELSE</span>  <span class='PDMCom'>&amp;&amp;PEMSTATUS(m.toMatches,"value",5)</span>
-<span class='PDMCom'> *DotNet object</span>
+<span class='PDMCom'>*DotNet object</span>
     <span class='PDMVar'>lcReturn</span> <span class='PDMOper'>=</span>  <span class='PDMStr'>"Expanding DotNet "</span> <span class='PDMOper'>+</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lcReturn</span> <span class='PDMOper'>+</span> <span class='PDMVar'>0h0D0A</span> <span class='PDMOper'>+</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Unwind_Match</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>)</span>
    <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;PEMSTATUS(m.toMatches,"value",5)</span>
   <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;m.llMatches</span>

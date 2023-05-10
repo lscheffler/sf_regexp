@@ -129,6 +129,20 @@ PROCEDURE Test_Unwind		&& Example to run Matches for a Pattern and show all data
  ENDIF &&.T.
 ENDPROC &&Test_Unwind
 
+PROCEDURE Test_Execute		&& Example to run Matches for a Pattern and show all data returned
+ LOCAL;
+  loMatches  AS OBJECT,;
+  loRegExp   AS OBJECT
+
+ loRegExp = Get_SF_RegExp()
+
+ loRegExp.PATTERN            = "\b(\w+\s*)+\."
+
+ CLEAR
+ loMatches = loRegExp.Execute("This is a sentence. This is another sentence. This is too.")
+ ?loRegExp.Show_Unwind(m.loMatches)
+ENDPROC &&Test_Unwind
+
 PROCEDURE Get_SF_RegExp	&& Example to instantiate the SF_RegExp class
  LOCAL;
   lcOldPath AS STRING,;

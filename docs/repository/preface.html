@@ -74,7 +74,14 @@
   The return value of the <a href="../code/sf_regexp.prg/Main_d.main%20program.htm" title="Skip to program SF_RegExp.prg">program</a> is a refernce to the class instantiated.
  </p>
  <p>
+  To help to replace old VBasic based code, a method <a href="../code/sf_regexp.prg/cls.sf_regexp.execute.htm" title="Skip to method SF_RegExp.Execute">Execute</a> is added.
+  This returns a VFP collection like VBasic, with the exception that the collection starts with 1 not 0.
+  For most easy use Match objects returned by this method own a <em>FirstIndex</em> property wotking with string start 0 as the VBasic objects.
+  Note that all other methods do not own this property.
+  It is recommended to rework to the native calls.
+ </p>
+ <p>
   Skip to <a href="../code/sf_regexp.prg/cls.sf_regexp.htm#cls.SF_RegExp" title="Skip to class SF_RegExp">SF_RegExp class</a> to get more documentation.
  </p>
-<hr /><i>&copy; 2023/05/09 Lutz Scheffler Software Ingenieurbüro</i>
+<hr /><i>&copy; 2023/05/10 Lutz Scheffler Software Ingenieurbüro</i>
 </body></html>

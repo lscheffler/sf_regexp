@@ -11,22 +11,23 @@
 <link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
 <link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
 <script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+<script src="../../repository/pdm_ab.js" language="JavaScript" type="text/javascript"></script>
 </head>
 <body>
 <div class="diaxp_mhead">Main Program</div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
 Create the Library for the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.htm#cls.SF_RegExp" title="Skip to class SF_RegExp">SF_RegExp</a> object to expose the DotNet - Regexp to VFP.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6M21A8YH0">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M30QJORH">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     SF_REGEXP
    </div>
    <div class="Para">
-    ([<a href="#_6M21A8YH1">tcPathTo_SF_RegExp</a>])
+    ([<a href="#_6M30QJORI">tcPathTo_SF_RegExp</a>])
    </div>
    <div style="clear: both"></div>
   </div><!-- Colour End -->
@@ -38,7 +39,7 @@ Create the Library for the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
   </span>
   <dl class="DIAMP_PDM_AB_Params_List">
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M21A8YH1" name="_6M21A8YH1">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30QJORI" name="_6M30QJORI">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tcPathTo_SF_RegExp</span></span>
 
     </a>
@@ -74,7 +75,7 @@ Create the Library for the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6M21A8YH0" name="_6M21A8YH0">
+    <a id="_6M30QJORH" name="_6M30QJORH">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">Object</span>
@@ -100,14 +101,14 @@ If the class fails to start wwDotnetBridge or to load the Assembly, it will retu
  </div><!-- SeeAlso End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_P1',-1);" class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Main Program" id="IMG_SP_P1" />
   <span onclick="ExpandSC('SP_P1',-1);" class="SCCaption"><a name="pm.main program">Source Code</a></span>
   <div ondblclick="ExpandSC('SP_P1',-1);" class="SCE" style="display: none;" id="TX_SP_P1">
 <!-- Code Begin -->
-<pre class="PDMCODE PDMNor" ><span class='PDMOper'>#</span><span class='PDMRes'>DEFINE</span> <span class='PDMVar'>dcRegExpVerNo</span> <span class='PDMStr'>"1.3.0"</span>
+<pre class="PDMCODE PDMNor" ><span class='PDMOper'>#</span><span class='PDMRes'>DEFINE</span> <span class='PDMVar'>dcRegExpVerNo</span> <span class='PDMStr'>"1.3.1"</span>
 <span class='PDMRes'>LPARAMETERS</span><span class='PDMOper'>;</span>
  <span class='PDMVar'>tcPathTo_wwDotnetBridge</span>
 

@@ -1,6 +1,6 @@
 # ![](content/home.png "Home") SF RegExp
 Wrapper for DotNet Regexp   
-**Version 1.3.000, 2023-05-09**   
+**Version 1.3.001, 2023-05-10**   
 A simple class to allow easy access to the DotNet RegExp class.
 
 ---
@@ -22,6 +22,7 @@ The problems this project tries to solve:
 - Hiding the DotNet access via wwDotNetBridge
 - Allow to access (parts) of the DotNet methods overloaded
 - Working with the results (matches) in a VFP way
+- Allow to reuse old VBasic code as good as possible.The Execute method returns a collection like VBasic, with the exception of Index starting with 1.
 
 ---
 ### Requirements
@@ -54,4 +55,4 @@ See [changes](https://github.com/lscheffler/sf_regexp/blob/master/content/change
 See [How to contribute to SF RegExp](https://github.com/lscheffler/sf_regexp/blob/master/.github/CONTRIBUTING.md) for details on how to help with this project.
 
 ----
-Last changed: _2023/05/09_ ![Powered by VFPX](https://github.com/lscheffler/sf_regexp/blob/master/content/vfpxpoweredby_alternative.gif)
+Last changed: _2023/05/10_ ![Powered by VFPX](https://github.com/lscheffler/sf_regexp/blob/master/content/vfpxpoweredby_alternative.gif)

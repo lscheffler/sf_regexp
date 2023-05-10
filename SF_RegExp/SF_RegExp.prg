@@ -1,4 +1,4 @@
-#DEFINE dcRegExpVerNo "1.3.0"
+#DEFINE dcRegExpVerNo "1.3.1"
 LPARAMETERS;
  tcPathTo_wwDotnetBridge
 
@@ -9,7 +9,7 @@ DEFINE CLASS SF_RegExp AS SESSION
 *PRIVATE
  PROTECTED rnOffset  			&& Internal, string offset to a start string VFP like
  PROTECTED roRegExp 			&& Internal, reference to the C# DotNet wrapper.
- rnOffset = 1					
+ rnOffset = 1
  roRegExp = .NULL.
 
 *Return FoxObjects instead of DotNet ones (slower)
@@ -284,31 +284,38 @@ DEFINE CLASS SF_RegExp AS SESSION
  PROCEDURE Execute		&& Wrapper for VBasic RegExp Execute method
   LPARAMETERS;
    tcString
- 
+
   LOCAL;
    llAutoExpandCaptures AS BOOLEAN,;
    llAutoExpandGroups   AS BOOLEAN,;
    llReturnFoxObjects   AS BOOLEAN,;
+   lnMatch              AS NUMBER,;
    loBridge             AS OBJECT,;
-   lvReturn             AS VARIANT
- 
+   loMatch              AS OBJECT,;
+   loMatches            AS OBJECT
+
   llReturnFoxObjects   = THIS.ReturnFoxObjects
   llAutoExpandGroups   = THIS.AutoExpandGroups
   llAutoExpandCaptures = THIS.AutoExpandCaptures
- 
+
   THIS.ReturnFoxObjects   = .T.
   THIS.AutoExpandGroups   = .F.
   THIS.AutoExpandCaptures = .F.
- 
-  lvReturn = THIS.Matches(m.tcString)
- 
+
+  loMatches = THIS.Matches(m.tcString)
+
   THIS.ReturnFoxObjects   = m.llReturnFoxObjects
   THIS.AutoExpandGroups   = m.llAutoExpandGroups
   THIS.AutoExpandCaptures = m.llAutoExpandCaptures
- 
-  RETURN m.lvReturn
+
+  FOR lnMatch = 1 TO m.loMatches.COUNT
+   loMatch = loMatches.ITEM(m.lnMatch)
+   ADDPROPERTY(m.loMatch,"FirstIndex",  m.loMatch.INDEX - 1)
+  ENDFOR &&lnMatch
+
+  RETURN m.loMatches
  ENDPROC &&UnEscape_Like
- 
+
  PROCEDURE Fill_Matches		&& Rebuild the Matches object returned by DotNet to VFP Collections object
   LPARAMETERS;
    toMatches,;
@@ -322,7 +329,7 @@ DEFINE CLASS SF_RegExp AS SESSION
   loMatches = CREATEOBJECT("Collection")
   FOR lnMatch = 0 TO m.toMatches.COUNT-1
 *   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroups,m.tlAutoExpandCaptures,m.lnMatch=0))
-   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroups,m.tlAutoExpandCaptures,.t.))
+   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroups,m.tlAutoExpandCaptures,.T.))
   ENDFOR &&lnMatch
 
   RETURN m.loMatches
@@ -755,55 +762,55 @@ DEFINE CLASS SF_RegExp AS SESSION
  PROCEDURE Show_Unwind		&& Expand to a Matches or Match object for to show all data in the object
   LPARAMETERS;
    toMatches
- 
+
   LOCAL;
    lcReturn  AS STRING,;
    llMatches AS INTEGER
- 
- *  SET STEP ON
- 
+
+*  SET STEP ON
+
   llMatches = .T.
   TRY
     =m.toMatches.COUNT
    CATCH
     llMatches = .F.
   ENDTRY
- 
+
   IF m.llMatches THEN
- *Matches
+*Matches
    lcReturn = "Matches "
    IF PEMSTATUS(m.toMatches,"tag",5) THEN
- *VFP object
+*VFP object
     lcReturn =  "Expanding VFP " + m.lcReturn + 0h0D0A + THIS.Unwind_Matches_V(m.toMatches)
    ELSE  &&PEMSTATUS(m.toMatches,"tag",5)
- *DotNet object
+*DotNet object
     lcReturn =  "Expanding DotNet " + m.lcReturn + "Matches" + 0h0D0A + THIS.Unwind_Matches(m.toMatches)
    ENDIF &&PEMSTATUS(m.toMatches,"tag",5)   ELSE  &&m.llMatches
- 
+
   ELSE  &&m.llMatches
- *Matches 
+*Matches 
    lcReturn = "Match "
    IF PEMSTATUS(m.toMatches,"value",5) THEN
- *VFP object
+*VFP object
     lcReturn =  "Expanding VFP " + m.lcReturn + 0h0D0A + THIS.Unwind_Match_V(m.toMatches)
    ELSE  &&PEMSTATUS(m.toMatches,"value",5)
- *DotNet object
+*DotNet object
     lcReturn =  "Expanding DotNet " + m.lcReturn + 0h0D0A + THIS.Unwind_Match(m.toMatches)
    ENDIF &&PEMSTATUS(m.toMatches,"value",5)
   ENDIF &&m.llMatches
- 
+
   RETURN m.lcReturn
- 
+
  ENDPROC &&Show_Unwind
-   
+
  PROTECTED PROCEDURE Unwind_Matches   && Show all data for a matches object, DotNet object
   LPARAMETERS;
    toMatches
 
   LOCAL;
-   lcReturn   AS STRING,;
-   lnMatch    AS NUMBER,;
-   loMatch    AS OBJECT
+   lcReturn AS STRING,;
+   lnMatch  AS NUMBER,;
+   loMatch  AS OBJECT
 
   lcReturn = "Matches:  " + TRIM(PADR(m.toMatches.COUNT,11)) + 0h0D0A
   FOR lnMatch = 0 TO m.toMatches.COUNT-1
@@ -821,11 +828,11 @@ DEFINE CLASS SF_RegExp AS SESSION
    toMatches
 
   LOCAL;
-   lcReturn   AS STRING,;
-   lnMatch    AS NUMBER,;
-   loMatch    AS OBJECT
+   lcReturn AS STRING,;
+   lnMatch  AS NUMBER,;
+   loMatch  AS OBJECT
 
-   lcReturn = "Matches:  " + TRIM(PADR(m.toMatches.COUNT,11)) + 0h0D0A
+  lcReturn = "Matches:  " + TRIM(PADR(m.toMatches.COUNT,11)) + 0h0D0A
   FOR lnMatch = 1 TO m.toMatches.COUNT
    loMatch = toMatches.ITEM(m.lnMatch)
 
@@ -852,42 +859,42 @@ DEFINE CLASS SF_RegExp AS SESSION
   lcReturn = ""
   SET TEXTMERGE ON NOSHOW
   SET TEXTMERGE TO MEMVAR m.lcReturn
-   \\ value:  "<<THIS.Get_Value(m.toMatch)>>"
-   \\,at: <<THIS.Get_Index(m.toMatch)>>
-   \\,len: <<THIS.Get_Length(m.toMatch)>>
-   \\, success  <<THIS.Get_Success(m.toMatch)>>
-   \\, name: <<THIS.Get_Name(m.toMatch)>>
+  \\ value:  "<<THIS.Get_Value(m.toMatch)>>"
+  \\,at: <<THIS.Get_Index(m.toMatch)>>
+  \\,len: <<THIS.Get_Length(m.toMatch)>>
+  \\, success  <<THIS.Get_Success(m.toMatch)>>
+  \\, name: <<THIS.Get_Name(m.toMatch)>>
 
   loCaptures = THIS.Get_Captures(m.toMatch)
-   \  MCaptures:  <<m.loCaptures.COUNT>>
+  \  MCaptures:  <<m.loCaptures.COUNT>>
   FOR lnCapture = 0 TO m.loCaptures.COUNT-1
    loCapture = loCaptures.ITEM(m.lnCapture)
-    \   MCapture  <<m.lnCapture>>; value: "<<THIS.Get_Value(m.loCapture)>>"
-    \\,at: <<THIS.Get_Index(m.loCapture)>>
-    \\,len: <<THIS.Get_Length(m.loCapture)>>
-    \\, success  <<THIS.Get_Success(m.loCapture)>>
-    \\, Name  <<THIS.Get_Name(m.loCapture)>>
+   \   MCapture  <<m.lnCapture>>; value: "<<THIS.Get_Value(m.loCapture)>>"
+   \\,at: <<THIS.Get_Index(m.loCapture)>>
+   \\,len: <<THIS.Get_Length(m.loCapture)>>
+   \\, success  <<THIS.Get_Success(m.loCapture)>>
+   \\, Name  <<THIS.Get_Name(m.loCapture)>>
   ENDFOR &&lnCapture
 
   loGroups = THIS.Get_Groups(m.toMatch)
    \  Groups:  <<m.loGroups.COUNT>>
   FOR lnGroup = 0 TO m.loGroups.COUNT-1
    loGroup = loGroups.ITEM(m.lnGroup)
-    \   Group  <<m.lnGroup>>; value: "<<THIS.Get_Value(m.loGroup)>>"
-    \\,at: <<THIS.Get_Index(m.loGroup)>>
-    \\,len: <<THIS.Get_Length(m.loGroup)>>
-    \\, success  <<THIS.Get_Success(m.loGroup)>>
-    \\, name  <<THIS.Get_Name(m.loGroup)>>
+   \   Group  <<m.lnGroup>>; value: "<<THIS.Get_Value(m.loGroup)>>"
+   \\,at: <<THIS.Get_Index(m.loGroup)>>
+   \\,len: <<THIS.Get_Length(m.loGroup)>>
+   \\, success  <<THIS.Get_Success(m.loGroup)>>
+   \\, name  <<THIS.Get_Name(m.loGroup)>>
    loCaptures = THIS.Get_Captures(m.loGroup)
-    \    Captures:  <<m.loCaptures.COUNT>>
+   \    Captures:  <<m.loCaptures.COUNT>>
    FOR lnCapture = 0 TO m.loCaptures.COUNT-1
     loCapture = loCaptures.ITEM(m.lnCapture)
-     \     Capture  <<m.lnCapture>>; value: "<<THIS.Get_Value(m.loCapture)>>"
-     \\,at: <<THIS.Get_Index(m.loCapture)>>
-     \\,len: <<THIS.Get_Length(m.loCapture)>>
+    \     Capture  <<m.lnCapture>>; value: "<<THIS.Get_Value(m.loCapture)>>"
+    \\,at: <<THIS.Get_Index(m.loCapture)>>
+    \\,len: <<THIS.Get_Length(m.loCapture)>>
     IF m.lnGroup =0 THEN
-      \\, success  <<THIS.Get_Success(m.loCapture)>>
-      \\, name  <<THIS.Get_Name(m.loCapture)>>
+     \\, success  <<THIS.Get_Success(m.loCapture)>>
+     \\, name  <<THIS.Get_Name(m.loCapture)>>
     ENDIF &&m.lnGroup =0
    ENDFOR &&lnCapture
   ENDFOR &&lnGroup
@@ -901,19 +908,20 @@ DEFINE CLASS SF_RegExp AS SESSION
  PROTECTED PROCEDURE Unwind_Match_V   && Show all data for a match object, VFP object
   LPARAMETERS;
    toMatch
- 
+
   LOCAL;
-   lcReturn   AS STRING,;
-   lnCapture  AS NUMBER,;
-   lnGroup    AS NUMBER,;
-   loCapture  AS OBJECT,;
-   loCaptures AS OBJECT,;
-   loGroup    AS OBJECT,;
-   loGroups   AS OBJECT
-  LOCAL llWitchCaptures,llWitchGroups,llWitchMatchCaptures
- 
- 
- *SET STEP ON 
+   lcReturn             AS STRING,;
+   llWitchCaptures      AS BOOLEAN,;
+   llWitchGroups        AS BOOLEAN,;
+   llWitchMatchCaptures AS BOOLEAN,;
+   lnCapture            AS NUMBER,;
+   lnGroup              AS NUMBER,;
+   loCapture            AS OBJECT,;
+   loCaptures           AS OBJECT,;
+   loGroup              AS OBJECT,;
+   loGroups             AS OBJECT
+
+*SET STEP ON 
   llWitchGroups        = .T.
   llWitchCaptures      = .T.
   llWitchMatchCaptures = .T.
@@ -922,7 +930,7 @@ DEFINE CLASS SF_RegExp AS SESSION
    CATCH
     llWitchGroups = .F.
   ENDTRY
- 
+
   TRY
     = m.toMatch.Captures.TAG
    CATCH
@@ -937,72 +945,75 @@ DEFINE CLASS SF_RegExp AS SESSION
      llWitchCaptures = .F.
     ENDIF &&m.llWitchGroups
   ENDTRY
- 
+
   lcReturn = ""
   SET TEXTMERGE ON NOSHOW
   SET TEXTMERGE TO MEMVAR m.lcReturn
-     \\ value:  "<<m.toMatch.Value>>"
-     \\,at: <<m.toMatch.Index>>
-     \\,len: <<m.toMatch.Length>>
-     \\, success  <<m.toMatch.Success>>
-     \\, name: <<m.toMatch.Name>>
- 
+  \\ value:  "<<m.toMatch.Value>>"
+  \\,at: <<m.toMatch.Index>>
+  IF PEMSTATUS(m.toMatch,"FirstIndex",5) THEN
+   \\ (FirstIndex: <<m.toMatch.FirstIndex>>)
+  ENDIF &&PEMSTATUS(toMatch,"FirstIndex",5)
+  \\,len: <<m.toMatch.Length>>
+  \\, success  <<m.toMatch.Success>>
+  \\, name: <<m.toMatch.Name>>
+
   IF m.llWitchMatchCaptures THEN
    loCaptures = m.toMatch.Captures
-     \  MCaptures:  <<m.loCaptures.COUNT>>
+   \  MCaptures:  <<m.loCaptures.COUNT>>
    FOR lnCapture = 1TO m.loCaptures.COUNT
     loCapture = loCaptures.ITEM(m.lnCapture)
-      \   MCapture  <<m.lnCapture>>; value: "<<m.loCapture.Value>>"
-      \\,at: <<m.loCapture.Index>>
-      \\,len: <<m.loCapture.Length>>
-      \\, success  <<m.loCapture.Success>>
-      \\, Name  <<m.loCapture.Name>>
+    \   MCapture  <<m.lnCapture>>; value: "<<m.loCapture.Value>>"
+    \\,at: <<m.loCapture.Index>>
+    \\,len: <<m.loCapture.Length>>
+    \\, success  <<m.loCapture.Success>>
+    \\, Name  <<m.loCapture.Name>>
    ENDFOR &&lnCapture
- 
+
   ELSE  &&m.llWitchMatchCaptures
-     \  MCaptures:  not expanded
+   \  MCaptures:  not expanded
   ENDIF &&m.llWitchMatchCaptures
- 
+
   IF m.llWitchGroups THEN
    loGroups = m.toMatch.Groups
-     \  Groups:  <<m.loGroups.COUNT>>
+   \  Groups:  <<m.loGroups.COUNT>>
    FOR lnGroup = 1TO m.loGroups.COUNT
     loGroup = loGroups.ITEM(m.lnGroup)
-      \   Group  <<m.lnGroup>>; value: "<<m.loGroup.Value>>"
-      \\,at: <<m.loGroup.Index>>
-      \\,len: <<m.loGroup.Length>>
-      \\, success  <<m.loGroup.Success>>
-      \\, name  <<m.loGroup.Name>>
- 
+    \   Group  <<m.lnGroup>>; value: "<<m.loGroup.Value>>"
+    \\,at: <<m.loGroup.Index>>
+    \\,len: <<m.loGroup.Length>>
+    \\, success  <<m.loGroup.Success>>
+    \\, name  <<m.loGroup.Name>>
+
     IF m.llWitchCaptures THEN
      loCaptures = m.loGroup.Captures
-      \    Captures:  <<m.loCaptures.COUNT>>
+     \    Captures:  <<m.loCaptures.COUNT>>
      FOR lnCapture = 1 TO m.loCaptures.COUNT
       loCapture = loCaptures.ITEM(m.lnCapture)
-       \     Capture  <<m.lnCapture>>; value: "<<m.loCapture.Value>>"
-       \\,at: <<m.loCapture.Index>>
-       \\,len: <<m.loCapture.Length>>
+      \     Capture  <<m.lnCapture>>; value: "<<m.loCapture.Value>>"
+      \\,at: <<m.loCapture.Index>>
+      \\,len: <<m.loCapture.Length>>
       IF m.lnGroup =0 THEN
-        \\, success  <<.loCapture.Success>>
-        \\, name  <<m.loCapture.Name>>
+       \\, success  <<.loCapture.Success>>
+       \\, name  <<m.loCapture.Name>>
       ENDIF &&m.lnGroup =0
      ENDFOR &&lnCapture
- 
+
     ELSE  &&m.llWitchCaptures
-      \    Captures:  not expanded
+     \    Captures:  not expanded
     ENDIF &&m.llWitchCaptures
    ENDFOR &&lnGroup
- 
+
   ELSE  &&m.llWitchGroups
-    \  Groups:  not expanded
+   \  Groups:  not expanded
   ENDIF &&m.llWitchGroups
- 
+
   SET TEXTMERGE TO
   SET TEXTMERGE OFF
- 
+
   RETURN m.lcReturn
- 
+
  ENDPROC &&Unwind_Match_V
 */Helpers to show the contents of a Match or Matches
- 
+
 ENDDEFINE &&SF_RegExp As Session

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
 <link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
 <script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+<script src="../../repository/pdm_ab.js" language="JavaScript" type="text/javascript"></script>
 </head>
 <body>
 <div class="diaxp_mhead">Execute Method</div>
@@ -24,18 +25,18 @@
 </table>
 </div>
 <div class="diaxp_mbody">
-<!-- Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
+<!-- Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
  <div class="PDM_AB_Descr"><!-- Descr Begin -->
-Wrapper for the DotNet RegExp Matches method, for easy replacem,ent of VBasics <em>Execute</em> method.
+Wrapper for the DotNet RegExp Matches method, for easy replacement of VBasics <em>Execute</em> method.
  </div><!-- Descr End -->
 
  <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
   <div class="SColor">
-   <div class="RetVal"><a href="#_6M21A8YMT">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+   <div class="RetVal"><a href="#_6M30QJOX8">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
     Object.Execute
    </div>
    <div class="Para">
-    (<a href="#_6M21A8YMU">tcInput</a>)
+    (<a href="#_6M30QJOX9">tcInput</a>)
    </div>
    <div style="clear: both"></div>
   </div><!-- Colour End -->
@@ -47,7 +48,7 @@ Wrapper for the DotNet RegExp Matches method, for easy replacem,ent of VBasics <
   </span>
   <dl class="DIAMP_PDM_AB_Params_List">
    <dt class="dt_">
-    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M21A8YMU" name="_6M21A8YMU">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30QJOX9" name="_6M30QJOX9">
      <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tcInput</span></span>
 
     </a>
@@ -79,7 +80,7 @@ Wrapper for the DotNet RegExp Matches method, for easy replacem,ent of VBasics <
  <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
   <div>
    <span class="PDM_AB_Head">
-    <a id="_6M21A8YMT" name="_6M21A8YMT">
+    <a id="_6M30QJOX8" name="_6M30QJOX8">
      Return value
     </a>
    </span> <span class="RetVal_Ttype">Object</span>
@@ -107,9 +108,38 @@ and <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpan
 <p>
 Note, the index runs from 1 to count, not like VBasic from 0 to Count-1.
 </p>
+<p>
+An additional <em>FirstIndex</em> property is added to each Match object for compatibility with VBasic.
+In difference to Index, this start the string at 0.
+This is only available with Execute method.
+</p>
 
   </div>
  </div><!-- Remarks End -->
+
+ <div class="PDM_AB_Other"><!-- Others Begin -->
+<br />
+   <!-- Note -->
+
+   <div class="PDM_AB_nInformation">
+    <div class="Block_Picture">
+     <img class="NotePicture" title="Usage" src="../../repository/info.gif">
+    </div>
+    <div class="Block_Text">
+This method is intended to allow a step by step rework of code. It should be replaced with the respecting<br />
+<ul><br />
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.ismatch.htm" title="Skip to method IsMatch">IsMatch</a>,</li><br />
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.match.htm" title="Skip to method Match">Match</a> or</li><br />
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a></li><br />
+</ul><br />
+method.<br />
+
+    </div><!-- end of note text -->
+    <div style="clear: both"></div>
+   </div><!-- end of note -->
+<br />
+
+ </div><!-- Others End -->
 
  <div class="PDM_AB_SeeAlso"><!-- SeeAlso Begin -->
   <span class="PDM_AB_Head">
@@ -118,6 +148,8 @@ Note, the index runs from 1 to count, not like VBasic from 0 to Count-1.
   <div class="PDM_AB_Body">
 <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a>&nbsp;|
 <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.ismatch.htm" title="Skip to method IsMatch">IsMatch</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.match.htm" title="Skip to method Match">Match</a>&nbsp;|
 <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a>&nbsp;|
 <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>
   </div><!-- Body End -->
@@ -127,7 +159,7 @@ Note, the index runs from 1 to count, not like VBasic from 0 to Count-1.
  </div><!-- SeeAlso End -->
 
 
-<!-- /Created with _diamp_pdm_ab by Agnes Beste    09.05.2023 21:34 -->
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 12:23 -->
 
  <div class="SC">
   <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Execute" id="IMG_SP_1" />
@@ -141,8 +173,10 @@ Note, the index runs from 1 to count, not like VBasic from 0 to Count-1.
    <span class='PDMVar'>llAutoExpandCaptures</span> <span class='PDMRes'>AS</span> <span class='PDMVar'>BOOLEAN</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
    <span class='PDMVar'>llAutoExpandGroups</span>   <span class='PDMRes'>AS</span> <span class='PDMVar'>BOOLEAN</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
    <span class='PDMVar'>llReturnFoxObjects</span>   <span class='PDMRes'>AS</span> <span class='PDMVar'>BOOLEAN</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>lnMatch</span>              <span class='PDMRes'>AS</span> <span class='PDMRes'>NUMBER</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
    <span class='PDMVar'>loBridge</span>             <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
-   <span class='PDMVar'>lvReturn</span>             <span class='PDMRes'>AS</span> <span class='PDMVar'>VARIANT</span>
+   <span class='PDMVar'>loMatch</span>              <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>loMatches</span>            <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span>
 
   <span class='PDMVar'>llReturnFoxObjects</span>   <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>ReturnFoxObjects</span>
   <span class='PDMVar'>llAutoExpandGroups</span>   <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandGroups</span>
@@ -152,13 +186,18 @@ Note, the index runs from 1 to count, not like VBasic from 0 to Count-1.
   <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandGroups</span>   <span class='PDMOper'>=</span> <span class='PDMLit'>.F.</span>
   <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandCaptures</span> <span class='PDMOper'>=</span> <span class='PDMLit'>.F.</span>
 
-  <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Matches</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcString</span><span class='PDMOper'>)</span>
+  <span class='PDMVar'>loMatches</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Matches</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcString</span><span class='PDMOper'>)</span>
 
   <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>ReturnFoxObjects</span>   <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>llReturnFoxObjects</span>
   <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandGroups</span>   <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>llAutoExpandGroups</span>
   <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandCaptures</span> <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>llAutoExpandCaptures</span>
 
-  <span class='PDMRes'>RETURN</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lvReturn</span></pre>
+  <span class='PDMRes'>FOR</span> <span class='PDMVar'>lnMatch</span> <span class='PDMOper'>=</span> <span class='PDMLit'>1</span> <span class='PDMRes'>TO</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span>
+   <span class='PDMVar'>loMatch</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>ITEM</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnMatch</span><span class='PDMOper'>)</span>
+   <span class='PDMRes'>ADDPROPERTY</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>,</span><span class='PDMStr'>"FirstIndex"</span><span class='PDMOper'>,</span>  <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>.</span><span class='PDMRes'>INDEX</span> <span class='PDMOper'>-</span> <span class='PDMLit'>1</span><span class='PDMOper'>)</span>
+  <span class='PDMRes'>ENDFOR</span> <span class='PDMCom'>&amp;&amp;lnMatch</span>
+
+  <span class='PDMRes'>RETURN</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatches</span></pre>
  <!-- Code End -->
   </div>
  </div>
@@ -166,7 +205,7 @@ Note, the index runs from 1 to count, not like VBasic from 0 to Count-1.
 <div class="diaxp_mfoot"> <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
   <hr />
   <div class="PDM_AB_Body">
-<i>&copy; 09.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+<i>&copy; 10.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
   </div><!-- Body End -->
  </div><!-- Footer End -->
 </div>
