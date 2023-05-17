@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<title>Method UnEscape_Like of class SF_RegExp</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
+<meta name="Generator" content="Project Documenting Machine" />
+<meta name="Version" content="1.3.3" />
+<link rel="stylesheet" href="../../css/foxw.css" type="text/css" />
+<link rel="stylesheet" href="../../css/sc.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/diamp_pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
+<script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+</head>
+<body>
+<div class="diaxp_mhead">UnEscape_Like Method</div>
+<div class="diaxp_mbody_class">
+
+<table class="clear_table">
+ <tbody>
+  <tr><td>Class: </td><td><a href="cls.sf_regexp.htm" title="Skip to class sf_regexp">SF_RegExp</a></td></tr>
+  <tr><td>Description:</td><td>Interface to the DotNet UnEscape method, with special operation to keep LIKE function</td></tr>
+ </tbody>
+</table>
+</div>
+<div class="diaxp_mbody">
+<!-- Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 16:14 -->
+ <div class="PDM_AB_Descr"><!-- Descr Begin -->
+Converts any escaped characters in the input string, but keep the wildcard funtion of <span class="PDMEXPR PDMNor" ><span class='PDMRes'>Like</span></span>
+.
+ </div><!-- Descr End -->
+
+ <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
+  <div class="SColor">
+   <div class="RetVal"><a href="#_6M30YST6L">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+    Object.UnEscape_Like
+   </div>
+   <div class="Para">
+    (<a href="#_6M30YST6M">tvValue</a>)
+   </div>
+   <div style="clear: both"></div>
+  </div><!-- Colour End -->
+ </div><!-- Syntax End -->
+
+ <div class="DIAMP_PDM_AB_Params"><!-- Parameters Begin -->
+  <span class="PDM_AB_Head">
+   Parameter
+  </span>
+  <dl class="DIAMP_PDM_AB_Params_List">
+   <dt class="dt_">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30YST6M" name="_6M30YST6M">
+     <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tvValue</span></span>
+
+    </a>
+   </dt>
+   <dd class="dd_">
+    <span class="Params_Short">
+     The string (usually a Pattern) to unescape
+    </span>
+    <table class="Params_Info">
+     <colgroup>
+      <col class="ColumnValue" />
+      <col class="ColumnData" />
+     </colgroup>
+     <tbody>
+      <tr>
+       <td class="CellValue">Type</td>
+       <td class="CellData">Character</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Direction</td>
+       <td class="CellData">Input</td>
+      </tr>
+     </tbody>
+    </table>
+   </dd>
+  </dl>
+ </div><!-- Parameters End -->
+
+ <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
+  <div>
+   <span class="PDM_AB_Head">
+    <a id="_6M30YST6L" name="_6M30YST6L">
+     Return value
+    </a>
+   </span> <span class="RetVal_Ttype">String</span>
+  </div>
+  <div class="PDM_AB_Body">
+The string unescaped.
+  </div>
+ </div><!-- Returns End -->
+
+ <div class="PDM_AB_Remarks"><!-- Remarks Begin -->
+  <span class="PDM_AB_Head">
+   Remarks
+  </span>
+  <div class="PDM_AB_Body">
+
+
+<p>
+ Just like RegExp UnEscape,
+ but alters <span class="PDMEXPR PDMNor" ><span class='PDMStr'>".*"</span></span>
+ and <span class="PDMEXPR PDMNor" ><span class='PDMStr'>"."</span></span>
+ into <span class="PDMEXPR PDMNor" ><span class='PDMStr'>"*?"</span></span>
+
+</p>
+<p>
+ Note the restrictions in UnEscape.
+</p>
+
+  </div>
+ </div><!-- Remarks End -->
+
+
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 16:14 -->
+
+ <div class="SC">
+  <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure UnEscape_Like" id="IMG_SP_1" />
+  <span ondblclick="ExpandSC('SP_1',-1);" class="SCCaption"><a name="SF_RegExp">Source Code</a></span>
+  <div ondblclick="ExpandSC('SP_1',-1);" class="SCE" style="display: none;" id="TX_SP_1">
+<!-- Code Begin -->
+<pre class="PDMCODE PDMNor" >  <span class='PDMRes'>LPARAMETERS</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>tvValue</span>
+
+  <span class='PDMRes'>LOCAL</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>lvReturn</span> <span class='PDMRes'>AS</span> <span class='PDMRes'>STRING</span>
+
+  <span class='PDMVar'>lvReturn</span> <span class='PDMOper'>=</span> <span class='PDMStr'>""</span><span class='PDMOper'>+</span><span class='PDMRes'>STRTRAN</span><span class='PDMOper'>(</span><span class='PDMRes'>STRTRAN</span><span class='PDMOper'>(</span><span class='PDMRes'>STRTRAN</span><span class='PDMOper'>(</span><span class='PDMRes'>STRTRAN</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tvValue</span><span class='PDMOper'>,</span><span class='PDMStr'>".*"</span><span class='PDMOper'>,</span><span class='PDMStr'>"\*"</span><span class='PDMOper'>)</span><span class='PDMOper'>,</span><span class='PDMStr'>"\."</span><span class='PDMOper'>,</span><span class='PDMVar'>0h00</span><span class='PDMOper'>)</span><span class='PDMOper'>,</span><span class='PDMStr'>"."</span><span class='PDMOper'>,</span><span class='PDMStr'>"\?"</span><span class='PDMOper'>)</span><span class='PDMOper'>,</span><span class='PDMVar'>0h00</span><span class='PDMOper'>,</span><span class='PDMStr'>"\."</span><span class='PDMOper'>)</span>
+  <span class='PDMRes'>RETURN</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>roRegExp</span><span class='PDMOper'>.</span><span class='PDMVar'>UnEscape</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lvReturn</span><span class='PDMOper'>)</span></pre>
+ <!-- Code End -->
+  </div>
+ </div>
+</div>
+<div class="diaxp_mfoot"> <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
+  <hr />
+  <div class="PDM_AB_Body">
+<i>&copy; 03.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+  </div><!-- Body End -->
+ </div><!-- Footer End -->
+</div>
+<script language="JavaScript" type="text/javascript">
+lo=document.getElementById("TX_SP_1");
+lo.XType="SourceCode";
+lo.Dir="../../imgs/";
+
+
+</script>
+</body>
+</html>

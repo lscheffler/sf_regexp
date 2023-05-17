@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<title>Procedure Main Program</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
+<meta name="Generator" content="Project Documenting Machine" />
+<meta name="Version" content="1.3.3" />
+<link rel="stylesheet" href="../../css/foxw.css" type="text/css" />
+<link rel="stylesheet" href="../../css/sc.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/diamp_pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
+<script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+</head>
+<body>
+<div class="diaxp_mhead">Main Program</div>
+<div class="diaxp_mbody">
+<!-- Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 16:14 -->
+ <div class="PDM_AB_Descr"><!-- Descr Begin -->
+Create the Library for the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.htm#cls.SF_RegExp" title="Skip to class SF_RegExp">SF_RegExp</a> object to expose the DotNet - Regexp to VFP.
+ </div><!-- Descr End -->
+
+ <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
+  <div class="SColor">
+   <div class="RetVal"><a href="#_6M30YST13">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+    SF_REGEXP
+   </div>
+   <div class="Para">
+    ([<a href="#_6M30YST14">tcPathTo_SF_RegExp</a>])
+   </div>
+   <div style="clear: both"></div>
+  </div><!-- Colour End -->
+ </div><!-- Syntax End -->
+
+ <div class="DIAMP_PDM_AB_Params"><!-- Parameters Begin -->
+  <span class="PDM_AB_Head">
+   Parameter
+  </span>
+  <dl class="DIAMP_PDM_AB_Params_List">
+   <dt class="dt_">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6M30YST14" name="_6M30YST14">
+     <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tcPathTo_SF_RegExp</span></span>
+
+    </a>
+   </dt>
+   <dd class="dd_">
+    <span class="Params_Short">
+     The path to wwDotnetBridge and the assembly SF_RegExp.dll
+    </span>
+    <table class="Params_Info">
+     <colgroup>
+      <col class="ColumnValue" />
+      <col class="ColumnData" />
+     </colgroup>
+     <tbody>
+      <tr>
+       <td class="CellValue">Type</td>
+       <td class="CellData">Character</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Direction</td>
+       <td class="CellData">Input</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Optional</td>
+      <td class="CellData">&nbsp;</td>
+      </tr>
+     </tbody>
+    </table>
+   </dd>
+  </dl>
+ </div><!-- Parameters End -->
+
+ <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
+  <div>
+   <span class="PDM_AB_Head">
+    <a id="_6M30YST13" name="_6M30YST13">
+     Return value
+    </a>
+   </span> <span class="RetVal_Ttype">Object</span>
+  </div>
+  <div class="PDM_AB_Body">
+An object of the SF_RegExp class.
+If the class fails to start wwDotnetBridge or to load the Assembly, it will return <span class="PDMEXPR PDMNor" ><span class='PDMLit'>.NULL.</span></span>
+.
+  </div>
+ </div><!-- Returns End -->
+
+ <div class="PDM_AB_SeeAlso"><!-- SeeAlso Begin -->
+  <span class="PDM_AB_Head">
+   See also
+  </span>
+  <div class="PDM_AB_Body">
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.init.htm" title="Skip to method Init">Init</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.htm#cls.SF_RegExp" title="Skip to class SF_RegExp">SF_RegExp</a>
+  </div><!-- Body End -->
+  <!--- "Applies to" need to be inserted here---->
+  <PlaceAppliesTo_Here />
+  <!--- /"Applies to" need to be inserted here---->
+ </div><!-- SeeAlso End -->
+
+
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    10.05.2023 16:14 -->
+
+ <div class="SC">
+  <img onclick="ExpandSC('SP_P1',-1);" class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Main Program" id="IMG_SP_P1" />
+  <span onclick="ExpandSC('SP_P1',-1);" class="SCCaption"><a name="pm.main program">Source Code</a></span>
+  <div ondblclick="ExpandSC('SP_P1',-1);" class="SCE" style="display: none;" id="TX_SP_P1">
+<!-- Code Begin -->
+<pre class="PDMCODE PDMNor" ><span class='PDMOper'>#</span><span class='PDMRes'>DEFINE</span> <span class='PDMVar'>dcRegExpVerNo</span> <span class='PDMStr'>"1.3.2"</span>
+<span class='PDMRes'>LPARAMETERS</span><span class='PDMOper'>;</span>
+ <span class='PDMVar'>tcPathTo_wwDotnetBridge</span>
+
+<span class='PDMRes'>RETURN</span> <span class='PDMRes'>CREATEOBJECT</span><span class='PDMOper'>(</span><span class='PDMStr'>"SF_RegExp"</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcPathTo_wwDotnetBridge</span><span class='PDMOper'>)</span>
+</pre>
+ <!-- Code End -->
+  </div>
+ </div>
+</div>
+<div class="diaxp_mfoot"> <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
+  <hr />
+  <div class="PDM_AB_Body">
+<i>&copy; 05.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+  </div><!-- Body End -->
+ </div><!-- Footer End -->
+</div>
+<script language="JavaScript" type="text/javascript">
+lo=document.getElementById("TX_SP_P1");
+lo.XType="SourceCode";
+lo.Dir="../../imgs/";
+
+
+</script>
+</body>
+</html>
