@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<title>Method Fill_Matches of class SF_RegExp</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
+<meta name="Generator" content="Project Documenting Machine" />
+<meta name="Version" content="1.3.3" />
+<link rel="stylesheet" href="../../css/foxw.css" type="text/css" />
+<link rel="stylesheet" href="../../css/sc.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/diamp_pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
+<script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+</head>
+<body>
+<div class="diaxp_mhead">Fill_Matches Method</div>
+<div class="diaxp_mbody_class">
+
+<table class="clear_table">
+ <tbody>
+  <tr><td>Class: </td><td><a href="cls.sf_regexp.htm" title="Skip to class sf_regexp">SF_RegExp</a></td></tr>
+  <tr><td>Description:</td><td>Rebuild the Matches object returned by DotNet to VFP Collections object</td></tr>
+ </tbody>
+</table>
+</div>
+<div class="diaxp_mbody">
+<!-- Created with _diamp_pdm_ab by Agnes Beste    17.05.2023 17:42 -->
+ <div class="PDM_AB_Descr"><!-- Descr Begin -->
+Converts a DotNet Matches object into a VFP Collection.
+ </div><!-- Descr End -->
+
+ <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
+  <div class="SColor">
+   <div class="RetVal"><a href="#_6MA11XXWL">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+    Object.Fill_Matches
+   </div>
+   <div class="Para">
+    (<a href="#_6MA11XXWM">toMatches</a>
+     [<wbr />,<a href="#_6MA11XXWN">tlAutoExpandGroups</a>
+     [<wbr />,<a href="#_6MA11XXWO">tlAutoExpandCaptures</a>]])
+   </div>
+   <div style="clear: both"></div>
+  </div><!-- Colour End -->
+ </div><!-- Syntax End -->
+
+ <div class="DIAMP_PDM_AB_Params"><!-- Parameters Begin -->
+  <span class="PDM_AB_Head">
+   Parameter
+  </span>
+  <dl class="DIAMP_PDM_AB_Params_List">
+   <dt class="dt_">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6MA11XXWM" name="_6MA11XXWM">
+     <span class="PDMEXPR PDMNor" ><span class='PDMVar'>toMatches</span></span>
+
+    </a>
+   </dt>
+   <dd class="dd_">
+    <span class="Params_Short">
+     Matches collection
+    </span>
+    <table class="Params_Info">
+     <colgroup>
+      <col class="ColumnValue" />
+      <col class="ColumnData" />
+     </colgroup>
+     <tbody>
+      <tr>
+       <td class="CellValue">Type</td>
+       <td class="CellData">Object</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Direction</td>
+       <td class="CellData">Input</td>
+      </tr>
+     </tbody>
+    </table>
+   </dd>
+   <dt class="dt_">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6MA11XXWN" name="_6MA11XXWN">
+     <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tlAutoExpandGroups</span></span>
+
+    </a>
+   </dt>
+   <dd class="dd_">
+    <span class="Params_Short">
+     Expand Groups in Matches to VFP Collections.
+    </span>
+    <table class="Params_Info">
+     <colgroup>
+      <col class="ColumnValue" />
+      <col class="ColumnData" />
+     </colgroup>
+     <tbody>
+      <tr>
+       <td class="CellValue">Type</td>
+       <td class="CellData">Boolean</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Direction</td>
+       <td class="CellData">Input</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Optional</td>
+      <td class="CellData">&nbsp;</td>
+      </tr>
+     </tbody>
+    </table>
+    <span class="Params_Detail">
+
+ <p>
+  While expanding a Match object of <a class="DIAMP_PDM_AB_Para_Link" href="#_6MA11XXWM">toMatches</a>, expand the Groups into a VFP Collection.
+ </p>
+ <p>
+  If the parameter is false, the DotNet object will be included.
+ </p>
+ 
+    </span>
+   </dd>
+   <dt class="dt_">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6MA11XXWO" name="_6MA11XXWO">
+     <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tlAutoExpandCaptures</span></span>
+
+    </a>
+   </dt>
+   <dd class="dd_">
+    <span class="Params_Short">
+     Expand Captures in Matches and Groups to VFP Collections.
+    </span>
+    <table class="Params_Info">
+     <colgroup>
+      <col class="ColumnValue" />
+      <col class="ColumnData" />
+     </colgroup>
+     <tbody>
+      <tr>
+       <td class="CellValue">Type</td>
+       <td class="CellData">Boolean</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Direction</td>
+       <td class="CellData">Input</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Optional</td>
+      <td class="CellData">&nbsp;</td>
+      </tr>
+     </tbody>
+    </table>
+    <span class="Params_Detail">
+
+ <p>
+  While expanding the first Match object of <a class="DIAMP_PDM_AB_Para_Link" href="#_6MA11XXWM">toMatches</a>, expand the Groups object into a VFP Collection.
+ </p>
+ <p>
+  If <a class="DIAMP_PDM_AB_Para_Link" href="#_6MA11XXWN">tlAutoExpandGroups</a> is true, the expanded Groups will hold expanded Groups object as a VFP Collection.
+ </p>
+ <p>
+  If the parameter is false, the DotNet object will be included.
+ </p>
+ 
+    </span>
+   </dd>
+  </dl>
+ </div><!-- Parameters End -->
+
+ <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
+  <div>
+   <span class="PDM_AB_Head">
+    <a id="_6MA11XXWL" name="_6MA11XXWL">
+     Return value
+    </a>
+   </span> <span class="RetVal_Ttype">Object</span>
+  </div>
+  <div class="PDM_AB_Body">
+The VFP collection.
+  </div>
+ </div><!-- Returns End -->
+
+ <div class="PDM_AB_Remarks"><!-- Remarks Begin -->
+  <span class="PDM_AB_Head">
+   Remarks
+  </span>
+  <div class="PDM_AB_Body">
+
+
+  This method is called by the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a> method,
+  if <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a> is set.
+  <a class="DIAMP_PDM_AB_Para_Link" href="#_6MA11XXWN">tlAutoExpandGroups</a> will follow <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a>,
+  <a class="DIAMP_PDM_AB_Para_Link" href="#_6MA11XXWO">tlAutoExpandCaptures</a> will follow <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a>.
+
+  </div>
+ </div><!-- Remarks End -->
+
+ <div class="PDM_AB_SeeAlso"><!-- SeeAlso Begin -->
+  <span class="PDM_AB_Head">
+   See also
+  </span>
+  <div class="PDM_AB_Body">
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>
+  </div><!-- Body End -->
+  <!--- "Applies to" need to be inserted here---->
+  <PlaceAppliesTo_Here />
+  <!--- /"Applies to" need to be inserted here---->
+ </div><!-- SeeAlso End -->
+
+
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    17.05.2023 17:42 -->
+
+ <div class="SC">
+  <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Fill_Matches" id="IMG_SP_1" />
+  <span ondblclick="ExpandSC('SP_1',-1);" class="SCCaption"><a name="SF_RegExp">Source Code</a></span>
+  <div ondblclick="ExpandSC('SP_1',-1);" class="SCE" style="display: none;" id="TX_SP_1">
+<!-- Code Begin -->
+<pre class="PDMCODE PDMNor" >  <span class='PDMRes'>LPARAMETERS</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>toMatches</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>tlAutoExpandGroups</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>tlAutoExpandCaptures</span>
+
+  <span class='PDMRes'>LOCAL</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>lnMatch</span>   <span class='PDMRes'>AS</span> <span class='PDMRes'>INTEGER</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>loMatches</span> <span class='PDMRes'>AS</span> <span class='PDMRes'>COLLECTION</span>
+
+  <span class='PDMVar'>loMatches</span> <span class='PDMOper'>=</span> <span class='PDMRes'>CREATEOBJECT</span><span class='PDMOper'>(</span><span class='PDMStr'>"Collection"</span><span class='PDMOper'>)</span>
+  <span class='PDMRes'>FOR</span> <span class='PDMVar'>lnMatch</span> <span class='PDMOper'>=</span> <span class='PDMLit'>0</span> <span class='PDMRes'>TO</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span><span class='PDMOper'>-</span><span class='PDMLit'>1</span>
+<span class='PDMCom'>*   loMatches.ADD(THIS.Fill_Match(toMatches.ITEM(m.lnMatch),m.tlAutoExpandGroups,m.tlAutoExpandCaptures,m.lnMatch=0))</span>
+   <span class='PDMVar'>loMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>ADD</span><span class='PDMOper'>(</span><span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Fill_Match</span><span class='PDMOper'>(</span><span class='PDMVar'>toMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>ITEM</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnMatch</span><span class='PDMOper'>)</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tlAutoExpandGroups</span><span class='PDMOper'>,</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tlAutoExpandCaptures</span><span class='PDMOper'>,</span><span class='PDMLit'>.T.</span><span class='PDMOper'>)</span><span class='PDMOper'>)</span>
+  <span class='PDMRes'>ENDFOR</span> <span class='PDMCom'>&amp;&amp;lnMatch</span>
+
+  <span class='PDMRes'>RETURN</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatches</span></pre>
+ <!-- Code End -->
+  </div>
+ </div>
+</div>
+<div class="diaxp_mfoot"> <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
+  <hr />
+  <div class="PDM_AB_Body">
+<i>&copy; 09.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+  </div><!-- Body End -->
+ </div><!-- Footer End -->
+</div>
+<script language="JavaScript" type="text/javascript">
+lo=document.getElementById("TX_SP_1");
+lo.XType="SourceCode";
+lo.Dir="../../imgs/";
+
+
+</script>
+</body>
+</html>

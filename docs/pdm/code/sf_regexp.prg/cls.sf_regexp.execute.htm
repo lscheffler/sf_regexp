@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<title>Method Execute of class SF_RegExp</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
+<meta name="Generator" content="Project Documenting Machine" />
+<meta name="Version" content="1.3.3" />
+<link rel="stylesheet" href="../../css/foxw.css" type="text/css" />
+<link rel="stylesheet" href="../../css/sc.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/diamp_pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
+<script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+</head>
+<body>
+<div class="diaxp_mhead">Execute Method</div>
+<div class="diaxp_mbody_class">
+
+<table class="clear_table">
+ <tbody>
+  <tr><td>Class: </td><td><a href="cls.sf_regexp.htm" title="Skip to class sf_regexp">SF_RegExp</a></td></tr>
+  <tr><td>Description:</td><td>Wrapper for VBasic RegExp Execute method</td></tr>
+ </tbody>
+</table>
+</div>
+<div class="diaxp_mbody">
+<!-- Created with _diamp_pdm_ab by Agnes Beste    17.05.2023 17:42 -->
+ <div class="PDM_AB_Descr"><!-- Descr Begin -->
+Wrapper for the DotNet RegExp Matches method, for easy replacement of VBasics <em>Execute</em> method.
+ </div><!-- Descr End -->
+
+ <div class="DIAMP_PDM_AB_Syntax"><!-- Syntax Begin -->
+  <div class="SColor">
+   <div class="RetVal"><a href="#_6MA11XXVV">RetVal</a>&nbsp;</div>   <div class="RetValEq">=</div>   <div class="PEM">
+    Object.Execute
+   </div>
+   <div class="Para">
+    (<a href="#_6MA11XXVW">tcInput</a>)
+   </div>
+   <div style="clear: both"></div>
+  </div><!-- Colour End -->
+ </div><!-- Syntax End -->
+
+ <div class="DIAMP_PDM_AB_Params"><!-- Parameters Begin -->
+  <span class="PDM_AB_Head">
+   Parameter
+  </span>
+  <dl class="DIAMP_PDM_AB_Params_List">
+   <dt class="dt_">
+    <a class="DIAMP_PDM_AB_Params_ParaName" id="_6MA11XXVW" name="_6MA11XXVW">
+     <span class="PDMEXPR PDMNor" ><span class='PDMVar'>tcInput</span></span>
+
+    </a>
+   </dt>
+   <dd class="dd_">
+    <span class="Params_Short">
+     The input string.
+    </span>
+    <table class="Params_Info">
+     <colgroup>
+      <col class="ColumnValue" />
+      <col class="ColumnData" />
+     </colgroup>
+     <tbody>
+      <tr>
+       <td class="CellValue">Type</td>
+       <td class="CellData">String</td>
+      </tr>
+      <tr>
+       <td class="CellValue">Direction</td>
+       <td class="CellData">Input</td>
+      </tr>
+     </tbody>
+    </table>
+   </dd>
+  </dl>
+ </div><!-- Parameters End -->
+
+ <div class="DIAMP_PDM_AB_RetVal"><!-- Returns Begin -->
+  <div>
+   <span class="PDM_AB_Head">
+    <a id="_6MA11XXVV" name="_6MA11XXVV">
+     Return value
+    </a>
+   </span> <span class="RetVal_Ttype">Object</span>
+  </div>
+  <div class="PDM_AB_Body">
+
+<p>
+A Matches-Collection object in VFP style without Groups and Captures expanded.
+</p>
+<p>
+If <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.global.htm" title="Skip to property Global">Global</a> is not set, only the first match is included. Notice, the return is still a Matches object.
+</p>
+
+  </div>
+ </div><!-- Returns End -->
+
+ <div class="PDM_AB_Remarks"><!-- Remarks Begin -->
+  <span class="PDM_AB_Head">
+   Remarks
+  </span>
+  <div class="PDM_AB_Body">
+
+
+<p>
+This is a wrapper to call <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a> with <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a> set on
+and <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a> and <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a> set off.
+</p>
+<p>
+Note, the index runs from 1 to count, not like VBasic from 0 to Count-1.
+</p>
+<p>
+An additional <em>FirstIndex</em> property is added to each Match object for compatibility with VBasic.
+In difference to Index, this start the string at 0.
+This is only available with Execute method.
+</p>
+
+  </div>
+ </div><!-- Remarks End -->
+
+ <div class="PDM_AB_Other"><!-- Others Begin -->
+<br />
+   <!-- Note -->
+
+   <div class="PDM_AB_nInformation">
+    <div class="Block_Picture">
+     <img class="NotePicture" title="Usage" src="../../repository/info.gif">
+    </div>
+    <div class="Block_Text">
+This method is intended to allow a step by step rework of code. It should be replaced with the respecting<br />
+<ul><br />
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.ismatch.htm" title="Skip to method IsMatch">IsMatch</a>,</li><br />
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.match.htm" title="Skip to method Match">Match</a> or</li><br />
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a></li><br />
+</ul><br />
+method.<br />
+
+    </div><!-- end of note text -->
+    <div style="clear: both"></div>
+   </div><!-- end of note -->
+<br />
+
+ </div><!-- Others End -->
+
+ <div class="PDM_AB_SeeAlso"><!-- SeeAlso Begin -->
+  <span class="PDM_AB_Head">
+   See also
+  </span>
+  <div class="PDM_AB_Body">
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.global.htm" title="Skip to property Global">Global</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.ismatch.htm" title="Skip to method IsMatch">IsMatch</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.match.htm" title="Skip to method Match">Match</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a>&nbsp;|
+<a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>
+  </div><!-- Body End -->
+  <!--- "Applies to" need to be inserted here---->
+  <PlaceAppliesTo_Here />
+  <!--- /"Applies to" need to be inserted here---->
+ </div><!-- SeeAlso End -->
+
+
+<!-- /Created with _diamp_pdm_ab by Agnes Beste    17.05.2023 17:42 -->
+
+ <div class="SC">
+  <img onclick="ExpandSC('SP_1',-1);"class="imgEC" src="../../imgs/dotab.gif" alt="Expand/Collapse source code of procedure Execute" id="IMG_SP_1" />
+  <span ondblclick="ExpandSC('SP_1',-1);" class="SCCaption"><a name="SF_RegExp">Source Code</a></span>
+  <div ondblclick="ExpandSC('SP_1',-1);" class="SCE" style="display: none;" id="TX_SP_1">
+<!-- Code Begin -->
+<pre class="PDMCODE PDMNor" >  <span class='PDMRes'>LPARAMETERS</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>tcString</span>
+
+  <span class='PDMRes'>LOCAL</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>llAutoExpandCaptures</span> <span class='PDMRes'>AS</span> <span class='PDMVar'>BOOLEAN</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>llAutoExpandGroups</span>   <span class='PDMRes'>AS</span> <span class='PDMVar'>BOOLEAN</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>llReturnFoxObjects</span>   <span class='PDMRes'>AS</span> <span class='PDMVar'>BOOLEAN</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>lnMatch</span>              <span class='PDMRes'>AS</span> <span class='PDMRes'>NUMBER</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>loBridge</span>             <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>loMatch</span>              <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span><span class='PDMOper'>,</span><span class='PDMOper'>;</span>
+   <span class='PDMVar'>loMatches</span>            <span class='PDMRes'>AS</span> <span class='PDMRes'>OBJECT</span>
+
+  <span class='PDMVar'>llReturnFoxObjects</span>   <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>ReturnFoxObjects</span>
+  <span class='PDMVar'>llAutoExpandGroups</span>   <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandGroups</span>
+  <span class='PDMVar'>llAutoExpandCaptures</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandCaptures</span>
+
+  <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>ReturnFoxObjects</span>   <span class='PDMOper'>=</span> <span class='PDMLit'>.T.</span>
+  <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandGroups</span>   <span class='PDMOper'>=</span> <span class='PDMLit'>.F.</span>
+  <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandCaptures</span> <span class='PDMOper'>=</span> <span class='PDMLit'>.F.</span>
+
+  <span class='PDMRes'>IF</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMRes'>GLOBAL</span> <span class='PDMRes'>THEN</span>
+   <span class='PDMVar'>loMatches</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Matches</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcString</span><span class='PDMOper'>)</span>
+   <span class='PDMRes'>FOR</span> <span class='PDMVar'>lnMatch</span> <span class='PDMOper'>=</span> <span class='PDMLit'>1</span> <span class='PDMRes'>TO</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>COUNT</span>
+    <span class='PDMVar'>loMatch</span> <span class='PDMOper'>=</span> <span class='PDMVar'>loMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>ITEM</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>lnMatch</span><span class='PDMOper'>)</span>
+    <span class='PDMRes'>ADDPROPERTY</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>,</span><span class='PDMStr'>"FirstIndex"</span><span class='PDMOper'>,</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>.</span><span class='PDMRes'>INDEX</span> <span class='PDMOper'>-</span> <span class='PDMLit'>1</span><span class='PDMOper'>)</span>
+   <span class='PDMRes'>ENDFOR</span> <span class='PDMCom'>&amp;&amp;lnMatch</span>
+
+  <span class='PDMRes'>ELSE</span>  <span class='PDMCom'>&amp;&amp;THIS.Global</span>
+   <span class='PDMVar'>loMatch</span> <span class='PDMOper'>=</span> <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>Match</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>tcString</span><span class='PDMOper'>)</span>
+   <span class='PDMRes'>ADDPROPERTY</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>,</span><span class='PDMStr'>"FirstIndex"</span><span class='PDMOper'>,</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>INDEX</span> <span class='PDMOper'>-</span> <span class='PDMLit'>1</span><span class='PDMOper'>)</span>
+   <span class='PDMVar'>loMatches</span> <span class='PDMOper'>=</span> <span class='PDMRes'>CREATEOBJECT</span><span class='PDMOper'>(</span><span class='PDMStr'>"Collection"</span><span class='PDMOper'>)</span>
+   <span class='PDMVar'>loMatches</span><span class='PDMOper'>.</span><span class='PDMRes'>ADD</span><span class='PDMOper'>(</span><span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatch</span><span class='PDMOper'>)</span>
+
+  <span class='PDMRes'>ENDIF</span> <span class='PDMCom'>&amp;&amp;THIS.Global</span>
+
+  <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>ReturnFoxObjects</span>   <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>llReturnFoxObjects</span>
+  <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandGroups</span>   <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>llAutoExpandGroups</span>
+  <span class='PDMRes'>THIS</span><span class='PDMOper'>.</span><span class='PDMVar'>AutoExpandCaptures</span> <span class='PDMOper'>=</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>llAutoExpandCaptures</span>
+
+
+  <span class='PDMRes'>RETURN</span> <span class='PDMVar'>m</span><span class='PDMOper'>.</span><span class='PDMVar'>loMatches</span></pre>
+ <!-- Code End -->
+  </div>
+ </div>
+</div>
+<div class="diaxp_mfoot"> <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
+  <hr />
+  <div class="PDM_AB_Body">
+<i>&copy; 10.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+  </div><!-- Body End -->
+ </div><!-- Footer End -->
+</div>
+<script language="JavaScript" type="text/javascript">
+lo=document.getElementById("TX_SP_1");
+lo.XType="SourceCode";
+lo.Dir="../../imgs/";
+
+
+</script>
+</body>
+</html>

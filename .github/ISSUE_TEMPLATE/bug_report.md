@@ -10,8 +10,7 @@ assignees: ''
 ## ℹ Computer information
 
 - VFP version: 
-- FoxBin2PRG version:
-- Bin2Text version:
+- SF RegExp version: 
 
 ## 📝 Provide detailed reproduction steps (if any)
 

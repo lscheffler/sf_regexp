@@ -1,0 +1,638 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<title>Class sf_regexp</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
+<meta name="Generator" content="Project Documenting Machine" />
+<meta name="Version" content="1.3.3" />
+<link rel="stylesheet" href="../../css/foxw.css" type="text/css" />
+<link rel="stylesheet" href="../../css/sc.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/diamp_pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/diamp_pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab.css" type="text/css" />
+<link rel="stylesheet" href="../../repository/pdm_ab_notes.css" type="text/css" />
+<script src="../../js/pdm.js" language="JavaScript" type="text/javascript"></script>
+</head>
+<body class="pbb_auto">
+<div class="diaxp_mhead_class"><h4 style=""><a name="cls.sf_regexp">Class: SF_RegExp</a></h4>
+</div>
+<div class="diaxp_mbody">
+
+<!-- Created with _diac_pdm_ab by Agnes Beste    17.05.2023 17:42 -->
+ <div class="PDM_AB_Descr"><!-- Descr Begin -->
+
+A class as interface to DotNet RegExp. 
+
+ </div><!-- Descr End -->
+
+ <div class="PDM_AB_Remarks"><!-- Remarks Begin -->
+  <span class="PDM_AB_Head">
+   Remarks
+  </span>
+  <div class="PDM_AB_Body">
+
+
+<p>
+ This class is set up to create an interface to the <a href="https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions?view=net-7.0&viewFallbackFrom=net-3.8" target="_blank">DotNet RegExp Namespace</a>. It uses SF_RegExp.dll and wwDotNetBridge to acces the RegExp.
+</p>
+<p>
+ The document does not contain help how to use the DotNet RegExp, see there.
+ As far as possible the methods and properites of RegExp, Matches, Match, Groups, Group, Captures and Capture are reflected in the class and the return of methods.
+ The Options property of the RegExp is split into several single booleans for better use with VFP. See
+</p>
+<ul>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.compiled.htm" title="Skip to property Compiled">Compiled</a></li>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.cultureinvariant.htm" title="Skip to property CultureInvariant">CultureInvariant</a></li>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.ecmascript.htm" title="Skip to property ECMAScript">ECMAScript</a></li>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.explicitcapture.htm" title="Skip to property ExplicitCapture">ExplicitCapture</a></li>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.ignorecase.htm" title="Skip to property IgnoreCase">IgnoreCase</a></li>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.ignorepatternwhitespace.htm" title="Skip to property IgnorePatternWhitespace">IgnorePatternWhitespace</a></li>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.multiline.htm" title="Skip to property MultiLine">MultiLine</a></li>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.righttoleft.htm" title="Skip to property RightToLeft">RightToLeft</a></li>
+<li><a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.singleline.htm" title="Skip to property SingleLine">SingleLine</a></li>
+</ul>
+<p>
+The return of the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a> and <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.match.htm" title="Skip to method Match">Match</a> method may be a DotNet object or a VFP object, see <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a>.
+The depth of the resolution is controled by the <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a> and  <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a> properties,
+this allowing to only transform data as needed.
+<br />
+Note, this changes the way collections (Matches, Groups, Captures) are enumerated. DotNet (and VBasic) start with 0, VFP with 1.
+</p>
+<p>
+Some example to use the class are available in the <a class="PDM_AB_See" href="../../code/sf_regexp_test.prg/main.htm" title="Skip to file example program">example program</a>.
+</p>
+<p>
+For the leisure of VFP programmers, strings start with 1 for this class in all methods and properties dealing with positions in strings.
+If you like it with 0, set <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.dotnetoffset.htm" title="Skip to property DotNetOffset">DotNetOffset</a>.
+</p>
+<p>
+For easy reuse of VBasic Regexp, a <a class="PDM_AB_See" href="../../code/sf_regexp.prg/cls.sf_regexp.execute.htm" title="Skip to method Execute">Execute</a> method is provided.
+The Match objects own a <em>FirstIndex</em> property that works like VBasic.
+Note that the Matches collection returned now starts with 1.
+</p>
+
+  </div>
+ </div><!-- Remarks End -->
+
+
+<!-- /Created with _diac_pdm_ab by Agnes Beste    17.05.2023 17:42 -->
+
+<table>
+ <tbody>
+  <tr><td>SESSIONParent Class:</a></td><td>SESSION</td></tr>
+  <tr><td>OLE Public:</td><td><img class="imgYN" src="../../imgs/fn.gif" alt="Class SF_RegExp is not OLE public" /></td></tr>
+ </tbody>
+</table>
+<br />
+<a href="#cls.sf_regexp::Properties" title="Skip to properties of class sf_regexp">Properties</a>&nbsp;<a href="#cls.sf_regexp::Methods" title="Skip to methods of class sf_regexp">Methods</a>&nbsp;<br />
+<strong><a name="cls.sf_regexp::Properties">Properties</a></strong>
+<table border="1" cellspacing="0">
+ <thead>
+  <tr class="Head">
+   <td class="a_center" title="Array">A</td>
+   <td class="a_center" title="Protected">P</td>
+   <td class="a_center" title="Hidden">H</td>
+   <td>Name</td>
+   <td>Initial value</td>
+   <td>Comment</td>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandCaptures is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandCaptures is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandCaptures is not hidden" /></td>
+   <td><a href="cls.sf_regexp.autoexpandcaptures.htm" title="Skip to property AutoExpandCaptures">AutoExpandCaptures</a></td>
+   <td>.F.		</td>
+   <td>Controls type of objects returned</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroups is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroups is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property AutoExpandGroups is not hidden" /></td>
+   <td><a href="cls.sf_regexp.autoexpandgroups.htm" title="Skip to property AutoExpandGroups">AutoExpandGroups</a></td>
+   <td>.F.		</td>
+   <td>Controls type of objects returned</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property CacheSize is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property CacheSize is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property CacheSize is not hidden" /></td>
+   <td><a href="cls.sf_regexp.cachesize.htm" title="Skip to property CacheSize">CacheSize</a></td>
+   <td>0</td>
+   <td>&nbsp;</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property Compiled is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property Compiled is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property Compiled is not hidden" /></td>
+   <td><a href="cls.sf_regexp.compiled.htm" title="Skip to property Compiled">Compiled</a></td>
+   <td>.F.	</td>
+   <td>The Compiled part of the DotNet Options property   8</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property CultureInvariant is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property CultureInvariant is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property CultureInvariant is not hidden" /></td>
+   <td><a href="cls.sf_regexp.cultureinvariant.htm" title="Skip to property CultureInvariant">CultureInvariant</a></td>
+   <td>.F.	</td>
+   <td>The CultureInvariant part of the DotNet Options property 512</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property DotNetOffset is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property DotNetOffset is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property DotNetOffset is not hidden" /></td>
+   <td><a href="cls.sf_regexp.dotnetoffset.htm" title="Skip to property DotNetOffset">DotNetOffset</a></td>
+   <td>.F.		</td>
+   <td>Strings should start with 0 or 1</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ECMAScript is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ECMAScript is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ECMAScript is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ecmascript.htm" title="Skip to property ECMAScript">ECMAScript</a></td>
+   <td>.F.	</td>
+   <td>The ECMAScript part of the DotNet Options property 256</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ExplicitCapture is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ExplicitCapture is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ExplicitCapture is not hidden" /></td>
+   <td><a href="cls.sf_regexp.explicitcapture.htm" title="Skip to property ExplicitCapture">ExplicitCapture</a></td>
+   <td>.F.	</td>
+   <td>The ExplicitCapture part of the DotNet Options property   4</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property GLOBAL is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property GLOBAL is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property GLOBAL is not hidden" /></td>
+   <td><a href="cls.sf_regexp.global.htm" title="Skip to property GLOBAL">GLOBAL</a></td>
+   <td>.T.	</td>
+   <td>Like the Global of VBasic, only used for Execute</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnoreCase is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnoreCase is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnoreCase is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ignorecase.htm" title="Skip to property IgnoreCase">IgnoreCase</a></td>
+   <td>.F.	</td>
+   <td>The IgnoreCase part of the DotNet Options property   1</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnorePatternWhitespace is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnorePatternWhitespace is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property IgnorePatternWhitespace is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ignorepatternwhitespace.htm" title="Skip to property IgnorePatternWhitespace">IgnorePatternWhitespace</a></td>
+   <td>.F.	</td>
+   <td>The IgnorePatternWhitespace part of the DotNet Options property  32</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property MatchTimeout is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property MatchTimeout is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property MatchTimeout is not hidden" /></td>
+   <td><a href="cls.sf_regexp.matchtimeout.htm" title="Skip to property MatchTimeout">MatchTimeout</a></td>
+   <td>0</td>
+   <td>&nbsp;</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property MultiLine is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property MultiLine is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property MultiLine is not hidden" /></td>
+   <td><a href="cls.sf_regexp.multiline.htm" title="Skip to property MultiLine">MultiLine</a></td>
+   <td>.F.	</td>
+   <td>The MultiLine part of the DotNet Options property   2</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property PATTERN is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property PATTERN is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property PATTERN is not hidden" /></td>
+   <td><a href="cls.sf_regexp.pattern.htm" title="Skip to property PATTERN">PATTERN</a></td>
+   <td>&quot;&quot;					</td>
+   <td>The DotNet Pattern property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ReturnFoxObjects is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ReturnFoxObjects is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property ReturnFoxObjects is not hidden" /></td>
+   <td><a href="cls.sf_regexp.returnfoxobjects.htm" title="Skip to property ReturnFoxObjects">ReturnFoxObjects</a></td>
+   <td>.F.		</td>
+   <td>Controls type of objects returned</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property RIGHTTOLEFT is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property RIGHTTOLEFT is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property RIGHTTOLEFT is not hidden" /></td>
+   <td><a href="cls.sf_regexp.righttoleft.htm" title="Skip to property RightToLeft">RightToLeft</a></td>
+   <td>.F.	</td>
+   <td>Specifies the reading order of text in controls and the display of streaming output on forms. RightToLeft is disregarded unless you are running a Middle Eastern version of Microsoft Windows. Available at design time; read/write at run time.</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property rnOffset is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Property rnOffset is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property rnOffset is not hidden" /></td>
+   <td>rnOffset</td>
+   <td>1</td>
+   <td>Internal, string offset to a start string VFP like</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property roRegExp is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Property roRegExp is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property roRegExp is not hidden" /></td>
+   <td><a href="cls.sf_regexp.roregexp.htm" title="Skip to property roRegExp">roRegExp</a></td>
+   <td>.NULL.</td>
+   <td>Internal, reference to the C# DotNet wrapper.</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property SingleLine is not array" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property SingleLine is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Property SingleLine is not hidden" /></td>
+   <td><a href="cls.sf_regexp.singleline.htm" title="Skip to property SingleLine">SingleLine</a></td>
+   <td>.F.	</td>
+   <td>The SingleLine part of the DotNet Options property  16</td>
+  </tr>
+ </tbody>
+</table>
+<br />
+<strong><a name="cls.sf_regexp::Methods">Methods</a></strong>
+<table border="1" cellspacing="0">
+ <thead>
+  <tr class="Head">
+   <td class="a_center" title="Protected">P</td><td class="a_center" title="Hidden">H</td><td>Name</td><td>Comment</td>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method CacheSize_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method CacheSize_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.cachesize_access.htm" title="Skip to method CacheSize_Access">CacheSize_Access</a></td>
+   <td>Access the CacheSize part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method CacheSize_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method CacheSize_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.cachesize_assign.htm" title="Skip to method CacheSize_Assign">CacheSize_Assign</a></td>
+   <td>Assign the CacheSize part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Compiled_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Compiled_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.compiled_access.htm" title="Skip to method Compiled_Access">Compiled_Access</a></td>
+   <td>Access the Compiled part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Compiled_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Compiled_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.compiled_assign.htm" title="Skip to method Compiled_Assign">Compiled_Assign</a></td>
+   <td>Assign the Compiled part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method CultureInvariant_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method CultureInvariant_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.cultureinvariant_access.htm" title="Skip to method CultureInvariant_Access">CultureInvariant_Access</a></td>
+   <td>Access the CultureInvariant part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method CultureInvariant_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method CultureInvariant_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.cultureinvariant_assign.htm" title="Skip to method CultureInvariant_Assign">CultureInvariant_Assign</a></td>
+   <td>Assign the CultureInvariant part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method DotNetOffset_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method DotNetOffset_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.dotnetoffset_assign.htm" title="Skip to method DotNetOffset_Assign">DotNetOffset_Assign</a></td>
+   <td>Write if strings should start with 0 or 1</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ECMAScript_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ECMAScript_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ecmascript_access.htm" title="Skip to method ECMAScript_Access">ECMAScript_Access</a></td>
+   <td>Access the ECMAScript part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ECMAScript_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ECMAScript_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ecmascript_assign.htm" title="Skip to method ECMAScript_Assign">ECMAScript_Assign</a></td>
+   <td>Assign the ECMAScript part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ESCAPE is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ESCAPE is not hidden" /></td>
+   <td><a href="cls.sf_regexp.escape.htm" title="Skip to method ESCAPE">ESCAPE</a></td>
+   <td>Interface to the DotNet Escape method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Escape_Like is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Escape_Like is not hidden" /></td>
+   <td><a href="cls.sf_regexp.escape_like.htm" title="Skip to method Escape_Like">Escape_Like</a></td>
+   <td>Interface to the DotNet Escape method, with special operation to keep LIKE function</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Execute is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Execute is not hidden" /></td>
+   <td><a href="cls.sf_regexp.execute.htm" title="Skip to method Execute">Execute</a></td>
+   <td>Wrapper for VBasic RegExp Execute method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ExplicitCapture_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ExplicitCapture_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.explicitcapture_access.htm" title="Skip to method ExplicitCapture_Access">ExplicitCapture_Access</a></td>
+   <td>Access the ExplicitCapture part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ExplicitCapture_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method ExplicitCapture_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.explicitcapture_assign.htm" title="Skip to method ExplicitCapture_Assign">ExplicitCapture_Assign</a></td>
+   <td>Assign the ExplicitCapture part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Capture is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Capture is not hidden" /></td>
+   <td><a href="cls.sf_regexp.fill_capture.htm" title="Skip to method Fill_Capture">Fill_Capture</a></td>
+   <td>Rebuild the Capture object returned by DotNet to VFP Empty object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Captures is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Captures is not hidden" /></td>
+   <td><a href="cls.sf_regexp.fill_captures.htm" title="Skip to method Fill_Captures">Fill_Captures</a></td>
+   <td>Rebuild the Captures object returned by DotNet to VFP Collections object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Group is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Group is not hidden" /></td>
+   <td><a href="cls.sf_regexp.fill_group.htm" title="Skip to method Fill_Group">Fill_Group</a></td>
+   <td>Rebuild the Group object returned by DotNet to VFP Empty object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Groups is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Groups is not hidden" /></td>
+   <td><a href="cls.sf_regexp.fill_groups.htm" title="Skip to method Fill_Groups">Fill_Groups</a></td>
+   <td>Rebuild the Groups object returned by DotNet to VFP Collections object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Match is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Match is not hidden" /></td>
+   <td><a href="cls.sf_regexp.fill_match.htm" title="Skip to method Fill_Match">Fill_Match</a></td>
+   <td>Rebuild the Match object returned by DotNet to VFP Empty object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Matches is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Fill_Matches is not hidden" /></td>
+   <td><a href="cls.sf_regexp.fill_matches.htm" title="Skip to method Fill_Matches">Fill_Matches</a></td>
+   <td>Rebuild the Matches object returned by DotNet to VFP Collections object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Captures is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Captures is not hidden" /></td>
+   <td><a href="cls.sf_regexp.get_captures.htm" title="Skip to method Get_Captures">Get_Captures</a></td>
+   <td>Get the Captures property from DotNet Match, Group objects</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Groups is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Groups is not hidden" /></td>
+   <td><a href="cls.sf_regexp.get_groups.htm" title="Skip to method Get_Groups">Get_Groups</a></td>
+   <td>Get the Groups property from DotNet Match objects</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Index is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Index is not hidden" /></td>
+   <td><a href="cls.sf_regexp.get_index.htm" title="Skip to method Get_Index">Get_Index</a></td>
+   <td>Get the Index property from DotNet Match, Group, Capture objects</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Length is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Length is not hidden" /></td>
+   <td><a href="cls.sf_regexp.get_length.htm" title="Skip to method Get_Length">Get_Length</a></td>
+   <td>Get the Length property from DotNet Match, Group, Capture objects</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Name is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Name is not hidden" /></td>
+   <td><a href="cls.sf_regexp.get_name.htm" title="Skip to method Get_Name">Get_Name</a></td>
+   <td>Get the Name property from DotNet Match, Group, Capture objects</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Success is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Success is not hidden" /></td>
+   <td><a href="cls.sf_regexp.get_success.htm" title="Skip to method Get_Success">Get_Success</a></td>
+   <td>Get the Success property from DotNet Match, Capture objects</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Value is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Get_Value is not hidden" /></td>
+   <td><a href="cls.sf_regexp.get_value.htm" title="Skip to method Get_Value">Get_Value</a></td>
+   <td>Get the Value property from DotNet Match, Group, Capture objects</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method GetGroupNames is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method GetGroupNames is not hidden" /></td>
+   <td><a href="cls.sf_regexp.getgroupnames.htm" title="Skip to method GetGroupNames">GetGroupNames</a></td>
+   <td>Interface to the DotNet GetGroupNames method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method GetGroupNumbers is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method GetGroupNumbers is not hidden" /></td>
+   <td><a href="cls.sf_regexp.getgroupnumbers.htm" title="Skip to method GetGroupNumbers">GetGroupNumbers</a></td>
+   <td>Interface to the DotNet GetGroupNumbers method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method GroupNameFromNumber is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method GroupNameFromNumber is not hidden" /></td>
+   <td><a href="cls.sf_regexp.groupnamefromnumber.htm" title="Skip to method GroupNameFromNumber">GroupNameFromNumber</a></td>
+   <td>Interface to the DotNet GroupNameFromNumber method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method GroupNumberFromName is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method GroupNumberFromName is not hidden" /></td>
+   <td><a href="cls.sf_regexp.groupnumberfromname.htm" title="Skip to method GroupNumberFromName">GroupNumberFromName</a></td>
+   <td>Interface to the DotNet GroupNumberFromName method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IgnoreCase_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IgnoreCase_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ignorecase_access.htm" title="Skip to method IgnoreCase_Access">IgnoreCase_Access</a></td>
+   <td>Access the IgnoreCase part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IgnoreCase_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IgnoreCase_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ignorecase_assign.htm" title="Skip to method IgnoreCase_Assign">IgnoreCase_Assign</a></td>
+   <td>Assign the IgnoreCase part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IgnorePatternWhitespace_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IgnorePatternWhitespace_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ignorepatternwhitespace_access.htm" title="Skip to method IgnorePatternWhitespace_Access">IgnorePatternWhitespace_Access</a></td>
+   <td>Access the IgnorePatternWhitespace part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IgnorePatternWhitespace_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IgnorePatternWhitespace_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ignorepatternwhitespace_assign.htm" title="Skip to method IgnorePatternWhitespace_Assign">IgnorePatternWhitespace_Assign</a></td>
+   <td>Assign the IgnorePatternWhitespace part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Init is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Init is not hidden" /></td>
+   <td><a href="cls.sf_regexp.init.htm" title="Skip to method Init">Init</a></td>
+   <td>Occurs when an object is created.</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IsMatch is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method IsMatch is not hidden" /></td>
+   <td><a href="cls.sf_regexp.ismatch.htm" title="Skip to method IsMatch">IsMatch</a></td>
+   <td>Interface to the DotNet IsMatch method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Match is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Match is not hidden" /></td>
+   <td><a href="cls.sf_regexp.match.htm" title="Skip to method Match">Match</a></td>
+   <td>Interface to the DotNet Match method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Matches is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Matches is not hidden" /></td>
+   <td><a href="cls.sf_regexp.matches.htm" title="Skip to method Matches">Matches</a></td>
+   <td>Interface to the DotNet Matches method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method MatchTimeout_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method MatchTimeout_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.matchtimeout_access.htm" title="Skip to method MatchTimeout_Access">MatchTimeout_Access</a></td>
+   <td>Access the MatchTimeout part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method MatchTimeout_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method MatchTimeout_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.matchtimeout_assign.htm" title="Skip to method MatchTimeout_Assign">MatchTimeout_Assign</a></td>
+   <td>Assign the MatchTimeout part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method MultiLine_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method MultiLine_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.multiline_access.htm" title="Skip to method MultiLine_Access">MultiLine_Access</a></td>
+   <td>Access the MultiLine part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method MultiLine_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method MultiLine_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.multiline_assign.htm" title="Skip to method MultiLine_Assign">MultiLine_Assign</a></td>
+   <td>Assign the MultiLine part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Pattern_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Pattern_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.pattern_access.htm" title="Skip to method Pattern_Access">Pattern_Access</a></td>
+   <td>Access the DotNet Pattern property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Pattern_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Pattern_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.pattern_assign.htm" title="Skip to method Pattern_Assign">Pattern_Assign</a></td>
+   <td>Assign the DotNet Pattern property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method REPLACE is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method REPLACE is not hidden" /></td>
+   <td><a href="cls.sf_regexp.replace.htm" title="Skip to method REPLACE">REPLACE</a></td>
+   <td>Interface to the DotNet Replace method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method RightToLeft_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method RightToLeft_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.righttoleft_access.htm" title="Skip to method RightToLeft_Access">RightToLeft_Access</a></td>
+   <td>Access the RightToLeft part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method RightToLeft_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method RightToLeft_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.righttoleft_assign.htm" title="Skip to method RightToLeft_Assign">RightToLeft_Assign</a></td>
+   <td>Assign the RightToLeft part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Show_Unwind is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Show_Unwind is not hidden" /></td>
+   <td><a href="cls.sf_regexp.show_unwind.htm" title="Skip to method Show_Unwind">Show_Unwind</a></td>
+   <td>Expand to a Matches or Match object for to show all data in the object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Singleline_Access is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Singleline_Access is not hidden" /></td>
+   <td><a href="cls.sf_regexp.singleline_access.htm" title="Skip to method Singleline_Access">Singleline_Access</a></td>
+   <td>Access the Singleline part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Singleline_Assign is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Singleline_Assign is not hidden" /></td>
+   <td><a href="cls.sf_regexp.singleline_assign.htm" title="Skip to method Singleline_Assign">Singleline_Assign</a></td>
+   <td>Assign the Singleline part of the DotNet Options property</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method SPLIT is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method SPLIT is not hidden" /></td>
+   <td><a href="cls.sf_regexp.split.htm" title="Skip to method SPLIT">SPLIT</a></td>
+   <td>Interface to the DotNet Split method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method UnEscape is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method UnEscape is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unescape.htm" title="Skip to method UnEscape">UnEscape</a></td>
+   <td>Interface to the DotNet UnEscape method</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method UnEscape_Like is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method UnEscape_Like is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unescape_like.htm" title="Skip to method UnEscape_Like">UnEscape_Like</a></td>
+   <td>Interface to the DotNet UnEscape method, with special operation to keep LIKE function</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Method Unwind_Match is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Unwind_Match is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unwind_match.htm" title="Skip to method Unwind_Match">Unwind_Match</a></td>
+   <td>Show all data for a match object, DotNet object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Method Unwind_Match_V is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Unwind_Match_V is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unwind_match_v.htm" title="Skip to method Unwind_Match_V">Unwind_Match_V</a></td>
+   <td>Show all data for a match object, VFP object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Method Unwind_Matches is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Unwind_Matches is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unwind_matches.htm" title="Skip to method Unwind_Matches">Unwind_Matches</a></td>
+   <td>Show all data for a matches object, DotNet object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fy.gif" alt="Method Unwind_Matches_V is protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Unwind_Matches_V is not hidden" /></td>
+   <td><a href="cls.sf_regexp.unwind_matches_v.htm" title="Skip to method Unwind_Matches_V">Unwind_Matches_V</a></td>
+   <td>Show all data for a matches object, VFP object</td>
+  </tr>
+  <tr>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Version is not protected" /></td>
+   <td><img class="imgYN" src="../../imgs/fn.gif" alt="Method Version is not hidden" /></td>
+   <td><a href="cls.sf_regexp.version.htm" title="Skip to method Version">Version</a></td>
+   <td>Returns the version number of an instance of Visual FoxPro as a character string. Read-only at run time.</td>
+  </tr>
+ </tbody>
+</table>
+<br />
+<div class="back2"><a href="#cls.sf_regexp::Methods" class="b2_left" title="Skip to methods">Back Methods</a><a href="#cls.sf_regexp::Methods" class="b2_right" title="Skip to methods">Back Methods</a></div>
+<div class="back2"><a href="#cls.sf_regexp" class="b2_left" title="Skip to top page">Back Top</a><a href="#cls.sf_regexp" class="b2_right" title="Skip to top page">Back Top</a></div>
+</div>
+<div class="diaxp_mfoot">
+
+ <div class="PDM_AB_CopyRight"><!-- Footer Begin -->
+  <hr />
+  <div class="PDM_AB_Body">
+<i>&copy; 10.05.2023 Lutz Scheffler Software Ingenieurb&uuml;ro</i>
+  </div><!-- Body End -->
+ </div><!-- Footer End -->
+
+</div>
+
+</body>
+</html>

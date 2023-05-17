@@ -1,4 +1,5 @@
 # How to contribute to SF RegExp
+
 ## Bug report?
 - Please check  [issues](https://github.com/lscheffler/sf_regexp/issues) if the bug is reported
 - If you're unable to find an open issue addressing the problem, open a new one. Be sure to include a title and clear description, as much relevant information as possible, and a code sample or an executable test case demonstrating the expected behavior that is not occurring.
@@ -26,18 +27,26 @@ Stuff is a bit scattered, so this is where to look up.
 1. Please create a fork at github
   - Fork the project: see this [guide](https://www.dataschool.io/how-to-contribute-on-github/) for setting up and using a fork.
   - If allready forked, pull the recent state, or get most recent version otherwise.
-3. On top of *SF_RegExp.prg* there is a #DEFINE with version numbers, change according:   
+3. On top of *SF_RegExp.h* there is a #DEFINE with version numbers, change according:   
 `#DEFINE dcRegExpVerNo "0.0.0"`
 4. Add a description of changes to *./Doku/Source/Changes.html* (this is for PDM docu)
 5. For changed functionality, add descriptive text to *./Doku/Source/Preface.html* file. (this is for PDM docu)
 6. Change version number on top of *./Doku/Source/Preface.html* file.
 7. Highlight the change on *README.md* in projects root
-8. Add a description of changes to *content/change_log.md* (this is for github docu)
+8. Add a description of changes to *docs/changelog.md* (this is for github docu)
 9. Change date in the footer of documentation files touched.
 10. If available run PDM <a href="http://gorila.netlab.cz/pdm.html" title="PDM"  target="_blank">Project Documenting Machine</a> by Martina Jindrová using the AB-plugins.
   The pdm setting is stored in the *./Doku* folder.
+11. If you haven't already done so, install VFPX Deployment: choose Check for Updates from the Thor menu, turn on the checkbox for VFPX Deployment, and click Install.
+12. Start VFP 9 (not VFP Advanced) and CD into the project or make the pjx the active one.
+13. Run the VFPX Deployment tool to create the installation files: choose VFPX Project Deployment from the Thor Tools, Application menu. Alternately, execute ```EXECSCRIPT(_screen.cThorDispatcher, 'Thor_Tool_DeployVFPXProject')```.
+14. Commit the changes.
+15. Push to your fork.
+16. Create a pull request; ensure the description clearly describes the problem and solution or the enhancement.
 
 Thanks
 
 ----
-Last changed: _2023/05/09_ ![Picture](../content/vfpxpoweredby_alternative.gif)
+Last changed: 2023-05-17
+
+![powered by VFPX](../docs/images/vfpxpoweredby_alternative.gif "powered by VFPX")

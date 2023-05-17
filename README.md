@@ -1,15 +1,12 @@
-# ![](content/home.png "Home") SF RegExp
+# SF RegExp
 Wrapper for DotNet Regexp   
-**Version 1.3.002, 2023-05-10**   
+**Version <!--VERNO-->1.3.2<!--/VerNo-->, <!--DeploymentDate-->2023-05-17<!--/DeploymentDate-->**   
 A simple class to allow easy access to the DotNet RegExp class.
 
 ---
 ### Synopsis
-This is project is part of [VFPX](https://vfpx.github.io/) 
-
-![VFPX](https://vfpx.github.io/images/vfpxbanner_small.gif)
-
-![VFPX](https://github.com/lscheffler/sf_regexp/blob/master/content/vfpxlogo.gif "VFPX")
+![VFPX Banner](./docs/images/vfpxbanner.gif "VFPX Banner")   
+This project is part of [VFPX](https://vfpx.github.io/).
 
 Project manager: [Lutz Scheffler](https://github.com/lscheffler)   
 Project location: [SF RegExp](https://github.com/lscheffler/sf_regexp)   
@@ -32,10 +29,11 @@ The problems this project tries to solve:
 
 ---
 ### Installation
-1. Download or clone [this repository](https://github.com/lscheffler/sf_regexp).   
-2. Make sure the DotNet v4.8 is available
-9. **This repository does not ship binary sources.**
-3. The pjx is just to group the files, the files are intended to be included to your project.
+1. Make sure the DotNet v4.8 is available
+2. This project is available to you via [Thor](https://github.com/VFPX/Thor) *Check For Updates* function.
+3. If you do not use Thor, download or clone [this repository](https://github.com/lscheffler/sf_regexp).   
+4. **This repository does not ship binary sources.**
+5. The pjx is just to group the files, the files are intended to be included to your project.
 
 ### Use
 1. To use one need all the files in the *SF_RegExp* subfolder
@@ -44,15 +42,17 @@ The problems this project tries to solve:
 
 ---
 ### Documentation
-Full help and documentation is in *docs/index.htm* in the download file.
+Full help and documentation is in *PDM/index.htm* in the local folder.
 
-For quick run see [SF RegExp Documentation](https://github.com/lscheffler/sf_regexp/blob/master/content/documentation.md).
+For quick run see [SF RegExp Documentation](https://github.com/lscheffler/sf_regexp/blob/master/docs/documentation.md).
 
 ### Changes
-See [changes](https://github.com/lscheffler/sf_regexp/blob/master/content/change_log.md)
+See [changes](https://github.com/lscheffler/sf_regexp/blob/master/docs/changelog.md)
 
 ## Helping with this project
 See [How to contribute to SF RegExp](https://github.com/lscheffler/sf_regexp/blob/master/.github/CONTRIBUTING.md) for details on how to help with this project.
 
 ----
-Last changed: _2023/05/10_ ![Powered by VFPX](https://github.com/lscheffler/sf_regexp/blob/master/content/vfpxpoweredby_alternative.gif)
+Last changed: _<!--DeploymentDate-->2023-05-17<!--/DeploymentDate-->_   
+
+![powered by VFPX](./docs/images/vfpxpoweredby_alternative.gif "powered by VFPX")
