@@ -1,2 +1,3 @@
+README.md
 SF_RegExp\*.*
 docs\PDM\||PDM\
