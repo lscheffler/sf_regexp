@@ -1,43 +1,34 @@
-lparameters toUpdateObject
+lparameters;
+	toUpdateObject
+local;
+	lcRepositoryURL    as string, ;
+	lcDownloadsURL     as string, ;
+	lcVersionFileURL   as string, ;
+	lcZIPFileURL       as string, ;
+	lcRegisterWithThor as string
+
+* Get the URL for the version and ZIP files.
+
+lcRepositoryURL  = 'https://github.com/lscheffler/sf_regexp'
+	&& the URL for the project's repository
+lcDownloadsURL   = strtran(m.lcRepositoryURL, 'github.com', ;
+	'raw.githubusercontent.com') + '/master/ThorUpdater/'
+lcVersionFileURL = m.lcDownloadsURL + 'SFRegExpVersion.txt'
+	&& the URL for the file containing code to get the available version number
+lcZIPFileURL     = m.lcDownloadsURL + 'SFRegExp.zip'
+	&& the URL for the zip file containing the project
 
 * Set the properties of the passed updater object.
 
-with toUpdateObject
-	.VersionNumber    = '1.3.002 - 20230517'
-	.AvailableVersion = 'SF RegExp-1.3.002-update-20230517'
-	.Notes            = GetNotes()
-	.RegisterWithThor = GetRegisterWithThor()
+with m.toUpdateObject
+	.ApplicationName      = 'SF RegExp'
+	.VersionLocalFilename = 'SFRegExpVersionFile.txt'
+	.VersionFileURL       = m.lcVersionFileURL
+	.SourceFileUrl        = m.lcZIPFileURL
+	.Component            = 'Yes'
+	.Link                 = m.lcRepositoryURL
+	.LinkPrompt           = 'SF RegExp Home Page'
+	.ProjectCreationDate  = date(2023, 5, 18)
 endwith
-return toUpdateObject
 
-* Get the notes for the project.
-
-procedure GetNotes
-local lcNotes
-text to lcNotes noshow
-# SF RegExp Change list
-
-{Abbreviated project description}
-
-## Release History
-
-### {Release date as YYYY-MM-DD}, Version {Version number}}
-
-* {List of changes}
-
-----
-Last changed: 2023-05-17
-
-![powered by VFPX](./images/vfpxpoweredby_alternative.gif)
-endtext
-return lcNotes
-
-* Register the tool with Thor. Note: Thor replaces ##InstallFolder## with the
-* installation path for the tool when this code is executed.
-
-procedure GetRegisterWithThor
-local lcCommand
-text to lcCommand noshow
-
-endtext
-return lcCommand
+return m.toUpdateObject
