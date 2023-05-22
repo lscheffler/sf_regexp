@@ -8,11 +8,11 @@ local;
 	lcRegisterWithThor as string
 
 * Get the URL for the version and ZIP files.
-
+*SET STEP ON 
 lcRepositoryURL  = 'https://github.com/lscheffler/sf_regexp'
 	&& the URL for the project's repository
 lcDownloadsURL   = strtran(m.lcRepositoryURL, 'github.com', ;
-	'raw.githubusercontent.com') + '/master/ThorUpdater/'
+	'raw.githubusercontent.com') + '/main/ThorUpdater/'
 lcVersionFileURL = m.lcDownloadsURL + 'SFRegExpVersion.txt'
 	&& the URL for the file containing code to get the available version number
 lcZIPFileURL     = m.lcDownloadsURL + 'SFRegExp.zip'

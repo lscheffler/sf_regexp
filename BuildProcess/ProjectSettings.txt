@@ -24,7 +24,7 @@ Repository = https://github.com/lscheffler/sf_regexp
 ChangeLog = docs\ChangeLog.md
 
 *Create VFPX community folders and files. Will not overwrite existing files.
-Inculde_VFPX = Yes
+Include_VFPX = Yes
 
 RunBin2Prg = No
 RunGit = No
