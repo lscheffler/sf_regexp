@@ -1,6 +1,6 @@
 # ![Home](./docs/images/home.png "Home") SF RegExp
 Wrapper for DotNet Regexp   
-**Version <!--VERNO-->1.3.2<!--/VerNo-->, <!--DeploymentDate-->2023-05-18<!--/DeploymentDate-->**   
+**Version <!--VERNO-->1.3.2<!--/VerNo-->, <!--DeploymentDate-->2023-05-22<!--/DeploymentDate-->**   
 A simple class to allow easy access to the DotNet RegExp class.
 
 ---
@@ -36,7 +36,7 @@ The problems this project tries to solve:
 5. The pjx is just to group the files, the files are intended to be included to your project.
 
 ### Use
-1. To use one need all the files in the *SF_RegExp* subfolder
+1. To use one need all the files in the `Execscript (_Screen.cThorDispatcher, "Tool Folder=")+'Components\SF RegExp'` subfolder
 2. Make sure the DotNet v4.8 is available
 3. The pjx is just to group the files, the files are intended to be included to your project.
 
@@ -53,6 +53,6 @@ See [changes](https://github.com/lscheffler/sf_regexp/blob/master/docs/changelog
 See [How to contribute to SF RegExp](https://github.com/lscheffler/sf_regexp/blob/master/.github/CONTRIBUTING.md) for details on how to help with this project.
 
 ----
-Last changed: _<!--DeploymentDate-->2023-05-18<!--/DeploymentDate-->_   
+Last changed: _<!--DeploymentDate-->2023-05-23<!--/DeploymentDate-->_   
 
 ![powered by VFPX](./docs/images/vfpxpoweredby_alternative.gif "powered by VFPX")

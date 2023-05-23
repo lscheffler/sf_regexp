@@ -7,7 +7,7 @@
 LOCAL lcExec
 *:Global pcFullVersion
 TEXT TO m.lcExec NOSHOW
-#Include SF_RegeXp\SF_RegeXp.h
+#Include Source\SF_RegeXp.h
 pcVersion     = dcRegExpVerNo
 pcFullVersion = m.pcVersion
 ENDTEXT &&lcExec

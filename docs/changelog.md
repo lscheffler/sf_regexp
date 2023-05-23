@@ -4,7 +4,7 @@ Wrapper for DotNet Regexp
 
 ## Release History
 
-This page gives a brief overview of changes to the [SF RegExp](https://github.com/lscheffler/sf regexp).
+This page gives a brief overview of changes to the [SF RegExp](https://github.com/lscheffler/sf_regexp).
 
 A complete list of changes is available on the offline documentation via **local folder** _PDM/index.htm_.
 
@@ -33,6 +33,6 @@ A complete list of changes is available on the offline documentation via **local
 
 
 ----
-Last changed: <!--DeploymentDate-->2023-05-18<!--/DeploymentDate-->
+Last changed: <!--DeploymentDate-->2023-05-23<!--/DeploymentDate-->
 
 ![powered by VFPX](./images/vfpxpoweredby_alternative.gif "powered by VFPX")

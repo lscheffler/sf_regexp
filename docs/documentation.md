@@ -11,24 +11,36 @@ There is no documentation of DotNet RegExp included, see
 
 ---
 ### Change log
-See [SF RegExp Change Log](changelog.md) for a short change list.
+See [SF RegExp Change Log](./changelog.md) for a short change list.
 
 ---
 ### To use the program:
+#### Get via Thor 
+* Install via Thor *Check for Updates*
+* The files are located in:
+```
+= Execscript (_Screen.cThorDispatcher, "Tool Folder=")+'Components\SF RegExp'
+```
+
+#### Get Native
 * Pull SF RegExp
 * Pull project
-* Add *.\SF_RegExp\SF_RegExp.prg* to your project, make the files in *.\SF_RegExp* available to your project, in special
-- .\SF_RegExp\wwDotNetBridge.\*
-- .\SF_RegExp\SF_RegExp.dll
-- .\SF_RegExp\SF_RegExp.pdb   
+* The files are located in the *.\Source* folder
+
+#### Use it
+* Add *.\SF_RegExp.prg* to your project, make the files in the folder available to your project, in special
+- .\wwDotNetBridge.\*
+- .\SF_RegExp.dll
+- .\SF_RegExp.pdb   
 
 To get the object, run the prg like `loSF_RegExp = SF_RegExp()`. For use see
 
 ---
 ###  Documentation
-Help and documentation is in the **local folder** _PDM/index.htm_.
+Help and documentation is in the **local folder** *PDM\index.htm*.
+If the project is not gathered via Thor, in *docs\_PDM\index.htm*
 
 ----
-Last changed: 2023-05-17
+Last changed: 2023-05-23
 
 ![](./images/vfpxpoweredby_alternative.gif "powered by VFPX")

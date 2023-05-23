@@ -1,3 +1,9 @@
 README.md
-SF_RegExp\*.*
+Source\*.prg||*.prg
+Source\*.dll||*.dll
+Source\*.h||*.h
+Source\*.pdp||*.pdp
+Source\*.ps1||*.ps1
+Source\*.xml||*.xml
+Source\wwDotNetBridge_License.md||wwDotNetBridge_License.md
 docs\PDM\||PDM\
