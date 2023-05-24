@@ -36,7 +36,8 @@ The problems this project tries to solve:
 5. The pjx is just to group the files, the files are intended to be included to your project.
 
 ### Use
-1. To use one need all the files in the `Execscript (_Screen.cThorDispatcher, "Tool Folder=")+'Components\SF RegExp'` subfolder
+1. To use one need all the files in the<br />
+   `Execscript (_Screen.cThorDispatcher, "Tool Folder=")+'Components\SF RegExp'`<br />subfolder.
 2. Make sure the DotNet v4.8 is available
 3. The pjx is just to group the files, the files are intended to be included to your project.
 
