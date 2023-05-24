@@ -9,6 +9,10 @@ This page gives a brief overview of changes to the [SF RegExp](https://github.co
 A complete list of changes is available on the offline documentation via **local folder** _PDM/index.htm_.
 
 ---
+### Version 1.3.2 **2023/05/24**
+- Missing stuff in Thor, clarifications on use.
+
+---
 ### Version 1.3.2 **2023/05/10**
 - New: Added Global property for use in Execute method
 
@@ -30,9 +34,9 @@ A complete list of changes is available on the offline documentation via **local
 - Stability: Stability on recall, use of paths
 
 ### Version 1.0.0
-
+- First release
 
 ----
-Last changed: <!--DeploymentDate-->2023-05-23<!--/DeploymentDate-->
+Last changed: <!--DeploymentDate-->2023-05-24<!--/DeploymentDate-->
 
 ![powered by VFPX](./images/vfpxpoweredby_alternative.gif "powered by VFPX")
