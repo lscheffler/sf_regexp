@@ -37,6 +37,6 @@ A complete list of changes is available on the offline documentation via **local
 - First release
 
 ----
-Last changed: <!--DeploymentDate-->2023-05-24<!--/DeploymentDate-->
+Last changed: <!--CVERSIONDATE-->2023-05-24<!--/CVERSIONDATE-->
 
 ![powered by VFPX](./images/vfpxpoweredby_alternative.gif "powered by VFPX")
