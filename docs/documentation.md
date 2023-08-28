@@ -15,16 +15,7 @@ See [SF RegExp Change Log](./changelog.md) for a short change list.
 
 ---
 ### To use the program:
-#### Get via Thor 
-* Install via Thor *Check for Updates*
-* The files are located in:
-```
-= Execscript (_Screen.cThorDispatcher, "Tool Folder=")+'Components\SF RegExp'
-```
-
-#### Get Native
-* Pull SF RegExp
-* Pull project
+* Clone or download SF_RegExp
 * The files are located in the *.\Source* folder
 
 #### Use it
@@ -41,6 +32,6 @@ Help and documentation is in the **local folder** *PDM\index.htm*.
 If the project is not gathered via Thor, in *docs\_PDM\index.htm*
 
 ----
-Last changed: 2023-05-23
+Last changed: 2023-08-28
 
 ![](./images/vfpxpoweredby_alternative.gif "powered by VFPX")

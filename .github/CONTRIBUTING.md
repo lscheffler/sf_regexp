@@ -37,16 +37,13 @@ Stuff is a bit scattered, so this is where to look up.
 9. Change date in the footer of documentation files touched.
 10. If available run PDM <a href="http://gorila.netlab.cz/pdm.html" title="PDM"  target="_blank">Project Documenting Machine</a> by Martina Jindrová using the AB-plugins.
   The pdm setting is stored in the *./Doku* folder.
-11. If you haven't already done so, install VFPX Deployment: choose Check for Updates from the Thor menu, turn on the checkbox for VFPX Deployment, and click Install.
-12. Start VFP 9 (not VFP Advanced) and CD into the project or make the pjx the active one.
-13. Run the VFPX Deployment tool to create the installation files: choose VFPX Project Deployment from the Thor Tools, Application menu. Alternately, execute ```EXECSCRIPT(_screen.cThorDispatcher, 'Thor_Tool_DeployVFPXProject')```.
-14. Commit the changes.
-15. Push to your fork.
-16. Create a pull request; ensure the description clearly describes the problem and solution or the enhancement.
+11. Commit the changes.
+12. Push to your fork.
+13. Create a pull request; ensure the description clearly describes the problem and solution or the enhancement.
 
 Thanks
 
 ----
-Last changed: 2023-05-17
+Last changed: 2023-07-28
 
 ![powered by VFPX](../docs/images/vfpxpoweredby_alternative.gif "powered by VFPX")
