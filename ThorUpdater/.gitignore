@@ -1,0 +1,8 @@
+#.gitignore for SF RegExp/ThorUpdater
+# a .gitignore for ThorUpdater to publish to Thor.
+# enable some files that are in general not under git control for VFP projects to publish to Thor
+
+!SFRegExp*.md
+!SFRegExp*.txt
+!SFRegExp*.zip
+!README.md

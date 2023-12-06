@@ -1,6 +1,6 @@
 # ![Home](./docs/images/home.png "Home") SF RegExp
 Wrapper for DotNet Regexp   
-**Version 1.3.2, 2023-08-26**   
+**Version <!--VERNO-->1.3.2<!--/VerNo-->, <!--CVERSIONDATE-->2023-05-24<!--/CVERSIONDATE-->**   
 A simple class to allow easy access to the DotNet RegExp class.
 
 ---
@@ -30,13 +30,16 @@ The problems this project tries to solve:
 ---
 ### Installation
 1. Make sure the DotNet v4.8 is available
-2. Download or clone [this repository](https://github.com/lscheffler/sf_regexp).   
+2. This project is available to you via [Thor](https://github.com/VFPX/Thor) *Check For Updates* function.
+3. If you do not use Thor, download or clone [this repository](https://github.com/lscheffler/sf_regexp).   
 4. **This repository does not ship binary sources.**
 5. The pjx is just to group the files, the files are intended to be included to your project.
 
 ### Use
-1. Make sure the DotNet v4.8 is available
-2. The pjx is just to group the files, the files are intended to be included to your project.
+1. To use one need all the files in the<br />
+   `Execscript (_Screen.cThorDispatcher, "Tool Folder=")+'Components\SF RegExp'`<br />subfolder.
+2. Make sure the DotNet v4.8 is available
+3. The pjx is just to group the files, the files are intended to be included to your project.
 
 ---
 ### Documentation
@@ -51,6 +54,6 @@ See [changes](https://github.com/lscheffler/sf_regexp/blob/master/docs/changelog
 See [How to contribute to SF RegExp](https://github.com/lscheffler/sf_regexp/blob/master/.github/CONTRIBUTING.md) for details on how to help with this project.
 
 ----
-Last changed: _<!--CVERSIONDATE-->2023-08-28<!--/CVERSIONDATE-->_   
+Last changed: _<!--CVERSIONDATE-->2023-05-24<!--/CVERSIONDATE-->_   
 
 ![powered by VFPX](./docs/images/vfpxpoweredby_alternative.gif "powered by VFPX")
